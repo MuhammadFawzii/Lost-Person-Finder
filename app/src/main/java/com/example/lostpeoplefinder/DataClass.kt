@@ -1,6 +1,6 @@
 package com.example.lostpeoplefinder
 
-data class UserData(val username: String, val email: String, val password: String, val phoneNumber: String)
+data class UserData(val username: String, val email: String, val password: String, val phone_number: String)
 
 data class LoginData(val username: String, val password: String)
 

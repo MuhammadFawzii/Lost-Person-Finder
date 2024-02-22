@@ -2,6 +2,7 @@ package com.example.lostpeoplefinder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -43,7 +44,8 @@ class SignUp : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                    Toast.makeText(this@SignUp, "Failed to sign up", Toast.LENGTH_SHORT).show()
+                    Log.d("+++",t.message.toString())
+                    Toast.makeText(this@SignUp, t.message, Toast.LENGTH_SHORT).show()
                 }
             })
         }

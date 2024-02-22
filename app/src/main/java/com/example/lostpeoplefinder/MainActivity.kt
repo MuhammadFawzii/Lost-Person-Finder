@@ -1,8 +1,10 @@
 package com.example.lostpeoplefinder
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lostpeoplefinder.API.RetrofitClient
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var textViewSignUp: TextView =findViewById(R.id.textViewSignUp)
        var btnLogin: Button =findViewById(R.id.btnLogin)
        var editTextUsername: EditText =findViewById(R.id.editTextUsername)
        var editTextPassword: EditText =findViewById(R.id.editTextPassword)
@@ -41,6 +44,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Failed to login", Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+        textViewSignUp.setOnClickListener {
+             var intent=Intent(this,SignUp::class.java)
+            startActivity(intent)
         }
     }
 
