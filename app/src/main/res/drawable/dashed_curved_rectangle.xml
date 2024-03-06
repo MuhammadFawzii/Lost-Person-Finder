@@ -1,0 +1,20 @@
+<!-- dashed_curved_rectangle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+
+
+    >
+
+    <!-- Background color -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Rounded corners -->
+    <corners android:radius="50dp" />
+
+    <!-- Dashed border -->
+    <stroke
+        android:width="5dp"
+        android:color="@color/blue_app"
+        android:dashWidth="20dp"
+        android:dashGap="5dp" />
+</shape>

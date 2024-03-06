@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Lost People Finder</string>
+    <string name="tv_forgot_password">Forgot Password</string>
+    <string name="tv_forget_password_instruction">Please enter the email address associated with your account. We\'ll send you a verification code to reset your password.</string>
+    <string name="tv_email">Email</string>
+    <string name="star_password">**********************</string>
+
+    <string name="tv_email_hint">debra.holt@example.com</string>
+    <string name="tv_send_rest_code">Send Reset Code</string>
+    <string name="tv_need_help">Need Help or Have Questions?</string>
+    <string name="tv_create_newPassword">Create New Password</string>
+    <string name="tv_createNewPassword_instruction">Your new password must be different from your previous password.</string>
+    <string name="tv_newPassword_string">New Password</string>
+    <string name="tv_confirm_password_string">Confirm Password</string>
+    <string name="tv_password_8char_string">Password length must be 8 character.  </string>
+    <string name="tv_password_reset_successfull">You\'ve successfully created a new password and taken another step in reuniting hearts. Now, you can go to the login screen to access your account.</string>
 </resources>
