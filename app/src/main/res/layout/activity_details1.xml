@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
-    >
+    tools:context=".MPerson_Details_1_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,8 +13,8 @@
 
         <ImageView
             android:id="@+id/backArrow_MPerson_Details_1_Activity"
-            android:layout_width="33dp"
-            android:layout_height="36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:src="@drawable/arrow_vector"
@@ -224,6 +223,19 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/calender_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_calendar_month_24"
+                android:layout_marginLeft="300dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayout3"
+                app:layout_constraintBottom_toBottomOf="@id/textInputLayout3"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/textInputLayout4"
@@ -242,7 +254,6 @@
                 app:cursorColor="@color/blue_app"
                 app:placeholderTextColor="@color/blue_app"
                 app:counterTextColor="@color/black"
-                app:endIconDrawable="@drawable/img_calender"
                 app:endIconMode="custom"
                 app:helperTextTextColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -252,8 +263,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -267,21 +278,22 @@
             android:id="@+id/constraintLayout8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="45dp"
             android:background="@drawable/border_top"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+            >
 
             <Button
                 android:id="@+id/btn_next1"
                 android:layout_width="141dp"
                 android:layout_height="67dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/btn_background"
+                android:backgroundTint="@color/blue_app"
                 android:fontFamily="@font/proxima_nova_semibold"
                 android:text="Next"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -293,10 +305,10 @@
                 android:layout_width="141dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="30dp"
-                android:background="@drawable/test"
-
+                android:backgroundTint="#F0F0F0"
                 android:fontFamily="@font/proxima_nova_semibold"
                 android:text="Previous"
+                android:textColor="@color/blue_app"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

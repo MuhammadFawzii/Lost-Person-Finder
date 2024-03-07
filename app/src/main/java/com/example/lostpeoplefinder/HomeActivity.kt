@@ -2,19 +2,23 @@ package com.example.lostpeoplefinder
 
 import android.os.Bundle
 import android.widget.*
-import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.content.ContextCompat
+
 
 class HomeActivity : AppCompatActivity() {
     lateinit var missingRv:RecyclerView
     lateinit var foundRv:RecyclerView
     lateinit var adapter:CommonAdapter
-    lateinit var searchview:SearchView
+    lateinit var searchview:androidx.appcompat.widget.SearchView
     lateinit var filterBtn:ImageView
     lateinit var missingBtn:Button
     lateinit var findingBtn:Button
+    lateinit var searchIcon: ImageView
+    lateinit var  textView :TextView
     private var isEditTextFocused = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,33 +27,41 @@ class HomeActivity : AppCompatActivity() {
         missingRv=findViewById(R.id.messingRecyclerView);
         foundRv=findViewById(R.id.findingRecyclerView);
         searchview=findViewById(R.id.searchView)
-        filterBtn=findViewById(R.id.btn_filter)
+        //filterBtn=findViewById(R.id.btn_filter)
+        textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
+
 
 
         // Set query hint
-        searchview.queryHint = "Search Here ..."
 
-        // Set listener to handle text changes
-        searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchview.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                // This method is called when the user submits the query (e.g., presses Enter)
                 // Handle the query submission here
                 handleQuery(query)
                 return true
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                // This method is called when the text in the search view changes
                 // Handle the text change here
                 return false
             }
         })
-        //val layoutManager = LinearLayoutManager(this)
+
+
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
+
+        searchIcon.setOnClickListener {
+            // Handle click event for the search icon here
+            Toast.makeText(this, "Search icon clicked!", Toast.LENGTH_SHORT).show()
+        }
 
         searchview.setOnFocusChangeListener { v, hasFocus ->
             isEditTextFocused = hasFocus
+            if(hasFocus){
+                textView.setTextColor(ContextCompat.getColor(this, android.R.color.black))
+            }
         }
 
         adapter = CommonAdapter(this, initList());
