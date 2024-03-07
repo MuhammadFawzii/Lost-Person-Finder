@@ -53,25 +53,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:background="@drawable/ss"
+            android:background="@drawable/search_view_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:queryHint="Search Here ..."
-            app:iconifiedByDefault="false"
+                app:iconifiedByDefault="false"
+
                 />
 
 
-            <ImageView
-                android:id="@+id/btn_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_filter_alt_24"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/searchView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+<!--            <ImageView-->
+<!--                android:id="@+id/btn_filter"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/baseline_filter_alt_24"-->
+<!--                android:layout_margin="10dp"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/searchView"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
