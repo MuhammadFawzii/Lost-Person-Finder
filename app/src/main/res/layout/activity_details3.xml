@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MPerson_Details_2_Activity">
+    tools:context=".DetailsActivity2">
 
 
     <ImageView
@@ -49,7 +49,7 @@
             android:layout_width="84dp"
             android:layout_height="84dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_3"
+            android:src="@drawable/img_3_circuit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"

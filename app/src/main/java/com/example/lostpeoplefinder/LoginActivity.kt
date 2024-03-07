@@ -12,10 +12,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         var textViewSignUp: TextView =findViewById(R.id.textViewSignUp)
        var btnLogin: Button =findViewById(R.id.btnLogin)
        var editTextUsername: EditText =findViewById(R.id.editTextUsername)
@@ -32,16 +32,16 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {
                         val message = response.body()?.message
-                        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
                         // Navigate to next activity or perform necessary actions upon successful login
                     } else {
                         val error = response.body()?.error
-                        Toast.makeText(this@MainActivity, error, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, error, Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "Failed to login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Failed to login", Toast.LENGTH_SHORT).show()
                 }
             })
         }

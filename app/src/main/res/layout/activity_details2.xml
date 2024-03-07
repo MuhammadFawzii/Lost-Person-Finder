@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    >
+    tools:context=".DetailsActivity2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <!-- Your constraint layout 6 content -->
+            <!-- Your constraint layout 6 content -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:id="@+id/textViewCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1/14"
+                android:text="2/14"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="8dp"
@@ -133,11 +133,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Missing Full Name"
+                android:hint="Weight"
                 android:textColorHint="@color/black"
                 app:helperText="Required*"
                 app:counterEnabled="true"
-                app:counterMaxLength="20"
+                app:counterMaxLength="3"
                 app:boxStrokeColor="@color/black"
                 app:hintTextColor="@color/blue_app"
                 app:cursorColor="@color/blue_app"
@@ -152,7 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:inputType="text"
+                    android:inputType="number"
                     />
 
 
@@ -165,11 +165,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="110dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Gender"
+                android:hint="Height cm"
                 android:textColorHint="@color/black"
                 app:helperText="Required*"
                 app:counterEnabled="true"
-                app:counterMaxLength="5"
+                app:counterMaxLength="3"
                 app:boxStrokeColor="@color/black"
                 app:hintTextColor="@color/blue_app"
                 app:cursorColor="@color/blue_app"
@@ -185,7 +185,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:inputType="text"
+                    android:inputType="number"
                     />
 
 
@@ -198,7 +198,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="195dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Date Of Birth"
+                android:hint="Eye Color"
                 android:textColorHint="@color/black"
                 app:helperText="Required*"
                 app:counterEnabled="true"
@@ -218,7 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
-                    android:inputType="date"
+                    android:inputType="text"
                     />
 
 
@@ -231,18 +231,17 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="290dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Nick Name"
+                android:hint="Hair Color"
                 android:textColorHint="@color/black"
                 app:helperText="Required*"
                 app:counterEnabled="true"
-                app:counterMaxLength="15"
+                app:counterMaxLength="10"
                 app:boxStrokeColor="@color/black"
                 app:hintTextColor="@color/blue_app"
                 app:cursorColor="@color/blue_app"
                 app:placeholderTextColor="@color/blue_app"
                 app:counterTextColor="@color/black"
-                app:endIconDrawable="@drawable/img_calender"
-                app:endIconMode="custom"
+
                 app:helperTextTextColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -251,8 +250,43 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:inputType="text"
-                    android:textColor="#000000" />
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textInputLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="385dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Hair Length"
+                android:textColorHint="@color/black"
+                app:helperText="Required*"
+                app:counterEnabled="true"
+                app:counterMaxLength="6"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/blue_app"
+                app:cursorColor="@color/blue_app"
+                app:placeholderTextColor="@color/blue_app"
+                app:counterTextColor="@color/black"
+
+                app:helperTextTextColor="@color/red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:inputType="text"
+                    />
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -261,26 +295,27 @@
 
 
 
-        <!-- Your constraint layout 8 content -->
+            <!-- Your constraint layout 8 content -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/border_top"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+            >
 
             <Button
                 android:id="@+id/btn_next1"
                 android:layout_width="141dp"
                 android:layout_height="67dp"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/btn_background"
+                android:backgroundTint="@color/blue_app"
                 android:fontFamily="@font/proxima_nova_semibold"
                 android:text="Next"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -292,10 +327,10 @@
                 android:layout_width="141dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="30dp"
-                android:background="@drawable/test"
-
+                android:backgroundTint="#F0F0F0"
                 android:fontFamily="@font/proxima_nova_semibold"
                 android:text="Previous"
+                android:textColor="@color/blue_app"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -308,4 +343,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
+
+
 </ScrollView>
+
