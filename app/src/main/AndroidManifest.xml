@@ -28,13 +28,23 @@
             android:exported="false" />
         <activity
             android:name=".MPerson_Details_2_Activity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".MPerson_Details_3_Activity"
+            android:theme="@style/AppTheme"
             android:exported="false" />
+
         <activity
             android:name=".ForgetPasswordActivity"
-            android:exported="true">
+            android:theme="@style/AppTheme"
+            android:exported="false"/>
+
+
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/AppTheme"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,9 +52,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
         <activity
             android:name=".Verify_Email_Activity"
             android:exported="false" />
