@@ -31,5 +31,7 @@
     <color name="gray_prev">#F0F0F0</color>
     <color name="g_green_app">#02A308</color>
     <color name="g_gray400_app">#717178</color>
+    <color name="light_gray">#F5F5F5</color>
+
 
 </resources>
