@@ -37,9 +37,17 @@ class VerifyCodeActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {
                         val message = response.body()?.message
-                        Log.d("00",message.toString())
-                        Toast.makeText(this@VerifyCodeActivity, message, Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@VerifyCodeActivity,LoginActivity::class.java))
+                        if(message.equals("User registered successfully")) {
+                            Log.d("00", message.toString())
+                            startActivity(
+                                Intent(
+                                    this@VerifyCodeActivity,
+                                    LoginActivity::class.java
+                                )
+                            )
+                        }
+                        Toast.makeText(this@VerifyCodeActivity, message, Toast.LENGTH_SHORT)
+                            .show()
                     } else {
                         val error = response.body()?.error
                         Log.d("+++0",error.toString())

@@ -12,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class ResetPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                                 val message = response.body()?.message
                                 Log.d("00", message.toString())
                                 val intent =
-                                    Intent(this@ResetPasswordActivity, LoginActivity::class.java)
+                                    Intent(this@ResetPasswordActivity, PasswordReseatSuccessfully::class.java)
                                 startActivity(intent)
                                 Toast.makeText(
                                     this@ResetPasswordActivity,
