@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.*
 import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -22,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         missingRv=findViewById(R.id.messingRecyclerView);
         foundRv=findViewById(R.id.findingRecyclerView);
-        searchview=findViewById(R.id.searchView)
+        searchview=findViewById<SearchView>(R.id.searchView)
         filterBtn=findViewById(R.id.btn_filter)
 
 
