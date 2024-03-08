@@ -35,5 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up" />
+    <TextView
+        android:id="@+id/textViewLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Aleardy have an account? Login here"
+        android:textColor="@android:color/holo_blue_dark" />
 
 </LinearLayout>

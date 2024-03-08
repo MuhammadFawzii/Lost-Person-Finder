@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResponseActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Top Left TextView -->
+        <TextView
+            android:id="@+id/topLeftTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matching Results"
+            android:textSize="40sp"
+            android:textColor="@color/app_blue"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Middle TextView -->
+        <TextView
+            android:id="@+id/middleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NO MATCH FOUND"
+            android:textSize="40sp"
+            android:visibility="gone"
+            android:layout_marginTop="350dp"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="@+id/topLeftTextView"
+            app:layout_constraintEnd_toEndOf="@+id/topLeftTextView"
+            app:layout_constraintTop_toBottomOf="@+id/topLeftTextView"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

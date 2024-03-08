@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".VerifyEmailActivity">
+    tools:context=".ResetPasswordActivity">
 
     <ImageView
         android:id="@+id/backArrow_createNewPassword"
@@ -106,7 +106,7 @@
             android:background="@drawable/edit_text_background"
             android:ems="10"
             android:hint="@string/star_password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.659"
@@ -160,7 +160,7 @@
             android:background="@drawable/edit_text_background"
             android:ems="10"
             android:hint="@string/star_password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
@@ -196,12 +196,12 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <Button
-        android:id="@+id/bt_submit"
+        android:id="@+id/reseat"
         android:layout_width="331dp"
         android:layout_height="59dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/btn_background"
-        android:text="Submit"
+        android:text="Reseat"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.412"
@@ -221,7 +221,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_submit"
+        app:layout_constraintTop_toBottomOf="@+id/reseat"
         app:layout_constraintVertical_bias="0.0" />
 
 

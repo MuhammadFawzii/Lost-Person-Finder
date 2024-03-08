@@ -3,6 +3,7 @@ package com.example.lostpeoplefinder
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
@@ -13,7 +14,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var missingRv:RecyclerView
     lateinit var foundRv:RecyclerView
     lateinit var adapter:CommonAdapter
-    lateinit var searchview:androidx.appcompat.widget.SearchView
+    lateinit var searchview:SearchView
     lateinit var filterBtn:ImageView
     lateinit var missingBtn:Button
     lateinit var findingBtn:Button
@@ -26,12 +27,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         missingRv=findViewById(R.id.messingRecyclerView);
         foundRv=findViewById(R.id.findingRecyclerView);
+        searchview=findViewById<SearchView>(R.id.searchView)
+        //filterBtn=findViewById(R.id.btn_filter)
         searchview=findViewById(R.id.searchView)
         //filterBtn=findViewById(R.id.btn_filter)
         textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
-
-
-
         // Set query hint
 
         searchview.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
