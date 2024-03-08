@@ -86,9 +86,9 @@ class HomeActivity : AppCompatActivity() {
         val personList = ArrayList<PersonModel>()
 
         // Add items to the list
-        personList.add(PersonModel(header, R.drawable.missing, "Maria Doe", "Age:35 | Red Head | blue Eyes | Height: 167 |Weight: 120.6 lbs"))
-        personList.add(PersonModel(header, R.drawable.missing, "Jane Smith", "Age:42 | black Head | Green Eyes | Height: 187 |Weight: 170.6 lbs"))
-        personList.add(PersonModel(header, R.drawable.missing, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.miss, "Maria Doe", "Age:35 | Red Head | blue Eyes | Height: 167 |Weight: 120.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.miss, "Jane Smith", "Age:42 | black Head | Green Eyes | Height: 187 |Weight: 170.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.miss, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
         return personList
     }
     override fun onResume() {

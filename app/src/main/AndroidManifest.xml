@@ -16,19 +16,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".PrivacePolicyActivity"
-            android:exported="true" >
+            android:name=".PersonDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUsActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacePolicyActivity"
+            android:exported="false" />
         <activity
             android:name=".ResponseActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -54,24 +61,18 @@
         <activity
             android:name=".DetailsActivity6"
             android:exported="false" />
-
         <activity
             android:name=".DetailsActivity7"
             android:exported="false" />
         <activity
             android:name=".DetailsCompleteActivity8"
-            android:exported="false"
-            />
-
-
-
+            android:exported="false" />
         <activity
             android:name=".ForgetPasswordActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".HomeActivity"
-
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
@@ -80,9 +81,9 @@
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
-        <activity android:name=".LoginActivity"
-            android:exported="false"/>
-
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

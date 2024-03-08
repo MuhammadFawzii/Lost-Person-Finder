@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonDetailsActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+    <!-- ImageView for the image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/miss" />
+
+    <!-- Container for each attribute -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        &lt;!&ndash; Attribute: Person Name &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="30dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="mohamed mahfouz"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_weight="1"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Age : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personAgeTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="25"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="240dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Gender : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personGenderTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="MALE"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="150dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="AHmed Bakr"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="80dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="AHmed Bakr"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="80dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash; Repeat the above for other attributes &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Person Age &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Person Gender &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Last Date &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Last Location &ndash;&gt;-->
+
+<!--    </LinearLayout>-->
+
+</LinearLayout>
