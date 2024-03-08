@@ -16,7 +16,7 @@ class VerifyEmailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_code)
-        val email = intent.getStringExtra("email").toString()
+        /*val email = intent.getStringExtra("email").toString()
         Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
         val code = findViewById<EditText>(R.id.code)
         val submit = findViewById<Button>(R.id.submit)
@@ -47,6 +47,6 @@ class VerifyEmailActivity : AppCompatActivity() {
                     Toast.makeText(this@VerifyEmailActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
             })
-        }
+        }*/
     }
 }
