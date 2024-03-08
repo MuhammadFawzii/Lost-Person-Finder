@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MPerson_Details_2_Activity">
+    tools:context=".DetailsActivity2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-            <!-- Your constraint layout 6 content -->
+        <!-- Your constraint layout 6 content -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
@@ -295,7 +295,7 @@
 
 
 
-            <!-- Your constraint layout 8 content -->
+        <!-- Your constraint layout 8 content -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout8"
             android:layout_width="0dp"

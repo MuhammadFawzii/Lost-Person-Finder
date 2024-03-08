@@ -7,18 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 
-import com.google.android.gms.cast.framework.media.ImagePicker
-
-class MPerson_Details_3_Activity : AppCompatActivity() {
+class DetailsActivity3 : AppCompatActivity() {
     private val PICK_IMAGE = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mperson_details3)
+        setContentView(R.layout.activity_details3)
         val pickImageButton = findViewById<TextView>(R.id.tv_browsePhoto)
         pickImageButton.setOnClickListener {
             val pickIntent =
@@ -35,7 +32,7 @@ class MPerson_Details_3_Activity : AppCompatActivity() {
             if (selectedImageUri != null) {
                 // Load the selected image into the ImageView using Glide
                 val imageView = findViewById<ImageView>(R.id.img)
-                imageView.visibility=View.VISIBLE
+                imageView.visibility = View.VISIBLE
                 Glide.with(this)
                     .load(selectedImageUri)
                     .into(imageView)

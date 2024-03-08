@@ -31,7 +31,7 @@ class VerifyCodeActivity : AppCompatActivity() {
                         val message = response.body()?.message
                         Log.d("00",message.toString())
                         Toast.makeText(this@VerifyCodeActivity, message, Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@VerifyCodeActivity,MainActivity::class.java))
+                        startActivity(Intent(this@VerifyCodeActivity,LoginActivity::class.java))
                     } else {
                         val error = response.body()?.error
                         Log.d("+++0",error.toString())

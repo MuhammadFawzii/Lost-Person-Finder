@@ -29,4 +29,17 @@ public interface APIServies {
         @Field("email") email: String,
         @Field("code") code: String
     ): Call<ApiResponse>
+    @FormUrlEncoded
+    @POST("forgot_password")
+    fun forgotPassword(@Field("email") email: String,): Call<ApiResponse>
+    @FormUrlEncoded
+    @POST("verify_reset_code_password")
+    fun verifyResetPassword(
+        @Field("email") email: String,
+        @Field("code") code: String
+    ): Call<ApiResponse>
+
+    @FormUrlEncoded
+    @POST("set_new_password")
+    fun setNewPassword(@Field("email") email: String,@Field("new_password") newPassword: String): Call<ApiResponse>
 }

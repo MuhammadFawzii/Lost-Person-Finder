@@ -3,9 +3,9 @@ package com.example.lostpeoplefinder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MPerson_Details_4_Activity : AppCompatActivity() {
+class DetailsCompleteActivity8 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mperson_details4)
+        setContentView(R.layout.activity_details8_complete)
     }
 }

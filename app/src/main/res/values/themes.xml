@@ -16,6 +16,11 @@
 
     </style>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Other theme attributes -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Set primary text color -->
+        <item name="android:textColorHint">@color/black</item> <!-- Set hint text color -->
+    </style>
     <style name="Theme.LostPeopleFinder" parent="Base.Theme.LostPeopleFinder" />
 
 

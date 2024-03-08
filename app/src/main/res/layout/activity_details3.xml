@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MPerson_Details_2_Activity">
-
+    android:background="@color/white"
+    tools:context=".MPerson_Details_3_Activity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/backArrow_MPerson_Details_3_Activity"
@@ -36,9 +39,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
-        android:layout_width="407dp"
+        android:layout_width="match_parent"
         android:layout_height="117dp"
         android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/blue_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +54,7 @@
             android:layout_width="84dp"
             android:layout_height="84dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_3"
+            android:src="@drawable/img_3_circuit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
@@ -109,8 +114,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_uploadPhotographs"
-        android:layout_width="357dp"
+        android:layout_width="match_parent"
         android:layout_height="254dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/dotted"
         app:layout_constraintEnd_toEndOf="parent"
@@ -245,24 +252,25 @@
             android:layout_height="62dp"
             android:backgroundTint="@color/blue_app"
             android:textColor="@color/white"
-            android:background="@drawable/border_w1_buton"
             android:fontFamily="@font/proxima_nova_semibold"
             android:text="Next"
+            android:layout_marginRight="20dp"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.938"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.545" />
+            app:layout_constraintVertical_bias="0.545"
+            />
 
         <Button
             android:id="@+id/bt_previous3"
             android:layout_width="141dp"
             android:layout_height="67dp"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/proxima_nova_semibold"
             android:text="Previous"
-
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -278,3 +286,5 @@
         android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
