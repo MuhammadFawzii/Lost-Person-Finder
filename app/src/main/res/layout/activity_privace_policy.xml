@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".PrivacePolicyActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,38 +12,52 @@
         android:orientation="vertical">
 
         <!-- Heading 1 -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout13"
+            android:layout_width="388dp"
+            android:layout_height="78dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
 
-            <!-- TextView -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova_bold"
                 android:text="Privacy Policy"
+                android:textColor="@color/black"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginStart="60dp"
-                android:padding="16dp"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.458"
+                tools:ignore="MissingConstraints" />
 
-            <!-- ImageView -->
             <ImageView
-                android:id="@+id/backArrow_forget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/arrow_vector"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/arrow_vector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.016"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.406"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </RelativeLayout>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Privacy And Terms"
-            android:textSize="20sp"
+            android:textSize="30sp"
+            android:fontFamily="@font/proxima_nova_bold"
+
             android:layout_marginBottom="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
@@ -53,6 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Terms Of Use"
+            android:fontFamily="@font/mulish"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -72,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Privacy Policy"
+            android:fontFamily="@font/mulish"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -93,6 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User Responsibilities"
+            android:fontFamily="@font/mulish"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -125,6 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Intellectual Property"
+            android:fontFamily="@font/mulish"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
@@ -146,6 +165,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
             />
         <TextView
             android:layout_width="match_parent"
@@ -162,6 +183,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
             />
         <TextView
             android:layout_width="match_parent"
@@ -178,6 +201,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
             />
         <TextView
             android:layout_width="match_parent"
@@ -185,6 +210,8 @@
             android:text="We reserve the right to terminate or suspend your account and access to the App at our sole discretion without notice."
             android:paddingLeft="10dp"
             android:paddingBottom="10dp"
+            android:fontFamily="@font/mulish"
+
             />
 
         <TextView
@@ -193,12 +220,15 @@
             android:text="Changes to Terms"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/mulish"
             android:layout_marginStart="10dp"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          android:text=" We may update these Terms of Use from time to time. Any changes will be effective when posted. Your continued use of the App after changes are posted constitutes your acceptance of the new Terms."
+            android:fontFamily="@font/mulish"
+
+            android:text=" We may update these Terms of Use from time to time. Any changes will be effective when posted. Your continued use of the App after changes are posted constitutes your acceptance of the new Terms."
             android:paddingLeft="10dp"
             android:paddingBottom="10dp"
             />
@@ -209,6 +239,8 @@
             android:text=" Contact Us"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/mulish"
+
             android:layout_marginStart="10dp"
             />
         <TextView
@@ -217,6 +249,8 @@
             android:text="If you have any questions about these Terms of Use, please contact us at contact@finder.com."
             android:paddingLeft="10dp"
             android:paddingBottom="10dp"
+            android:fontFamily="@font/mulish"
+
             />
 
         <!-- Add more headings and subheadings as needed -->

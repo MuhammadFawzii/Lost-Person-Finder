@@ -18,11 +18,11 @@ class DetailsActivity7 : AppCompatActivity() {
         val policyLink = findViewById<TextView>(R.id.policy_link)
 
         termsLink.setOnClickListener {
-            val intent = Intent(this, TermsPolicyActivity::class.java) // Use class reference
+            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
             startActivity(intent)
         }
         policyLink.setOnClickListener {
-            val intent = Intent(this, TermsPolicyActivity::class.java) // Use class reference
+            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
             startActivity(intent)
         }
 

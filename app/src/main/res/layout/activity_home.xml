@@ -16,64 +16,69 @@
             android:id="@+id/appTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Finder"
-            android:textSize="36sp"
-            android:textColor="@color/blue_app"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/proxima_nova_bold"
+            android:text="Finder"
+            android:textColor="@color/blue_app"
+            android:textSize="64sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Subtitle: "Search for Hope" -->
+
+        <!-- Second Section: Search Bar -->
+
         <TextView
             android:id="@+id/subtitleLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search for Hope"
-            android:textSize="24sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/appTitleTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:fontFamily="@font/satisfy"
 
-        <!-- Second Section: Search Bar -->
+            android:text="Search for Hope"
+            android:textColor="@color/blue_app"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appTitleTextView" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/searchBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/subtitleLabel"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/subtitleLabel">
 
             <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/search_view_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:queryHint="Search Here ..."
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/search_view_bg"
                 app:iconifiedByDefault="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryHint="Search Here ..."
 
                 />
 
 
-<!--            <ImageView-->
-<!--                android:id="@+id/btn_filter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/baseline_filter_alt_24"-->
-<!--                android:layout_margin="10dp"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/searchView"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                />-->
+            <!--            <ImageView-->
+            <!--                android:id="@+id/btn_filter"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:src="@drawable/baseline_filter_alt_24"-->
+            <!--                android:layout_margin="10dp"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="@+id/searchView"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,10 +89,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/searchBarLayout"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/findingRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/findingRecyclerView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchBarLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/findingRecyclerView"
@@ -95,49 +100,49 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp"
-            app:layout_constraintTop_toBottomOf="@id/messingRecyclerView"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/buttonsLayout" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/messingRecyclerView" />
 
         <!-- Fourth Section: Buttons -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_margin="10dp"
-            app:layout_constraintTop_toBottomOf="@id/findingRecyclerView"
-            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/findingRecyclerView">
 
             <Button
                 android:id="@+id/reportMissingButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_app"
                 android:text="Report Missing"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/blue_app"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/reportFindingButton"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/reportFindingButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:backgroundTint="@color/app_blue"
                 android:text="Report Finding"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/app_blue"
                 android:textSize="20sp"
-                android:layout_marginLeft="15dp"
-                app:layout_constraintStart_toEndOf="@id/reportMissingButton"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/reportMissingButton"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

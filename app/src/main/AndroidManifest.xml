@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,28 +18,36 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".PersonDetailsActivity"
-            android:exported="false" />
+            android:name=".RegisiterPageActivity"
+            android:exported="false" >
+
+        </activity>
         <activity
-            android:name=".ContactUsActivity"
-            android:exported="true">
+            android:name=".LoginPageActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".VerifyCodeActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".PrivacePolicyActivity"
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ResponseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".IntroActivity"
@@ -68,14 +78,6 @@
             android:name=".DetailsCompleteActivity8"
             android:exported="false" />
         <activity
-            android:name=".ForgetPasswordActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".VerifyEmailActivity"
             android:exported="false" />
         <activity
@@ -83,6 +85,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacePolicyActivity"
             android:exported="false" />
     </application>
 
