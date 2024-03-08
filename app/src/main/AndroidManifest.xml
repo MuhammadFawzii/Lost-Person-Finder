@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,11 +18,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".OnBoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PasswordReseatSuccessfully"
+            android:exported="false" />
+        <activity
             android:name=".VerifyCodeActivity"
             android:exported="false" />
         <activity
             android:name=".SignUp"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResponseActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,18 +45,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".IntroActivity"
             android:exported="false"/>
 
-        <activity
-            android:name=".ResponseActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".IntroActivity"
-            android:exported="false" />
         <activity
             android:name=".DetailsActivity1"
             android:exported="false" />
@@ -60,21 +67,21 @@
         <activity
             android:name=".DetailsActivity6"
             android:exported="false" />
-
         <activity
             android:name=".DetailsActivity7"
             android:exported="false" />
         <activity
             android:name=".DetailsCompleteActivity8"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".VerifyEmailActivity"
             android:exported="false" />
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
-        <activity android:name=".LoginActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
     </application>
+
 </manifest>
