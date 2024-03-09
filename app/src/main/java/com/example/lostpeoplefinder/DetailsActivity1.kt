@@ -1,34 +1,25 @@
 package com.example.lostpeoplefinder
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 
-import com.google.android.gms.cast.framework.media.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Calendar
 
 class DetailsActivity1 : AppCompatActivity() {
-    lateinit var DOBirth:TextInputEditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details1)
         val ETName = findViewById<TextInputEditText>(R.id.name)
-        DOBirth = findViewById(R.id.DOBirth)
-        val calendarIcon = findViewById<ImageView>(R.id.calender_btn)
+        val age = findViewById<EditText>(R.id.age)
         val btn_next1 = findViewById<Button>(R.id.btn_next1)
         val btn_previous1 = findViewById<Button>(R.id.btn_previous1)
         val gender: Spinner = findViewById(R.id.textInputLayout2)
@@ -45,21 +36,30 @@ class DetailsActivity1 : AppCompatActivity() {
             val name=ETName.text.toString()
             val selectedGender=gender.selectedItem
             Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
+<<<<<<< HEAD
             val date=DOBirth.text.toString()
             if(name.isNotEmpty() &&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&date.isNotEmpty()){
                 val intent=Intent(this, DetailsActivity3::class.java)
                 startActivity(intent)
             }
 
+=======
+            val age=age.text.toString()
+            if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
+                val intent=Intent(this, DetailsActivity3::class.java)
+                intent.putExtra("name",name)
+                intent.putExtra("gender",selectedGender.toString())
+                intent.putExtra("age",age)
+                startActivity(intent)
+            }
+>>>>>>> 731e757c7a3e71c126dc54dd759ede141b085ae8
         }
         btn_previous1.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
-        calendarIcon.setOnClickListener {
-            showDatePicker()
-        }
     }
 
+<<<<<<< HEAD
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -80,4 +80,6 @@ class DetailsActivity1 : AppCompatActivity() {
 
         datePickerDialog.show()
     }
+=======
+>>>>>>> 731e757c7a3e71c126dc54dd759ede141b085ae8
 }

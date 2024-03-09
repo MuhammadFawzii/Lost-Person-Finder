@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".DetailsActivity7">
+    tools:context=".DetailsActivity6">
 
 
     <TextView
@@ -135,7 +135,7 @@
         android:id="@+id/terms_text123"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="6dp"
         android:text="I have read and agree to the our "
         app:layout_constraintBottom_toBottomOf="@+id/checkbox_privacy_terms"
         app:layout_constraintStart_toEndOf="@+id/checkbox_privacy_terms"

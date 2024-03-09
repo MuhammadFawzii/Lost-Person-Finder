@@ -42,7 +42,7 @@ class VerifyCodeActivity : AppCompatActivity() {
                             startActivity(
                                 Intent(
                                     this@VerifyCodeActivity,
-                                    LoginActivity::class.java
+                                    LoginPageActivity::class.java
                                 )
                             )
                         }

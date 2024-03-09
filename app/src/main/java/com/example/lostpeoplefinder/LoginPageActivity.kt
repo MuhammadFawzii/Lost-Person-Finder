@@ -67,7 +67,7 @@ class LoginPageActivity : AppCompatActivity() {
 
         }
         textViewSignUp.setOnClickListener {
-            var intent = Intent(this, SignUp::class.java)
+            var intent = Intent(this, RegisiterPageActivity::class.java)
             startActivity(intent)
         }
         forgetPassword.setOnClickListener {

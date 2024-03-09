@@ -16,19 +16,20 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
     private lateinit var middleTextView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter:ResponseAdapter
-    private lateinit var matchedItems:ArrayList<OutputModel>
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_response)
+        val matchedItems = intent.getSerializableExtra("final") as ArrayList<Person>
         // Initialize views
         topLeftTextView = findViewById(R.id.topLeftTextView)
         middleTextView = findViewById(R.id.middleTextView)
         recyclerView = findViewById(R.id.recyclerView)
 
         // Simulated list of matched items
-        matchedItems = getMatchedlist()
+
 
         // Check if the list of matched items is empty
         if (matchedItems.isEmpty()) {
@@ -48,7 +49,7 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
 
             // Initialize and set up your RecyclerView adapter and layout manager here
             // Example:
-            adapter = ResponseAdapter(this,this, matchedItems)
+            adapter = ResponseAdapter(this, matchedItems)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)
 
