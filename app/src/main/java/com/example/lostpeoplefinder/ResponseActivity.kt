@@ -1,5 +1,6 @@
 package com.example.lostpeoplefinder
 
+import android.content.Intent
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ResponseActivity : AppCompatActivity() {
+class ResponseActivity : AppCompatActivity(),OnItemClickListener {
     private lateinit var topLeftTextView: TextView
     private lateinit var middleTextView: TextView
     private lateinit var recyclerView: RecyclerView
@@ -28,7 +29,7 @@ class ResponseActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         // Simulated list of matched items
-        //val matchedItems = getMatchedlist()
+
 
         // Check if the list of matched items is empty
         if (matchedItems.isEmpty()) {
@@ -80,6 +81,20 @@ class ResponseActivity : AppCompatActivity() {
             return personList
 
         }
+
+    override fun onItemClick(Item: OutputModel) {
+        val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra("image", Item.img)
+        intent.putExtra("name", Item.personName.toString())
+        intent.putExtra("age", Item.personAge.toString())
+        intent.putExtra("gender", Item.personGender.toString())
+        intent.putExtra("date", Item.last_date.toString())
+        intent.putExtra("location", Item.personLastLocation.toString())
+        startActivity(intent)
+
+    }
+
+
 }
 
 

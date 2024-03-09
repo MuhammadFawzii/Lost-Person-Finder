@@ -34,16 +34,32 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
+            android:id="@+id/progressCircle4"
             android:layout_width="84dp"
             android:layout_height="84dp"
+            android:layout_marginStart="280dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_4_circuit_icon"
+            android:layout_marginEnd="43dp"
+            android:src="@drawable/step4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewCounter4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4/7"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/progressCircle4"
+            app:layout_constraintTop_toTopOf="@+id/progressCircle4"
+            app:layout_constraintEnd_toEndOf="@+id/progressCircle4"
+            app:layout_constraintBottom_toBottomOf="@+id/progressCircle4" />
+
 
         <TextView
             android:layout_width="268dp"
@@ -121,21 +137,20 @@
             app:layout_constraintVertical_bias="0.119"
             tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/et_last_location"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_enter_location"
+            android:layout_width="352dp"
             android:layout_height="92dp"
             android:background="@drawable/edit_text_background"
-            android:ems="10"
-            android:layout_margin="15dp"
             android:fontFamily="@font/mulishromanregular"
-            android:hint="Enter Loction"
-            android:inputType="text"
+            android:gravity="center"
+            android:text="Click here to chose your location on Map"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-             />
+            app:layout_constraintTop_toTopOf="@+id/textView12"
+            app:layout_constraintVertical_bias="0.96" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

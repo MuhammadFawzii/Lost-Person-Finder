@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonDetailsActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <!-- ImageView for the image -->
+
+
+        <TextView
+            android:id="@+id/detailsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/mulishbold"
+            android:text="Person Details"
+            android:textColor="@color/app_blue"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toTopOf="@id/imageViewPersonDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewPersonDetails"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/miss"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailsHeader" />
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Name : "
+            android:textSize="30sp"
+
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/imageViewPersonDetails"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/personNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_reg"
+            android:text="mohamed mahfouz"
+            android:textColor="@color/app_blue"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@id/nameLabel"
+            app:layout_constraintTop_toBottomOf="@id/imageViewPersonDetails"
+
+            />
+
+        <TextView
+            android:id="@+id/ageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Age : "
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/nameLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/personAgeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_reg"
+            android:text="33"
+            android:textColor="@color/app_blue"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@id/ageLabel"
+            app:layout_constraintTop_toBottomOf="@id/personNameTextView"
+
+            />
+        <TextView
+            android:id="@+id/genderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Gender : "
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/ageLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/personGenderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_reg"
+            android:text="MALE"
+            android:textColor="@color/app_blue"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@id/genderLabel"
+            app:layout_constraintTop_toBottomOf="@id/personAgeTextView"
+            />
+
+        <TextView
+            android:id="@+id/LocationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Last Loctaion : "
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/genderLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+
+        <TextView
+            android:id="@+id/personLocationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_reg"
+            android:text="Cairo Nasir city"
+            android:textColor="@color/app_blue"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/LocationLabel"
+            app:layout_constraintTop_toBottomOf="@id/personGenderTextView" />
+
+        <TextView
+            android:id="@+id/dateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Last Date : "
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/LocationLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/personDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="36dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_reg"
+            android:text="23/12/2023 10:14 pm"
+            android:textColor="@color/app_blue"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/dateLabel"
+            app:layout_constraintTop_toBottomOf="@id/personLocationTextView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        &lt;!&ndash; Attribute: Person Name &ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="30dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="mohamed mahfouz"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_weight="1"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Age : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personAgeTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="25"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="240dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Gender : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personGenderTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="MALE"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="150dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="AHmed Bakr"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="80dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:paddingBottom="40dp"-->
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Name : "-->
+<!--                android:textSize="30sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/personNameTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="AHmed Bakr"-->
+<!--                android:fontFamily="@font/proxima_nova_reg"-->
+<!--                android:textSize="30sp"-->
+<!--                android:textColor="@color/app_blue"-->
+<!--                android:layout_marginRight="80dp"-->
+<!--                android:layout_weight="1"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash; Repeat the above for other attributes &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Person Age &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Person Gender &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Last Date &ndash;&gt;-->
+<!--        &lt;!&ndash; Attribute: Last Location &ndash;&gt;-->
+
+<!--    </LinearLayout>-->
+
+</ScrollView>

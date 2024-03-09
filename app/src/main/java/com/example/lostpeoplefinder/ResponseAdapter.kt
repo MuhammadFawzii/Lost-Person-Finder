@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import java.util.Date
 
-class ResponseAdapter (var context: Context, var list: ArrayList<Person>) :
+
+class ResponseAdapter (private val listener: OnItemClickListener,var context: Context, var list: ArrayList<Person>) :
     RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
 
@@ -38,7 +39,7 @@ class ResponseAdapter (var context: Context, var list: ArrayList<Person>) :
     return list.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener {
         var img:ImageView
         var nameText:TextView
         var ageText:TextView
@@ -53,6 +54,13 @@ class ResponseAdapter (var context: Context, var list: ArrayList<Person>) :
             genderText=itemView.findViewById(R.id.tv_gender)
             lastdate = itemView.findViewById(R.id.tv_lastseenDate)
             lastLocation=itemView.findViewById(R.id.tv_lastsennLocation)
+            itemView.setOnClickListener(this)
+        }
+        override fun onClick(v: View) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(list[position])
+            }
         }
     }
 
