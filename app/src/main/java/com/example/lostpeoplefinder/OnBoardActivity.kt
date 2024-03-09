@@ -11,6 +11,7 @@ class OnBoardActivity : AppCompatActivity() {
     private lateinit var sliderAdapter: SliderAdapter
     private lateinit var onBoardButton: AppCompatButton
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_board)

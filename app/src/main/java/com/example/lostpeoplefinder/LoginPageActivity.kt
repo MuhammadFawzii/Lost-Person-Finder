@@ -68,4 +68,7 @@ class LoginPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    private fun setRememberMeWhenLoginSuccess(email:String,password:String){
+        RememberMeHandler().createRememberMeSession(email,password,false);
+    }
 }
