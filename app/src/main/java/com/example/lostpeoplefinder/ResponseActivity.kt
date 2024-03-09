@@ -21,13 +21,14 @@ class ResponseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_response)
+        val matchedItems = intent.getSerializableExtra("final") as ArrayList<Person>
         // Initialize views
         topLeftTextView = findViewById(R.id.topLeftTextView)
         middleTextView = findViewById(R.id.middleTextView)
         recyclerView = findViewById(R.id.recyclerView)
 
         // Simulated list of matched items
-        val matchedItems = getMatchedlist()
+        //val matchedItems = getMatchedlist()
 
         // Check if the list of matched items is empty
         if (matchedItems.isEmpty()) {

@@ -49,6 +49,9 @@
         <activity
             android:name=".ResponseActivity"
             android:exported="false" />
+        <activity
+            android:name=".OnBoardActivity"
+            android:exported="false" />
 
         <activity
             android:name=".IntroActivity"
@@ -56,22 +59,23 @@
 
         <activity
             android:name=".DetailsActivity1"
-            android:exported="true" >
+            android:exported="false" />
+
+        <activity
+            android:name=".DetailsActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".DetailsActivity7"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity
-            android:name=".DetailsActivity2"
-            android:exported="false" />
         <activity
             android:name=".DetailsActivity3"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".DetailsActivity4"
             android:exported="false" />
@@ -80,9 +84,6 @@
             android:exported="false" />
         <activity
             android:name=".DetailsActivity6"
-            android:exported="false" />
-        <activity
-            android:name=".DetailsActivity7"
             android:exported="false" />
         <activity
             android:name=".DetailsCompleteActivity8"

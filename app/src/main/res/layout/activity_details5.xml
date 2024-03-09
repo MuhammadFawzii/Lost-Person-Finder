@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".DetailsActivity5">
+    tools:context=".DetailsActivity4">
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
@@ -112,9 +112,10 @@
         app:placeholderTextColor="@color/blue_app">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="number"
             android:textColor="#000000" />
 
 
@@ -159,7 +160,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
+            android:id="@+id/email"
+
             android:textColor="#000000" />
 
 

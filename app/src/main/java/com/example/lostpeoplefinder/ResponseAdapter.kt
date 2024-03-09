@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import java.util.Date
 
-class ResponseAdapter (var context: Context, var list: ArrayList<OutputModel>) :
+class ResponseAdapter (var context: Context, var list: ArrayList<Person>) :
     RecyclerView.Adapter<ResponseAdapter.ViewHolder>() {
 
 
@@ -21,12 +22,14 @@ class ResponseAdapter (var context: Context, var list: ArrayList<OutputModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.img.setImageResource(list[position].img)
-        holder.nameText.text = list[position].personName.toString()
-        holder.ageText.text=list[position].personAge.toString()
-        holder.genderText.text=list[position].personGender.toString()
-        holder.lastdate.text=list[position].last_date.toString()
-        holder.lastLocation.text=list[position].personLastLocation.toString()
+        Glide.with(context)
+            .load(list[position].image_url)
+            .into(holder.img)
+        holder.nameText.text = list[position].person_name.toString()
+        holder.ageText.text=list[position].age.toString()
+        holder.genderText.text=list[position].gender.toString()
+        holder.lastdate.text=list[position].date_of_lost.toString()
+        holder.lastLocation.text=list[position].lat.toString()
 
 
     }
