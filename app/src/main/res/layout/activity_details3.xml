@@ -1,39 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MPerson_Details_3_Activity">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/backArrow_MPerson_Details_3_Activity"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
-        android:src="@drawable/arrow_vector"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
+    tools:context=".DetailsActivity3">
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/proxima_nova_semibold"
         android:text="Missing Person Details"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toEndOf="@+id/backArrow_MPerson_Details_3_Activity"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -54,7 +37,7 @@
             android:layout_width="84dp"
             android:layout_height="84dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_3_circuit_icon"
+            android:src="@drawable/img_2_circuit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
@@ -101,7 +84,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/proxima_nova_reg_it"
         android:text="Upload Photographs"
         android:textColor="@color/black"
@@ -178,6 +161,7 @@
     <TextView
 
         android:id="@+id/textView11"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -193,6 +177,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout7"
+        android:visibility="gone"
         android:layout_width="367dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -201,7 +186,7 @@
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:ignore="MissingConstraints">
+        >
 
         <TextView
 
@@ -233,58 +218,40 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
-        android:layout_width="407dp"
-        android:layout_height="117dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/border_top"
+    <Button
+        android:id="@+id/btn_next1"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Next"
+
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_previous1"
+        />
+    <Button
+        android:id="@+id/btn_previous1"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#F0F0F0"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Previous"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/blue_app"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
-        app:layout_constraintVertical_bias="0.931"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:id="@+id/bt_next3"
-            android:layout_width="146dp"
-            android:layout_height="62dp"
-            android:backgroundTint="@color/blue_app"
-            android:textColor="@color/white"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Next"
-            android:layout_marginRight="20dp"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.545"
-            />
-
-        <Button
-            android:id="@+id/bt_previous3"
-            android:layout_width="141dp"
-            android:layout_height="67dp"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Previous"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        />
     <ImageView
         android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>

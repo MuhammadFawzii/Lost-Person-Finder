@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MPerson_Details_1_Activity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/backArrow_MPerson_Details_1_Activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/arrow_vector"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+    tools:context=".DetailsActivity1">
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/proxima_nova_semibold"
             android:text="Missing Person Details"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/backArrow_MPerson_Details_1_Activity"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -39,10 +24,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="5dp"
+            android:layout_height="117dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@color/blue_app"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             >
@@ -65,10 +50,10 @@
                 android:id="@+id/textViewCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1/14"
+                android:text="1/8"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/progressCircle"
                 app:layout_constraintTop_toTopOf="@+id/progressCircle"
                 app:layout_constraintEnd_toEndOf="@+id/progressCircle"
@@ -120,7 +105,7 @@
             android:id="@+id/constraintLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
@@ -131,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="10dp"
                 android:hint="Missing Full Name"
                 android:textColorHint="@color/black"
@@ -149,6 +134,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
@@ -157,46 +143,24 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <Spinner
                 android:id="@+id/textInputLayout2"
+                android:background="@drawable/search_view_bg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="10dp"
-                android:hint="Gender"
-                android:textColorHint="@color/black"
-                app:helperText="Required*"
-                app:counterEnabled="true"
-                app:counterMaxLength="5"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/blue_app"
-                app:cursorColor="@color/blue_app"
-                app:placeholderTextColor="@color/blue_app"
-                app:counterTextColor="@color/black"
-
-                app:helperTextTextColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:inputType="text"
-                    />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"/>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:id="@+id/textInputLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="195dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="10dp"
                 android:hint="Date Of Birth"
                 android:textColorHint="@color/black"
@@ -212,9 +176,10 @@
                 app:helperTextTextColor="@color/red"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/DOBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
@@ -230,95 +195,43 @@
                 android:src="@drawable/baseline_calendar_month_24"
                 android:layout_marginLeft="300dp"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                android:layout_marginEnd="15dp"
                 app:layout_constraintTop_toTopOf="@+id/textInputLayout3"
                 app:layout_constraintBottom_toBottomOf="@id/textInputLayout3"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
                 />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:id="@+id/textInputLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="290dp"
-                android:layout_marginEnd="10dp"
-                android:hint="Nick Name"
-                android:textColorHint="@color/black"
-                app:helperText="Required*"
-                app:counterEnabled="true"
-                app:counterMaxLength="15"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/blue_app"
-                app:cursorColor="@color/blue_app"
-                app:placeholderTextColor="@color/blue_app"
-                app:counterTextColor="@color/black"
-                app:endIconMode="custom"
-                app:helperTextTextColor="@color/red"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000000"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/btn_next1"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Next"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_previous1"
+       />
 
-
-        <!-- Your constraint layout 8 content -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:background="@drawable/border_top"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
-            >
-
-            <Button
-                android:id="@+id/btn_next1"
-                android:layout_width="141dp"
-                android:layout_height="67dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/blue_app"
-                android:fontFamily="@font/proxima_nova_semibold"
-                android:text="Next"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/btn_previous1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btn_previous1"
-                android:layout_width="141dp"
-                android:layout_height="67dp"
-                android:layout_marginStart="30dp"
-                android:backgroundTint="#F0F0F0"
-                android:fontFamily="@font/proxima_nova_semibold"
-                android:text="Previous"
-                android:textColor="@color/blue_app"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</ScrollView>
+    <Button
+        android:id="@+id/btn_previous1"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#F0F0F0"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Previous"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/blue_app"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

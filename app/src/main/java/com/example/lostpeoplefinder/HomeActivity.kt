@@ -1,5 +1,6 @@
 package com.example.lostpeoplefinder
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,8 @@ class HomeActivity : AppCompatActivity() {
     lateinit var searchIcon: ImageView
     lateinit var  textView :TextView
     private var isEditTextFocused = false
+    lateinit var reportFindingButton:Button
+    lateinit var reportMissingButton:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,9 @@ class HomeActivity : AppCompatActivity() {
         searchview=findViewById<SearchView>(R.id.searchView)
         //filterBtn=findViewById(R.id.btn_filter)
         searchview=findViewById(R.id.searchView)
+        reportFindingButton=findViewById(R.id.reportFindingButton)
+        reportMissingButton=findViewById(R.id.reportMissingButton)
+
         //filterBtn=findViewById(R.id.btn_filter)
         textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
         // Set query hint
@@ -72,7 +78,14 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-
+        reportFindingButton.setOnClickListener {
+            val intent= Intent(this,DetailsActivity1::class.java)
+            startActivity(intent)
+        }
+        reportMissingButton.setOnClickListener {
+            val intent= Intent(this,DetailsActivity1::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -91,6 +104,7 @@ class HomeActivity : AppCompatActivity() {
         personList.add(PersonModel(header, R.drawable.missing, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
         return personList
     }
+
     override fun onResume() {
         super.onResume()
         isEditTextFocused = false

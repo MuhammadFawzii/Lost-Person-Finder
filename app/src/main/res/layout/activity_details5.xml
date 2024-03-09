@@ -5,57 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsActivity5">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
-        android:layout_width="388dp"
-        android:layout_height="78dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/proxima_nova_semibold"
             android:text="Missing Person Details"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.448"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/backArrow_MPerson_Details_5_Activity"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/arrow_vector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.016"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.406"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout10"
-        android:layout_width="412dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/blue_app"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-        tools:ignore="MissingConstraints">
+        <!-- Your constraint layout 6 content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="117dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/blue_app"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            >
 
         <ImageView
             android:layout_width="84dp"
@@ -99,30 +73,26 @@
             app:layout_constraintVertical_bias="0.84"
             tools:ignore="MissingConstraints" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/proxima_nova"
-        android:text="Contact Number (Follow-up and Verification)"
+        android:text="Contact Number:"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.363"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10"
-        tools:ignore="MissingConstraints" />
-
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_contact_number"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="364dp"
         android:layout_height="80dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:hint="Enter Your Contact Number"
         android:textColorHint="@color/g_gray500"
         app:boxStrokeColor="@color/black"
@@ -153,7 +123,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/proxima_nova"
         android:text="Email Address"
         android:textColor="@color/black"
@@ -161,7 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10"
+        app:layout_constraintTop_toBottomOf="@+id/et_contact_number"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -179,7 +149,7 @@
         app:helperText="Required*"
         app:helperTextTextColor="@color/app_blue"
         app:hintTextColor="@color/blue_app"
-
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -194,47 +164,36 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="407dp"
-        android:layout_height="117dp"
-        android:background="@drawable/border_top"
+    <Button
+        android:id="@+id/bt_next5"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Next"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/bt_previous5"
+        />
+
+    <Button
+        android:id="@+id/bt_previous5"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#F0F0F0"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Previous"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/blue_app"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Email"
-        app:layout_constraintVertical_bias="0.986"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:id="@+id/bt_next5"
-            android:layout_width="146dp"
-            android:layout_height="62dp"
-            android:background="@drawable/border_w1_buton"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Next"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.545" />
-
-        <Button
-            android:id="@+id/bt_previous5"
-            android:layout_width="141dp"
-            android:layout_height="67dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Previous"
-            android:textColor="@color/blue_app"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

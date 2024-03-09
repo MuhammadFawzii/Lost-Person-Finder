@@ -7,52 +7,26 @@
     tools:context=".DetailsCompleteActivity8">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout17"
-        android:layout_width="388dp"
-        android:layout_height="78dp"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Missing Person Details"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Missing Person Details"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.448"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/backArrow_completePage"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/arrow_vector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.016"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.406"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="364dp"
+        android:layout_width="match_parent"
         android:layout_height="143dp"
-        android:layout_marginTop="19dp"
+        android:layout_margin="20dp"
         android:fontFamily="@font/proxima_nova_semibold"
         android:gravity="center"
+        android:padding="10dp"
         android:text="Your information has been successfully submitted; we will review it and get back to you shortly."
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -64,7 +38,7 @@
 
     <Button
         android:id="@+id/bt_goToDashboard"
-        android:layout_width="363dp"
+        android:layout_width="wrap_content"
         android:layout_height="72dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/btn_background"
@@ -74,10 +48,9 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18"
-        app:layout_constraintVertical_bias="0.09" />
+         />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -88,6 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
