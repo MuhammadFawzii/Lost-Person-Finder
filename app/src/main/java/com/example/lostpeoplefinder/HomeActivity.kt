@@ -2,6 +2,7 @@ package com.example.lostpeoplefinder
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,8 @@ class HomeActivity : AppCompatActivity() {
     lateinit var searchview:SearchView
     lateinit var reportFindingButton:Button
     lateinit var reportMissingButton:Button
+    lateinit var backBtn:ImageView
+
 
     //    lateinit var filterBtn:ImageView
 //    lateinit var missingBtn:Button
@@ -37,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         //searchview=findViewById(R.id.searchView)
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
+        backBtn=findViewById(R.id.logoutButton)
 
         //filterBtn=findViewById(R.id.btn_filter)
         //textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
@@ -84,10 +88,17 @@ class HomeActivity : AppCompatActivity() {
             val intent= Intent(this,DetailsActivity1::class.java)
             startActivity(intent)
         }
+
         reportMissingButton.setOnClickListener {
             val intent= Intent(this,DetailsActivity1::class.java)
             startActivity(intent)
         }
+
+        backBtn.setOnClickListener(View.OnClickListener {
+            clearUserSession()
+            // Navigate to login screen
+            navigateToLoginScreen()
+        })
 
     }
 
@@ -118,5 +129,17 @@ class HomeActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun clearUserSession() {
+     var rm=RememberMeHandler.getInstance(this)
+      rm.clearRememberMeSession()
+    }
+
+    private fun navigateToLoginScreen() {
+        // Start LoginActivity to allow the user to log in again
+        val intent = Intent(this, LoginPageActivity::class.java)
+        startActivity(intent)
+        finish() // Finish the current activity to prevent going back to it after logout
     }
 }

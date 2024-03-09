@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 
 class DetailsActivity4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,11 @@ class DetailsActivity4 : AppCompatActivity() {
         }
         btn_previous4.setOnClickListener {
             startActivity(Intent(this,DetailsActivity3::class.java))
+        }
+        val enterLocationTextView = findViewById<TextView>(R.id.tv_enter_location)
+        enterLocationTextView.setOnClickListener { // Open a new page or handle Google Maps here
+            // For example, you can start a new activity
+            startActivity(Intent(this@DetailsActivity4, MapActivity::class.java))
         }
     }
 }
