@@ -24,7 +24,7 @@ class RedirectActivity : AppCompatActivity() {
     private fun getRememberMeStatus(): Boolean {
         // Retrieve Remember Me status from SharedPreferences
         // Return true if the user wants to be remembered, false otherwise
-        var rm=RememberMeHandler()
+        var rm=RememberMeHandler.getInstance(this)
         return rm.checkRememberMeState()
     }
 

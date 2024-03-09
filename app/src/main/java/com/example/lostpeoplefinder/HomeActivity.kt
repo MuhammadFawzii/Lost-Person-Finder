@@ -132,9 +132,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun clearUserSession() {
-     var rm=RememberMeHandler()
-        rm.editor?.clear()
-        rm.editor?.apply()
+     var rm=RememberMeHandler.getInstance(this)
+      rm.clearRememberMeSession()
     }
 
     private fun navigateToLoginScreen() {
