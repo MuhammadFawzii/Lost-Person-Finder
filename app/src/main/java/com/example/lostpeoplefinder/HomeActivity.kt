@@ -14,10 +14,10 @@ class HomeActivity : AppCompatActivity() {
     lateinit var missingRv:RecyclerView
     lateinit var foundRv:RecyclerView
     lateinit var adapter:CommonAdapter
-    lateinit var searchview:SearchView
-    lateinit var filterBtn:ImageView
     lateinit var missingBtn:Button
     lateinit var findingBtn:Button
+    lateinit var searchview:SearchView
+    lateinit var filterBtn:ImageView
     lateinit var searchIcon: ImageView
     lateinit var  textView :TextView
     private var isEditTextFocused = false
@@ -27,42 +27,24 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         missingRv=findViewById(R.id.messingRecyclerView);
         foundRv=findViewById(R.id.findingRecyclerView);
-        searchview=findViewById<SearchView>(R.id.searchView)
-        //filterBtn=findViewById(R.id.btn_filter)
-        searchview=findViewById(R.id.searchView)
-        //filterBtn=findViewById(R.id.btn_filter)
-        textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
-        // Set query hint
+        missingBtn=findViewById(R.id.reportMissingButton)
+        findingBtn=findViewById(R.id.reportFindingButton)
 
-        searchview.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // Handle the query submission here
-                handleQuery(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                // Handle the text change here
-                return false
-            }
-        })
+        //searchview=findViewById(R.id.searchView)
+        //filterBtn=findViewById(R.id.btn_filter)
+        //searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        //filterBtn=findViewById(R.id.btn_filter)
+        //textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
+        //        searchIcon.setOnClickListener {
+//            // Handle click event for the search icon here
+//            Toast.makeText(this, "Search icon clicked!", Toast.LENGTH_SHORT).show()
+//        }
 
 
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
 
-        searchIcon.setOnClickListener {
-            // Handle click event for the search icon here
-            Toast.makeText(this, "Search icon clicked!", Toast.LENGTH_SHORT).show()
-        }
 
-        searchview.setOnFocusChangeListener { v, hasFocus ->
-            isEditTextFocused = hasFocus
-            if(hasFocus){
-                textView.setTextColor(ContextCompat.getColor(this, android.R.color.black))
-            }
-        }
 
         adapter = CommonAdapter(this, initList());
         missingRv.adapter = adapter ;
@@ -91,16 +73,16 @@ class HomeActivity : AppCompatActivity() {
         personList.add(PersonModel(header, R.drawable.miss, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
         return personList
     }
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         isEditTextFocused = false
-    }
+    }*/
 
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         if (searchview.hasFocus()) {
             searchview.clearFocus()
         } else {
             super.onBackPressed()
         }
-    }
+    }*/
 }

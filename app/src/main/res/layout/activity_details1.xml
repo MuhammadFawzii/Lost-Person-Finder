@@ -48,13 +48,13 @@
             >
 
             <ImageView
-                android:id="@+id/progressCircle"
+                android:id="@+id/progressCircle1"
                 android:layout_width="84dp"
                 android:layout_height="84dp"
                 android:layout_marginStart="280dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="43dp"
-                android:src="@drawable/img_ring"
+                android:src="@drawable/step1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,14 +65,14 @@
                 android:id="@+id/textViewCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1/14"
+                android:text="1/7"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/progressCircle"
-                app:layout_constraintTop_toTopOf="@+id/progressCircle"
-                app:layout_constraintEnd_toEndOf="@+id/progressCircle"
-                app:layout_constraintBottom_toBottomOf="@+id/progressCircle" />
+                app:layout_constraintStart_toStartOf="@+id/progressCircle1"
+                app:layout_constraintTop_toTopOf="@+id/progressCircle1"
+                app:layout_constraintEnd_toEndOf="@+id/progressCircle1"
+                app:layout_constraintBottom_toBottomOf="@+id/progressCircle1" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/satisfy"
-
             android:text="Search for Hope"
             android:textColor="@color/blue_app"
             android:textSize="24sp"
@@ -43,44 +42,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appTitleTextView" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitleLabel">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/searchBarLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:padding="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/subtitleLabel">-->
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/search_view_bg"
-                app:iconifiedByDefault="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:queryHint="Search Here ..."
+<!--            <androidx.appcompat.widget.SearchView-->
+<!--                android:id="@+id/searchView"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:background="@drawable/search_view_bg"-->
+<!--                app:iconifiedByDefault="false"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.5"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:queryHint="Search Here ..."-->
 
-                />
+<!--                />-->
 
 
-            <!--            <ImageView-->
-            <!--                android:id="@+id/btn_filter"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:src="@drawable/baseline_filter_alt_24"-->
-            <!--                android:layout_margin="10dp"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="@+id/searchView"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                />-->
+<!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:id="@+id/btn_filter"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:src="@drawable/baseline_filter_alt_24"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_margin="10dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@+id/searchView"&ndash;&gt;-->
+<!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--            &lt;!&ndash;                />&ndash;&gt;-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         <!-- Third Section: Horizontal RecyclerView with Cards -->
         <androidx.recyclerview.widget.RecyclerView
@@ -92,7 +91,7 @@
             app:layout_constraintBottom_toTopOf="@id/findingRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchBarLayout" />
+            app:layout_constraintTop_toBottomOf="@id/buttonsLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/findingRecyclerView"
@@ -100,7 +99,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/messingRecyclerView" />
@@ -110,12 +109,14 @@
             android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="15dp"
+            android:padding="16dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/findingRecyclerView">
+            app:layout_constraintTop_toBottomOf="@id/subtitleLabel"
+            >
 
             <Button
                 android:id="@+id/reportMissingButton"
@@ -146,4 +147,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

@@ -62,16 +62,32 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
+            android:id="@+id/progressCircle4"
             android:layout_width="84dp"
             android:layout_height="84dp"
+            android:layout_marginStart="280dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_4_circuit_icon"
+            android:layout_marginEnd="43dp"
+            android:src="@drawable/step4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4/7"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/progressCircle4"
+            app:layout_constraintTop_toTopOf="@+id/progressCircle4"
+            app:layout_constraintEnd_toEndOf="@+id/progressCircle4"
+            app:layout_constraintBottom_toBottomOf="@+id/progressCircle4" />
+
 
         <TextView
             android:layout_width="268dp"
