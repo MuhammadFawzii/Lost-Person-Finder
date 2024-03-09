@@ -32,8 +32,6 @@ class DetailsActivity1 : AppCompatActivity() {
         val btn_next1 = findViewById<Button>(R.id.btn_next1)
         val btn_previous1 = findViewById<Button>(R.id.btn_previous1)
         val gender: Spinner = findViewById(R.id.textInputLayout2)
-
-        // Define the options
         val genders = arrayOf("Male", "Female")
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -41,17 +39,18 @@ class DetailsActivity1 : AppCompatActivity() {
 
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Apply the adapter to the spinner
         gender.adapter = adapter
 
         btn_next1.setOnClickListener {
             val name=ETName.text.toString()
-            val gender=gender.selectedItem
-            Toast.makeText(this, gender.toString(), Toast.LENGTH_SHORT).show()
+            val selectedGender=gender.selectedItem
+            Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
             val date=DOBirth.text.toString()
-            //if(name.isEmpty()&&(gender.equals("Male")||gender.equals("Female")))
-            startActivity(Intent(this, DetailsActivity3::class.java))
+            if(name.isNotEmpty() &&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&date.isNotEmpty()){
+                val intent=Intent(this, DetailsActivity3::class.java)
+                startActivity(intent)
+            }
+
         }
         btn_previous1.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
@@ -69,6 +68,7 @@ class DetailsActivity1 : AppCompatActivity() {
 
         val datePickerDialog = DatePickerDialog(
             this,
+            R.style.MyDatePickerDialogTheme,
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, dayOfMonth ->
                 val selectedDate = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
                 DOBirth.setText(selectedDate)

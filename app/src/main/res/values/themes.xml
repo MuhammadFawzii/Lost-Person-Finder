@@ -15,6 +15,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
     </style>
+    <style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize the color of the calendar -->
+        <item name="colorAccent">@color/blue_app</item>
+    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Other theme attributes -->
