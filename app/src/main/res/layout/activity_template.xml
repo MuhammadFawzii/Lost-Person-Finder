@@ -5,56 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".template_Activity">
+    tools:context=".DetailsActivity3">
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Missing Person Details"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="388dp"
-        android:layout_height="78dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Missing Person Details"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.309"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.448"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/arrow_vector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.016"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.406"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="412dp"
-        android:layout_height="115dp"
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/blue_app"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="102dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:layout_width="84dp"
             android:layout_height="84dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_3_circuit_icon"
+            android:src="@drawable/img_2_circuit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
@@ -78,6 +62,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_nova_semibold"
@@ -95,26 +80,38 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/proxima_nova_reg_it"
-        android:text="example"
+        android:text="Upload Photographs"
         android:textColor="@color/black"
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="229dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="368dp"
-        android:layout_height="259dp"
+        android:id="@+id/cl_uploadPhotographs"
+        android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/dotted"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="265dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints">
 
         <ImageView
+            android:id="@+id/icon_browsPhoto"
             android:layout_width="99dp"
             android:layout_height="95dp"
             android:layout_marginStart="132dp"
@@ -126,6 +123,7 @@
             app:layout_constraintVertical_bias="0.195" />
 
         <TextView
+            android:id="@+id/tv_browsePhoto"
             android:layout_width="99dp"
             android:layout_height="20dp"
             android:fontFamily="@font/proxima_nova_semibold"
@@ -146,7 +144,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:layout_marginBottom="48dp"
             android:fontFamily="@font/proxima_nova_reg"
             android:gravity="center"
             android:text="Supported formates: JPEG, PNG, JPG"
@@ -158,151 +155,40 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_browsePhoto"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="368dp"
-            android:layout_height="259dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="4dp"
-            tools:layout_editor_absoluteY="2dp">
-
-            <CheckBox
-                android:id="@+id/checkbox_privacy_terms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.003"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.033" />
-
-            <TextView
-                android:id="@+id/terms_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Terms of Use"
-                android:textColor="@color/blue_app"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.87"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.07" />
-
-            <TextView
-                android:id="@+id/policy_link"
-                android:layout_width="102dp"
-                android:layout_height="16dp"
-                android:text="Privacy Policy"
-                android:textColor="@color/blue_app"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.148" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="."
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.458"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.15" />
-
-            <TextView
-                android:id="@+id/terms_text123"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-
-                android:layout_marginTop="16dp"
-                android:text="I have read and agree to the our "
-                app:layout_constraintStart_toEndOf="@+id/checkbox_privacy_terms"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="and"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.142"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.15" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
 
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
         android:fontFamily="@font/proxima_nova_reg"
         android:text="Uploaded images"
         android:textColor="@color/g_gray400_app"
         android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="545dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="407dp"
-        android:layout_height="117dp"
-        android:background="@drawable/border_top"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:layout_width="146dp"
-            android:layout_height="62dp"
-            android:background="@drawable/border_w1_buton"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Next"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.545" />
-
-        <Button
-            android:layout_width="141dp"
-            android:layout_height="67dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/proxima_nova_semibold"
-            android:text="Previous"
-            android:textColor="@color/blue_app"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/cl_uploadPhotographs"
+        tools:ignore="MissingConstraints" />
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
         android:layout_width="367dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
         android:background="@drawable/rounded_corner_background_green"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="576dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:ignore="MissingConstraints">
 
         <TextView
 
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mulish"
@@ -319,6 +205,7 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
+            android:id="@+id/icon_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/img_deleteicon"
@@ -330,4 +217,40 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/btn_next3"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Next"
+
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_previous3"
+        />
+    <Button
+        android:id="@+id/btn_previous3"
+        android:layout_width="141dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#F0F0F0"
+        android:fontFamily="@font/proxima_nova_semibold"
+        android:text="Previous"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/blue_app"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
