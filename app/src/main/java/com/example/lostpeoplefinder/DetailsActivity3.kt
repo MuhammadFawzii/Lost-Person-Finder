@@ -4,10 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import java.util.*
 
 class DetailsActivity3 : AppCompatActivity() {
@@ -43,6 +40,11 @@ class DetailsActivity3 : AppCompatActivity() {
         }
         calendarIcon.setOnClickListener {
             showDatePicker()
+        }
+        val enterLocationTextView = findViewById<TextView>(R.id.tv_enter_location)
+        enterLocationTextView.setOnClickListener { // Open a new page or handle Google Maps here
+            // For example, you can start a new activity
+            startActivity(Intent(this@DetailsActivity3, MapActivity::class.java))
         }
     }
 

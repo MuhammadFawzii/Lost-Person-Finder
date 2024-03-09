@@ -82,7 +82,7 @@ class DetailsActivity7 : AppCompatActivity() {
                 RequestBody.create(MediaType.parse("text/plain"), gender)
             )
 
-            call.enqueue(object : Callback<Response<List<Person>>> {
+          /*  call.enqueue(object : Callback<Response<List<Person>>> {
                 override fun onResponse(call: Call<Response<List<Person>>>, response: Response<Response<List<Person>>>) {
                     if (response.isSuccessful) {
                         val apiResponse = response.body()
@@ -104,10 +104,10 @@ class DetailsActivity7 : AppCompatActivity() {
                 override fun onFailure(call: Call<Response<List<Person>>>, t: Throwable) {
                     // Handle failure
                 }
-            })
+            })*/
 
 
-            /*call.enqueue(object : Callback<LostPersonResponse> {
+            call.enqueue(object : Callback<LostPersonResponse> {
                 override fun onResponse(call: Call<LostPersonResponse>, response: Response<LostPersonResponse>) {
                     if (response.isSuccessful) {
 
@@ -194,7 +194,7 @@ class DetailsActivity7 : AppCompatActivity() {
                 override fun onFailure(call: Call<LostPersonResponse>, t: Throwable) {
                     Toast.makeText(this@DetailsActivity7, t.toString(), Toast.LENGTH_SHORT).show()
                 }
-            })*/
+            })
         }
 
 
