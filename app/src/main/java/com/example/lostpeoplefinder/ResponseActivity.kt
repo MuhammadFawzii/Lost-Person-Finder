@@ -49,7 +49,7 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
 
             // Initialize and set up your RecyclerView adapter and layout manager here
             // Example:
-            adapter = ResponseAdapter(this, matchedItems)
+            adapter = ResponseAdapter(this,this, matchedItems)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -82,16 +82,16 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
 
         }
 
-    override fun onItemClick(Item: OutputModel) {
-        val intent = Intent(this, PersonDetailsActivity::class.java)
-        intent.putExtra("image", Item.img)
-        intent.putExtra("name", Item.personName.toString())
-        intent.putExtra("age", Item.personAge.toString())
-        intent.putExtra("gender", Item.personGender.toString())
-        intent.putExtra("date", Item.last_date.toString())
-        intent.putExtra("location", Item.personLastLocation.toString())
-        startActivity(intent)
 
+    override fun onItemClick(Item: Person) {
+      val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra("image", Item.image_url)
+        intent.putExtra("name", Item.person_name.toString())
+        intent.putExtra("age", Item.age.toString())
+        intent.putExtra("gender", Item.gender.toString())
+        intent.putExtra("date", Item.date_of_lost.toString())
+        intent.putExtra("location", Item.lat.toString()+Item.lng.toString())
+        startActivity(intent)
     }
 
 
