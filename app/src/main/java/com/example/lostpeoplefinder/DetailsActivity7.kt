@@ -19,11 +19,11 @@ class DetailsActivity7 : AppCompatActivity() {
         val btn_previous=findViewById<Button>(R.id.bt_previous7)
 
         termsLink.setOnClickListener {
-            val intent = Intent(this, TermsPolicyActivity::class.java) // Use class reference
+            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
             startActivity(intent)
         }
         policyLink.setOnClickListener {
-            val intent = Intent(this, TermsPolicyActivity::class.java) // Use class reference
+            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
             startActivity(intent)
         }
 

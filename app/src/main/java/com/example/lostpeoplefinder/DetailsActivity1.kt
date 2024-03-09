@@ -51,7 +51,7 @@ class DetailsActivity1 : AppCompatActivity() {
             Toast.makeText(this, gender.toString(), Toast.LENGTH_SHORT).show()
             val date=DOBirth.text.toString()
             //if(name.isEmpty()&&(gender.equals("Male")||gender.equals("Female")))
-            //startActivity(Intent(this, DetailsActivity3::class.java))
+            startActivity(Intent(this, DetailsActivity3::class.java))
         }
         btn_previous1.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))

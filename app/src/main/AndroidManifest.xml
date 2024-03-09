@@ -23,14 +23,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OnBoardActivity"
-            android:exported="false" />
+            android:name=".RegisiterPageActivity"
+            android:exported="false" >
+
+        </activity>
         <activity
-            android:name=".PasswordReseatSuccessfully"
-            android:exported="false" />
+            android:name=".LoginPageActivity"
+            android:exported="false"/>
+
+
         <activity
             android:name=".VerifyCodeActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -57,15 +63,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".DetailsActivity2"
             android:exported="false" />
         <activity
             android:name=".DetailsActivity3"
-            android:exported="false"
-            />
-        <activity
-            android:name=".TermsPolicyActivity"
             android:exported="false"
             />
         <activity
@@ -91,6 +95,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacePolicyActivity"
             android:exported="false" />
     </application>
 
