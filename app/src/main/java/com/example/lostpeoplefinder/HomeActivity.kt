@@ -16,59 +16,61 @@ class HomeActivity : AppCompatActivity() {
     lateinit var foundRv:RecyclerView
     lateinit var adapter:CommonAdapter
     lateinit var searchview:SearchView
-    lateinit var filterBtn:ImageView
-    lateinit var missingBtn:Button
-    lateinit var findingBtn:Button
-    lateinit var searchIcon: ImageView
-    lateinit var  textView :TextView
-    private var isEditTextFocused = false
     lateinit var reportFindingButton:Button
     lateinit var reportMissingButton:Button
+
+    //    lateinit var filterBtn:ImageView
+//    lateinit var missingBtn:Button
+//    lateinit var findingBtn:Button
+//    lateinit var searchIcon: ImageView
+//    lateinit var  textView :TextView
+//    private var isEditTextFocused = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         missingRv=findViewById(R.id.messingRecyclerView);
         foundRv=findViewById(R.id.findingRecyclerView);
-        searchview=findViewById<SearchView>(R.id.searchView)
+        //searchview=findViewById<SearchView>(R.id.searchView)
         //filterBtn=findViewById(R.id.btn_filter)
-        searchview=findViewById(R.id.searchView)
+        //searchview=findViewById(R.id.searchView)
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
 
         //filterBtn=findViewById(R.id.btn_filter)
-        textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
+        //textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
         // Set query hint
 
-        searchview.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // Handle the query submission here
-                handleQuery(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                // Handle the text change here
-                return false
-            }
-        })
+//        searchview.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                // Handle the query submission here
+//                handleQuery(query)
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                // Handle the text change here
+//                return false
+//            }
+//        })
 
 
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        //searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
 
-        searchIcon.setOnClickListener {
-            // Handle click event for the search icon here
-            Toast.makeText(this, "Search icon clicked!", Toast.LENGTH_SHORT).show()
-        }
+//        searchIcon.setOnClickListener {
+//            // Handle click event for the search icon here
+//            Toast.makeText(this, "Search icon clicked!", Toast.LENGTH_SHORT).show()
+//        }
 
-        searchview.setOnFocusChangeListener { v, hasFocus ->
-            isEditTextFocused = hasFocus
-            if(hasFocus){
-                textView.setTextColor(ContextCompat.getColor(this, android.R.color.black))
-            }
-        }
+//        searchview.setOnFocusChangeListener { v, hasFocus ->
+//            isEditTextFocused = hasFocus
+//            if(hasFocus){
+//                textView.setTextColor(ContextCompat.getColor(this, android.R.color.black))
+//            }
+//        }
 
         adapter = CommonAdapter(this, initList());
         missingRv.adapter = adapter ;
@@ -105,10 +107,10 @@ class HomeActivity : AppCompatActivity() {
         return personList
     }
 
-    override fun onResume() {
-        super.onResume()
-        isEditTextFocused = false
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        isEditTextFocused = false
+//    }
 
     override fun onBackPressed() {
         if (searchview.hasFocus()) {

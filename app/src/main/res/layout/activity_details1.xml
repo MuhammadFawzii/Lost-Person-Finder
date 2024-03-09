@@ -41,7 +41,7 @@
                 android:layout_marginStart="280dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="43dp"
-                android:src="@drawable/img_ring"
+                android:src="@drawable/step1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +49,10 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewCounter"
+                android:id="@+id/textViewCounter1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1/8"
+                android:text="1/7"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="@color/white"
