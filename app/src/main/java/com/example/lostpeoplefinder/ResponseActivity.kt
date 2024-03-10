@@ -18,14 +18,13 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
     private lateinit var middleTextView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter:ResponseAdapter
-    private lateinit var matchedItems:ArrayList<OutputModel>
     private lateinit var geocoder:Geocoder
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_response)
-
+        val matchedItems = intent.getSerializableExtra("final") as ArrayList<Person>
         // Initialize views
         topLeftTextView = findViewById(R.id.topLeftTextView)
         middleTextView = findViewById(R.id.middleTextView)
@@ -35,7 +34,7 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
 
 
         // Simulated list of matched items
-        matchedItems = getMatchedlist()
+        //matchedItems = getMatchedlist()
 
         // Check if the list of matched items is empty
         if (matchedItems.isEmpty()) {
@@ -83,18 +82,7 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
             return "Location not found"
         }
 
-    override fun onItemClick(Item: OutputModel) {
-        val intent = Intent(this, PersonDetailsActivity::class.java)
-        intent.putExtra("image", Item.img)
-        intent.putExtra("name", Item.personName.toString())
-        intent.putExtra("age", Item.personAge.toString())
-        intent.putExtra("gender", Item.personGender.toString())
-        intent.putExtra("date", Item.last_date.toString())
-        intent.putExtra("location", Item.personLastLocation.toString())
-        startActivity(intent)
-        finish()
 
-    }
 
 
 
@@ -164,14 +152,23 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
         personList.add(o5)
         return personList
 
+        }
+
+
+    override fun onItemClick(Item: Person) {
+        val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra("image", Item.image_url)
+        intent.putExtra("name", Item.person_name.toString())
+        intent.putExtra("age", Item.age.toString())
+        intent.putExtra("gender", Item.gender.toString())
+        intent.putExtra("date", Item.date_of_lost.toString())
+        intent.putExtra("location", Item.lat.toString()+Item.lng.toString())
+        startActivity(intent)
     }
 
 
+
 }
-
-
-
-
 
 
 

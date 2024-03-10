@@ -1,14 +1,13 @@
 package com.example.lostpeoplefinder.API
 
-import com.example.lostpeoplefinder.ApiResponse
-import com.example.lostpeoplefinder.LoginData
-import com.example.lostpeoplefinder.UserData
-import com.example.lostpeoplefinder.VerifyData
+import com.example.lostpeoplefinder.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.Callback
+import retrofit2.http.*
+import java.io.File
 
 public interface APIServies {
     @POST("register")
@@ -42,4 +41,51 @@ public interface APIServies {
     @FormUrlEncoded
     @POST("set_new_password")
     fun setNewPassword(@Field("email") email: String,@Field("new_password") newPassword: String): Call<ApiResponse>
+
+  /*  @FormUrlEncoded
+    @POST("/find")
+    fun reportLostPerson(
+        @Field("person_name") person_name: String?,
+        @Field("age") age: String?,
+        @Field("phone_number") phone_number: String?,
+        @Field("email") email: String?,
+        @Field("date_of_found") date: String?,
+        @Field("lat") lat: String?,
+        @Field("lng") lng: String?,
+        @Field("gender") gender: String?,
+        @Field("image") image: File,
+    ): Call<ApiResponse>*/
+
+    @Multipart
+    @POST("/lost")
+    fun sendPersonData(
+        @Part("person_name") person_name: RequestBody,
+        @Part("age") age: RequestBody,
+        @Part("date") date_of_lost: RequestBody,
+        @Part("phone_number") phone_number: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("lng") lng: RequestBody,
+        @Part("lat") lat: RequestBody,
+        @Part("gender") gender: RequestBody
+    ): Call<LostPersonResponse>
+
+
+
+
+
+    @Multipart
+    @POST("/find")
+    fun send_find(
+        @Part("person_name") person_name: RequestBody,
+        @Part("age") age: RequestBody,
+        @Part("date") date_of_lost: RequestBody,
+        @Part("phone_number") phone_number: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("lng") lng: RequestBody,
+        @Part("lat") lat: RequestBody,
+        @Part("gender") gender: RequestBody
+    ): Call<LostPersonResponse>
+
 }
