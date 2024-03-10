@@ -15,6 +15,7 @@ class PersonDetailsActivity : AppCompatActivity() {
     lateinit var date: TextView
     lateinit var personitem:OutputModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_details)
@@ -27,11 +28,11 @@ class PersonDetailsActivity : AppCompatActivity() {
 
 
         img.setImageResource(intent.getIntExtra("image",0))
-        name.text= intent.getStringExtra("name")
-        age.text=intent.getStringExtra("age")
-        gender.text=intent.getStringExtra("gender")
-        location.text=intent.getStringExtra("location")
-        date.text=intent.getStringExtra("date")
+        name.setText( intent.getStringExtra("name"))
+        age.setText(intent.getStringExtra("age"))
+        gender.setText(intent.getStringExtra("gender"))
+        location.setText(intent.getStringExtra("location"))
+        date.setText(intent.getStringExtra("date"))
 
 
 

@@ -12,7 +12,7 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.content.ContextCompat
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(),OnItemClickListener {
     lateinit var missingRv:RecyclerView
     lateinit var foundRv:RecyclerView
     lateinit var adapter:CommonAdapter
@@ -112,11 +112,12 @@ class HomeActivity : AppCompatActivity() {
         val personList = ArrayList<PersonModel>()
 
         // Add items to the list
-        personList.add(PersonModel(header, R.drawable.missing, "Maria Doe", "Age:35 | Red Head | blue Eyes | Height: 167 |Weight: 120.6 lbs"))
-        personList.add(PersonModel(header, R.drawable.missing, "Jane Smith", "Age:42 | black Head | Green Eyes | Height: 187 |Weight: 170.6 lbs"))
-        personList.add(PersonModel(header, R.drawable.missing, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.m1, "Maria Doe", "Age:35 | Red Head | blue Eyes | Height: 167 |Weight: 120.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.m2, "Jane Smith", "Age:42 | black Head | Green Eyes | Height: 187 |Weight: 170.6 lbs"))
+        personList.add(PersonModel(header, R.drawable.m3, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
         return personList
     }
+
 
 //    override fun onResume() {
 //        super.onResume()
@@ -141,5 +142,18 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this, LoginPageActivity::class.java)
         startActivity(intent)
         finish() // Finish the current activity to prevent going back to it after logout
+    }
+
+    override fun onItemClick(Item: OutputModel) {
+        val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra("image", Item.img)
+        intent.putExtra("name", Item.personName.toString())
+        intent.putExtra("age", Item.personAge.toString())
+        intent.putExtra("gender", Item.personGender.toString())
+        intent.putExtra("date", Item.last_date.toString())
+        intent.putExtra("location", Item.personLastLocation.toString())
+        startActivity(intent)
+        finish()
+
     }
 }

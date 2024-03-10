@@ -3,6 +3,8 @@ package com.example.lostpeoplefinder
 import java.io.Serializable
 import android.location.Location
 import java.util.*
+import kotlin.collections.ArrayList
+
 data class UserData(val username: String, val email: String, val password: String, val phone_number: String) :
     Serializable
 
@@ -15,3 +17,6 @@ data class PersonModel(var headerText:String,val img:Int,var personName:String,v
 
 data class OutputModel(val img:Int, var personName:String, var personAge:Int,
                        var personGender:String, var last_date: Date, var personLastLocation:Location)
+
+data class ParentModel(var title:String, var list:ArrayList<OutputModel>)
+
