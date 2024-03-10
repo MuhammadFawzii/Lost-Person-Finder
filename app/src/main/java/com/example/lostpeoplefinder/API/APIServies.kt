@@ -61,7 +61,7 @@ public interface APIServies {
     fun sendPersonData(
         @Part("person_name") person_name: RequestBody,
         @Part("age") age: RequestBody,
-        @Part("date_of_lost") date_of_lost: RequestBody,
+        @Part("date") date_of_lost: RequestBody,
         @Part("phone_number") phone_number: RequestBody,
         @Part("email") email: RequestBody,
         @Part image: MultipartBody.Part,
@@ -70,5 +70,22 @@ public interface APIServies {
         @Part("gender") gender: RequestBody
     ): Call<LostPersonResponse>
 
+
+
+
+
+    @Multipart
+    @POST("/find")
+    fun send_find(
+        @Part("person_name") person_name: RequestBody,
+        @Part("age") age: RequestBody,
+        @Part("date") date_of_lost: RequestBody,
+        @Part("phone_number") phone_number: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("lng") lng: RequestBody,
+        @Part("lat") lat: RequestBody,
+        @Part("gender") gender: RequestBody
+    ): Call<LostPersonResponse>
 
 }

@@ -12,7 +12,7 @@ class DetailsActivity4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details5)
-
+        val report_name = intent.getStringExtra("report")
         val name=intent.getStringExtra("name")
         val age=intent.getStringExtra("age")
         val gender=intent.getStringExtra("gender")
@@ -23,6 +23,8 @@ class DetailsActivity4 : AppCompatActivity() {
         val btn_previous5=findViewById<Button>(R.id.bt_previous5)
         val eNumber=findViewById<EditText>(R.id.number)
         val eEmail=findViewById<EditText>(R.id.email)
+        Toast.makeText(this@DetailsActivity4, report_name.toString(), Toast.LENGTH_SHORT)
+            .show()
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         val phoneNumberPattern = "\\d{11}"
         btn_next5.setOnClickListener {
@@ -46,6 +48,7 @@ class DetailsActivity4 : AppCompatActivity() {
                 intent.putExtra("email",email)
                 intent.putExtra("lang", lang)
                 intent.putExtra("lat",lat)
+                intent.putExtra("report", report_name)
                 startActivity(intent)
 
             }

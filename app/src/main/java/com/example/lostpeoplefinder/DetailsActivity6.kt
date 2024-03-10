@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import com.example.lostpeoplefinder.API.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +17,7 @@ class DetailsActivity6 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details7)
+       val report=intent.getStringExtra("report")
         val name=intent.getStringExtra("name")
         val age=intent.getStringExtra("age")
         val gender=intent.getStringExtra("gender")
@@ -31,6 +33,8 @@ class DetailsActivity6 : AppCompatActivity() {
         val policyLink = findViewById<TextView>(R.id.policy_link)
         val btn_next=findViewById<Button>(R.id.bt_next7)
         val btn_previous=findViewById<Button>(R.id.bt_previous7)
+        Toast.makeText(this@DetailsActivity6, report.toString(), Toast.LENGTH_SHORT)
+            .show()
 
         termsLink.setOnClickListener {
             val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
@@ -56,6 +60,7 @@ class DetailsActivity6 : AppCompatActivity() {
             intent.putExtra("note",note)
             intent.putExtra("lang", lang)
             intent.putExtra("lat",lat)
+            intent.putExtra("report", report)
             startActivity(intent)
         }
         btn_previous.setOnClickListener {
