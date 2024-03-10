@@ -36,14 +36,12 @@ class DetailsActivity1 : AppCompatActivity() {
             val name=ETName.text.toString()
             val selectedGender=gender.selectedItem
             Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
-<<<<<<< HEAD
             val date=DOBirth.text.toString()
             if(name.isNotEmpty() &&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&date.isNotEmpty()){
                 val intent=Intent(this, DetailsActivity3::class.java)
                 startActivity(intent)
             }
 
-=======
             val age=age.text.toString()
             if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
                 val intent=Intent(this, DetailsActivity3::class.java)
@@ -52,14 +50,12 @@ class DetailsActivity1 : AppCompatActivity() {
                 intent.putExtra("age",age)
                 startActivity(intent)
             }
->>>>>>> 731e757c7a3e71c126dc54dd759ede141b085ae8
         }
         btn_previous1.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 
-<<<<<<< HEAD
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -80,6 +76,4 @@ class DetailsActivity1 : AppCompatActivity() {
 
         datePickerDialog.show()
     }
-=======
->>>>>>> 731e757c7a3e71c126dc54dd759ede141b085ae8
 }
