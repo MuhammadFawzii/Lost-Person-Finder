@@ -86,11 +86,13 @@ class HomeActivity : AppCompatActivity() {
 
         reportFindingButton.setOnClickListener {
             val intent= Intent(this,DetailsActivity1::class.java)
+            intent.putExtra("report","1")
             startActivity(intent)
         }
 
         reportMissingButton.setOnClickListener {
             val intent= Intent(this,DetailsActivity1::class.java)
+            intent.putExtra("report","2")
             startActivity(intent)
         }
 

@@ -2,6 +2,7 @@ package com.example.lostpeoplefinder
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -12,6 +13,7 @@ class DetailsActivity3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details4)
+        val report_name = intent.getStringExtra("report")
         val name=intent.getStringExtra("name")
         val age=intent.getStringExtra("age")
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
@@ -20,6 +22,8 @@ class DetailsActivity3 : AppCompatActivity() {
         val btn_previous4=findViewById<Button>(R.id.btn_previous4)
         val calendarIcon = findViewById<ImageView>(R.id.calender)
          date=findViewById<EditText>(R.id.et_last_Data)
+        Toast.makeText(this@DetailsActivity3, report_name.toString(), Toast.LENGTH_SHORT)
+            .show()
         btn_next4.setOnClickListener {
             val date=date.text.toString()
             val lang="160"
@@ -32,6 +36,7 @@ class DetailsActivity3 : AppCompatActivity() {
                 intent.putExtra("date",date)
                 intent.putExtra("lang", lang)
                 intent.putExtra("lat",lat)
+                intent.putExtra("report", report_name)
                 startActivity(intent)
             }
         }
@@ -58,7 +63,9 @@ class DetailsActivity3 : AppCompatActivity() {
             this,
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, dayOfMonth ->
                 val selectedDate = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
-                date.setText(selectedDate)
+                val date1 = convertDateFormat(selectedDate)
+                date.setText(date1)
+
             },
             year,
             month,
@@ -66,5 +73,27 @@ class DetailsActivity3 : AppCompatActivity() {
         )
 
         datePickerDialog.show()
+    }
+
+    fun convertDateFormat(inputDate: String): String {
+        // Split the input date by "/"
+        val parts = inputDate.split("/")
+
+        // Extract day, month, and year from the input date
+        val day = parts[0]
+        val month = parts[1]
+        val year = parts[2]
+
+        // Create a Calendar instance
+        val calendar = Calendar.getInstance()
+
+        // Set the year, month, and day of month in the Calendar instance
+        calendar.set(Calendar.YEAR, year.toInt())
+        calendar.set(Calendar.MONTH, month.toInt() - 1) // Calendar.MONTH is zero-based
+        calendar.set(Calendar.DAY_OF_MONTH, day.toInt())
+
+        // Format the date in "yyyy-MM-dd" format
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return sdf.format(calendar.time)
     }
 }
