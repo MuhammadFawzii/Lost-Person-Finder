@@ -316,7 +316,6 @@
         android:background="@drawable/btn_background"
         android:backgroundTint="@color/app_blue"
         android:fontFamily="@font/mulishbold"
-        android:enabled="false"
         android:text="Next"
         android:textColor="@color/white"
         android:textSize="30sp"

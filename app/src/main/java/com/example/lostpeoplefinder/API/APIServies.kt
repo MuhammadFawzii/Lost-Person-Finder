@@ -88,4 +88,7 @@ public interface APIServies {
         @Part("gender") gender: RequestBody
     ): Call<LostPersonResponse>
 
+    @GET("/home_lost")
+    fun getLostPeople(): Call<Map<String, Person>>
+
 }

@@ -38,17 +38,16 @@ class DetailsActivity1 : AppCompatActivity() {
             val name=ETName.text.toString()
             val selectedGender=gender.selectedItem
             Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
-            val date=DOBirth.text.toString()
-            if(name.isNotEmpty() &&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&date.isNotEmpty()){
-                val intent=Intent(this, DetailsActivity3::class.java)
-                startActivity(intent)
-            }
-
             val age=age.text.toString()
+            val x=if (selectedGender == "Male") {
+                "1"
+            } else {
+                "2"
+            }
             if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
                 val intent=Intent(this, DetailsActivity3::class.java)
                 intent.putExtra("name",name)
-                intent.putExtra("gender",selectedGender.toString())
+                intent.putExtra("gender",x)
                 intent.putExtra("age",age)
                 intent.putExtra("report", report_name)
                 startActivity(intent)
@@ -57,26 +56,5 @@ class DetailsActivity1 : AppCompatActivity() {
         btn_previous1.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
-    }
-
-    private fun showDatePicker() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(
-            this,
-            R.style.MyDatePickerDialogTheme,
-            DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
-                DOBirth.setText(selectedDate)
-            },
-            year,
-            month,
-            dayOfMonth
-        )
-
-        datePickerDialog.show()
     }
 }
