@@ -37,8 +37,7 @@ data class Response<T>(
 )
 
 data class LostPersonResponse(
-    val final_result: List<Person>?,
-    val massage:String?
+    val final_result: List<Person>?
 )
 
 

@@ -9,8 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
-class CommonAdapter(var context: Context, var list: ArrayList<PersonModel>) :
+class CommonAdapter(var context: Context, var list: ArrayList<Person>) :
     RecyclerView.Adapter<CommonAdapter.ViewHolder>() {
 
 //    fun getLayoutFile(context: Context): Int {
@@ -22,15 +23,17 @@ class CommonAdapter(var context: Context, var list: ArrayList<PersonModel>) :
 //        }
 //    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.child_rv_layout, null, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.child_rv_layout,parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.headerText.setText(list[position].headerText.toString())
-        holder.img.setImageResource(list[position].img)
-        holder.nameText.text = list[position].personName
-        holder.dataText.text = list[position].personData
+        Glide.with(context)
+            .load(list[position].image_url)
+            .into(holder.img)
+        holder.headerText.text="Missing!!"
+        holder.nameText.text = list[position].person_name
+        holder.dataText.text = list[position].email
     }
 
     override fun getItemCount(): Int {

@@ -44,7 +44,24 @@ class DetailsActivity7 : AppCompatActivity() {
         val note=intent.getStringExtra("note").toString()
         val lang=intent.getStringExtra("lang").toString()
         val lat=intent.getStringExtra("lat").toString()
+        Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
+            .show()
 
+        Toast.makeText(this@DetailsActivity7, number+email+lang+lat, Toast.LENGTH_SHORT)
+            .show()
+
+
+
+        /*val name="test"
+        val age="50"
+        val gender="1"
+        val date="2020-05-20"
+        val number="0101212312"
+        val email="test@gmail.com"
+        val note="ff"
+        val lang="-50"
+        val lat="533.54545"
+        val report_name ="1"*/
         val report_name =intent.getStringExtra("report").toString()
 
         textView11 = findViewById<TextView>(R.id.textView11)
@@ -102,7 +119,7 @@ class DetailsActivity7 : AppCompatActivity() {
                 )
             }
 
-           /* call.enqueue(object : Callback<LostPersonResponse> {
+            call.enqueue(object : Callback<LostPersonResponse> {
                 override fun onResponse(call: Call<LostPersonResponse>, response: Response<LostPersonResponse>) {
                     if (response.isSuccessful) {
 
@@ -112,14 +129,9 @@ class DetailsActivity7 : AppCompatActivity() {
                             Toast.makeText(this@DetailsActivity7, "dfsdssfd!!", Toast.LENGTH_SHORT)
                                 .show()
                             val finalResult = lostPersonResponse.final_result
-                            val x= lostPersonResponse.massage
-                            Toast.makeText(this@DetailsActivity7, x.toString(), Toast.LENGTH_SHORT).show()
+
                             // Check if finalResult is not null and not empty
                             if (finalResult != null && finalResult.isNotEmpty()) {
-                                if(x.equals("Image does not contain exactly one face or No Face")){
-                                    Toast.makeText(this@DetailsActivity7, "Image does not contain exactly one face or No Face", Toast.LENGTH_SHORT)
-                                        .show()
-                                }
                                 var intent=Intent(this@DetailsActivity7,ResponseActivity::class.java)
                                 intent.putExtra("final", ArrayList(finalResult))
                                 startActivity(intent)
@@ -153,16 +165,16 @@ class DetailsActivity7 : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<LostPersonResponse>, t: Throwable) {
-                    Toast.makeText(this@DetailsActivity7, t.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DetailsActivity7, t.toString()+"505", Toast.LENGTH_SHORT).show()
                 }
-            })*/
+            })
 
             /////////////////////////////////////////////////////////////////////////
 
 
 
 
-            call.enqueue(object : Callback<LostPersonResponse> {
+          /*  call.enqueue(object : Callback<LostPersonResponse> {
                 override fun onResponse(call: Call<LostPersonResponse>, response: Response<LostPersonResponse>) {
                     if (response.isSuccessful) {
 
@@ -204,14 +216,9 @@ class DetailsActivity7 : AppCompatActivity() {
                             Toast.makeText(this@DetailsActivity7, "dfsdssfd!!", Toast.LENGTH_SHORT)
                                 .show()
                             val finalResult = lostPersonResponse.final_result
-                            val x= lostPersonResponse.massage
-                            Toast.makeText(this@DetailsActivity7, x.toString(), Toast.LENGTH_SHORT).show()
-                            // Check if finalResult is not null and not empty
+                           // Check if finalResult is not null and not empty
                             if (finalResult != null && finalResult.isNotEmpty()) {
-                                if(x.equals("Image does not contain exactly one face or No Face")){
-                                    Toast.makeText(this@DetailsActivity7, "Image does not contain exactly one face or No Face", Toast.LENGTH_SHORT)
-                                        .show()
-                                }
+                                
                                 var intent=Intent(this@DetailsActivity7,ResponseActivity::class.java)
                                 intent.putExtra("final", ArrayList(finalResult))
                                 startActivity(intent)
@@ -249,7 +256,7 @@ class DetailsActivity7 : AppCompatActivity() {
                 override fun onFailure(call: Call<LostPersonResponse>, t: Throwable) {
                     Toast.makeText(this@DetailsActivity7, t.toString(), Toast.LENGTH_SHORT).show()
                 }
-            })
+            })*/
 
 
 

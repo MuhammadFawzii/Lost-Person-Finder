@@ -31,8 +31,6 @@ class DetailsActivity1 : AppCompatActivity() {
 
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Apply the adapter to the spinner
         gender.adapter = adapter
         Toast.makeText(this@DetailsActivity1, report_name.toString(), Toast.LENGTH_SHORT)
             .show()
@@ -41,10 +39,15 @@ class DetailsActivity1 : AppCompatActivity() {
             val selectedGender=gender.selectedItem
             Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
             val age=age.text.toString()
+            val x=if (selectedGender == "Male") {
+                "1"
+            } else {
+                "2"
+            }
             if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
                 val intent=Intent(this, DetailsActivity3::class.java)
                 intent.putExtra("name",name)
-                intent.putExtra("gender",selectedGender.toString())
+                intent.putExtra("gender",x)
                 intent.putExtra("age",age)
                 intent.putExtra("report", report_name)
                 startActivity(intent)
@@ -54,5 +57,4 @@ class DetailsActivity1 : AppCompatActivity() {
             startActivity(Intent(this, HomeActivity::class.java))
         }
     }
-
 }

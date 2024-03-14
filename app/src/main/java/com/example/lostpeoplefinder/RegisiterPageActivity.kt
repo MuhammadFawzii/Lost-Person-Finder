@@ -3,89 +3,94 @@ package com.example.lostpeoplefinder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
-import android.text.TextUtils // For checking empty strings
-import android.text.Editable // Represents editable text
-import android.text.TextWatcher
 import android.widget.EditText
-
+import android.widget.TextView
+import android.widget.Toast
+import com.example.lostpeoplefinder.API.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisiterPageActivity : AppCompatActivity() {
-    private lateinit var etFullName: EditText
-    private lateinit var etEmail: EditText
-    private lateinit var etPhone: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var checkBox: CheckBox
-    private lateinit var btnNextRegister: Button
-    private lateinit var termsLink:TextView
-    private lateinit var policyLink:TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regisiter_page)
+        val btnSignUp: Button = findViewById(R.id.bt_Next_Register)
+        var textViewLogin: TextView =findViewById(R.id.go_login)
 
-        // Initialize views
-        initViews()
-        // Add a TextWatcher to each EditText to dynamically update the button's state
-        addTextWatchersToEditTexts()
-        // Add a listener for the checkbox
-        checkBox.setOnCheckedChangeListener { _, isChecked ->
-            updateButtonState()
+        val editTextUsername:EditText=findViewById(R.id.et_full_name_register)
+        val editTextEmail:EditText=findViewById(R.id.et_email_register)
+        val editTextPassword:EditText=findViewById(R.id.et_password_reg)
+        val editTextPhoneNumber:EditText=findViewById(R.id.et_phone_register)
+        btnSignUp.setOnClickListener {
+            val username = editTextUsername.text.toString()
+            val email = editTextEmail.text.toString()
+            val password =editTextPassword.text.toString()
+            val phoneNumber = editTextPhoneNumber.text.toString()
+
+            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+            val passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}"
+            val phoneNumberPattern = "\\d{11}"
+            val isEmailValid = email.matches(emailPattern.toRegex())
+            val isPasswordValid = password.matches(passwordPattern.toRegex())
+            val isPhoneNumberValid = phoneNumber.matches(phoneNumberPattern.toRegex())
+
+            if (!isEmailValid) {
+                Toast.makeText(this, "Email not valid \n Should be like example@gmail.com", Toast.LENGTH_LONG).show()
+            }
+
+            if (!isPasswordValid) {
+                Toast.makeText(this, "Password not valid \n Should contain capital and small letters", Toast.LENGTH_LONG).show()
+            }
+
+            if (!isPhoneNumberValid) {
+                Toast.makeText(this, "Phone Number not valid \n Should be 11 char", Toast.LENGTH_LONG).show()
+            }
+            if (isEmailValid && isPasswordValid && isPhoneNumberValid) {
+                val userData = UserData(username, email, password, phoneNumber)
+                // Make sign up request
+                val call = RetrofitClient.instance.registerUser(userData)
+                call.enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(
+                        call: Call<ApiResponse>,
+                        response: Response<ApiResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val message = response.body()?.message
+                            Log.d("00++++", message.toString())
+                            if (message.equals("A verification code has been sent to your email.")) {
+                                val intent = Intent(this@RegisiterPageActivity, VerifyCodeActivity::class.java)
+                                val bundle = Bundle()
+                                bundle.putSerializable("userdata", userData)
+                                intent.putExtras(bundle)
+                                startActivity(intent)
+                            }
+                            Toast.makeText(this@RegisiterPageActivity, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            val error = response.body()?.error
+                            Log.d("+++0", error.toString())
+                            Toast.makeText(
+                                this@RegisiterPageActivity,
+                                "Something wrong please try again.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Log.d("+++", t.message.toString())
+                        Toast.makeText(this@RegisiterPageActivity, t.message, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
         }
-        setListeners()
-
-    }
-
-    private fun initViews() {
-        etFullName = findViewById(R.id.et_full_name_register)
-        etEmail = findViewById(R.id.et_email_register)
-        etPhone = findViewById(R.id.et_phone_register)
-        etPassword = findViewById(R.id.et_password_reg)
-        checkBox = findViewById(R.id.checkbox_privacy_terms_reg)
-        btnNextRegister = findViewById(R.id.bt_Next_Register)
-        termsLink = findViewById(R.id.terms_link_reg)
-        policyLink = findViewById(R.id.policy_link_reg)
-    }
-    private val textWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
-            updateButtonState()
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-    }
-    private fun addTextWatchersToEditTexts() {
-        etFullName.addTextChangedListener(textWatcher)
-        etEmail.addTextChangedListener(textWatcher)
-        etPhone.addTextChangedListener(textWatcher)
-        etPassword.addTextChangedListener(textWatcher)
-    }
-
-    private fun updateButtonState() {
-        val isChecked = checkBox.isChecked
-        val isFullNameValid = !TextUtils.isEmpty(etFullName.text.toString())
-        val isEmailValid = !TextUtils.isEmpty(etEmail.text.toString())
-        val isPhoneValid = !TextUtils.isEmpty(etPhone.text.toString())
-        val isPasswordValid = !TextUtils.isEmpty(etPassword.text.toString())
-        btnNextRegister.isEnabled = isChecked && isFullNameValid && isEmailValid && isPhoneValid && isPasswordValid
-    }
-    private fun setListeners() {
-        termsLink.setOnClickListener {
-            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
+        textViewLogin.setOnClickListener {
+            var intent=Intent(this,LoginPageActivity::class.java)
             startActivity(intent)
         }
-        policyLink.setOnClickListener {
-            val intent = Intent(this, PrivacePolicyActivity::class.java) // Use class reference
-            startActivity(intent)
-        }
-        btnNextRegister.setOnClickListener {
-            val intent = Intent(this, VerifyCodeActivity::class.java)
-            startActivity(intent)
-        }
+
     }
-
-
 }

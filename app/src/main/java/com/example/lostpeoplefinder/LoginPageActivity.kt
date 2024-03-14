@@ -1,70 +1,77 @@
 package com.example.lostpeoplefinder
 
-import android.os.Bundle
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.CheckBox
-import android.widget.TextView
-import android.text.TextUtils // For checking empty strings
-import android.text.Editable // Represents editable text
-import android.text.TextWatcher
 import android.widget.EditText
-class LoginPageActivity : AppCompatActivity() {
-    private lateinit var et_Email: EditText
-    private lateinit var et_Password: EditText
-    private lateinit var tv_forgetPassword: TextView
-    private lateinit var tv_register: TextView
-    private lateinit var btn_Login: Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.lostpeoplefinder.API.RetrofitClient
+import org.w3c.dom.Text
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
+class LoginPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
-        et_Email = findViewById(R.id.et_email_login)
-        et_Password = findViewById(R.id.et_password_login)
-        tv_forgetPassword = findViewById(R.id.tv_forgetPassword_Login)
-        tv_register = findViewById(R.id.tv_register_login)
-        btn_Login=findViewById(R.id.btn_loginPage)
+        var textViewSignUp: TextView = findViewById(R.id.tv_register_login)
+        var btnLogin: Button = findViewById(R.id.btn_loginPage)
+        var editTextEmail: EditText = findViewById(R.id.et_email_login)
+        var editTextPassword: EditText = findViewById(R.id.et_password_login)
+        var forgetPassword:TextView=findViewById(R.id.tv_forgetPassword_Login)
+        btnLogin.setOnClickListener {
+            val email = editTextEmail.text.toString()
+            val password = editTextPassword.text.toString()
+            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+            val isEmailValid = email.matches(emailPattern.toRegex())
+            if (!isEmailValid) {
+                Toast.makeText(
+                    this,
+                    "Email not valid \n Should be like example@gmail.com",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                val loginData = LoginData(email, password)
 
-        // Add a TextWatcher to each EditText to dynamically update the button's state
-        addTextWatchersToEditTexts()
-        // Add a listener for the checkbox
-        updateButtonState()
+                // Make login request
+                val call = RetrofitClient.instance.loginUser(loginData)
+                call.enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(
+                        call: Call<ApiResponse>,
+                        response: Response<ApiResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val message = response.body()?.message
+                            Log.d("++++", message.toString())
+                            if (message.equals("Login successful")) {
+                                startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
+                            }
+                            Toast.makeText(this@LoginPageActivity, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            val error = response.body()?.error
+                            Log.d("00++", error.toString())
+                            Toast.makeText(this@LoginPageActivity, error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
-        setListeners()
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginPageActivity, "Failed to login", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                })
+            }
 
-    }
-    private val textWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
-            updateButtonState()
         }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-    }
-    private fun addTextWatchersToEditTexts() {
-        et_Email.addTextChangedListener(textWatcher)
-        et_Password.addTextChangedListener(textWatcher)
-    }
-    private fun updateButtonState() {
-        val isEmailValid = !TextUtils.isEmpty(et_Email.text.toString())
-        val isPasswordValid = !TextUtils.isEmpty(et_Password.text.toString())
-        btn_Login.isEnabled =  isEmailValid && isPasswordValid
-    }
-    private fun setListeners() {
-        tv_forgetPassword.setOnClickListener {
-            // Handle click on "Forget Password" text
-            val intent = Intent(this, ForgetPasswordActivity::class.java)
+        textViewSignUp.setOnClickListener {
+            var intent = Intent(this, RegisiterPageActivity::class.java)
             startActivity(intent)
         }
-
-        tv_register.setOnClickListener {
-            // Handle click on "Register" text
-            val intent = Intent(this, RegisiterPageActivity::class.java)
-            startActivity(intent)
-        }
-        btn_Login.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+        forgetPassword.setOnClickListener {
+            var intent = Intent(this, ForgetPasswordActivity::class.java)
             startActivity(intent)
         }
     }

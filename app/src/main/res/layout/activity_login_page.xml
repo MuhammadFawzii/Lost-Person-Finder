@@ -165,7 +165,7 @@
             android:background="@drawable/edit_text_background"
             android:ems="10"
             android:hint="************"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -177,9 +177,6 @@
         android:layout_width="358dp"
         android:layout_height="75dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/btn_background"
-        android:backgroundTint="@color/app_blue"
-        android:enabled="false"
         android:fontFamily="@font/mulishbold"
         android:text="Log in"
         android:textColor="@color/white"
@@ -218,17 +215,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_loginPage"
         tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_register_login"
-        app:layout_constraintStart_toEndOf="@+id/tv_forgetPassword_Login"
-        app:layout_constraintTop_toBottomOf="@+id/btn_loginPage"
-        app:srcCompat="@drawable/img_login_icon" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@ class OnBoardActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 if (onBoardViewPager.currentItem == 2) {
                     onBoardButton.setOnClickListener {
-                        val intent = Intent(this@OnBoardActivity, SignUp::class.java)
+                        val intent = Intent(this@OnBoardActivity, RegisiterPageActivity::class.java)
                         startActivity(intent)
                     }
                 }
