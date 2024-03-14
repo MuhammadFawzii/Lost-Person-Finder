@@ -29,7 +29,7 @@ class ResponseActivity : AppCompatActivity(),OnItemClickListener {
         topLeftTextView = findViewById(R.id.topLeftTextView)
         middleTextView = findViewById(R.id.middleTextView)
         recyclerView = findViewById(R.id.recyclerView)
-         geocoder = Geocoder(this, Locale.getDefault())
+        geocoder = Geocoder(this, Locale.getDefault())
         Toast.makeText(this, convertLatLongToLocation(88.2,55.2), Toast.LENGTH_SHORT).show()
 
 
