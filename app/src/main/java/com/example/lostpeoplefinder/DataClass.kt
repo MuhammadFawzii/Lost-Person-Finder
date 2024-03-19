@@ -41,6 +41,14 @@ data class LostPersonResponse(
 )
 
 
+data class FindResponse(
+    val final_result: List<Person>? = null,
+    val message: String? = null,
+    val error: String? = null
+)
+
+
+
 data class Person(
     val person_name: String,
     val age: String,

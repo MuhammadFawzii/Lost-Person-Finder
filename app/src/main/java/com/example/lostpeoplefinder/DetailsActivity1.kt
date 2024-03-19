@@ -37,20 +37,24 @@ class DetailsActivity1 : AppCompatActivity() {
         btn_next1.setOnClickListener {
             val name=ETName.text.toString()
             val selectedGender=gender.selectedItem
-            Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
             val age=age.text.toString()
             val x=if (selectedGender == "Male") {
                 "1"
             } else {
                 "2"
             }
-            if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
+            if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()&&age.length<=2){
                 val intent=Intent(this, DetailsActivity3::class.java)
                 intent.putExtra("name",name)
                 intent.putExtra("gender",x)
                 intent.putExtra("age",age)
                 intent.putExtra("report", report_name)
                 startActivity(intent)
+            }
+            else {
+                Toast.makeText(this, "Fill all data.", Toast.LENGTH_SHORT).show()
+
             }
         }
         btn_previous1.setOnClickListener {

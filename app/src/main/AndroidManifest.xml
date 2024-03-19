@@ -56,6 +56,15 @@
             android:name=".LoginPageActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".PersonDetailsActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".PasswordReseatSuccessfully"
+            android:exported="false"/>
+
+
 
 
     <activity

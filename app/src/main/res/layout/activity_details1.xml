@@ -168,7 +168,7 @@
                 android:textColorHint="@color/black"
                 app:helperText="Required*"
                 app:counterEnabled="true"
-                app:counterMaxLength="10"
+                app:counterMaxLength="2"
                 app:boxStrokeColor="@color/black"
                 app:hintTextColor="@color/blue_app"
                 app:cursorColor="@color/blue_app"

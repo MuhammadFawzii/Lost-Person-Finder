@@ -28,13 +28,16 @@ import java.io.File
 
 class DetailsActivity7 : AppCompatActivity() {
     lateinit var constraintLayout7: ConstraintLayout
-    lateinit var textView11: TextView
+    lateinit var fileName: TextView
     lateinit var img:ImageView
-    lateinit var call:Call<LostPersonResponse>
-    private lateinit var file: File
+    lateinit var delete:ImageView
+    lateinit var call:Call<FindResponse>
+    private var file: File? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_template)
+        fileName=findViewById(R.id.filename)
+        delete=findViewById(R.id.icon_delete)
         val name=intent.getStringExtra("name").toString()
         val age=intent.getStringExtra("age").toString()
         val gender=intent.getStringExtra("gender").toString()
@@ -42,8 +45,8 @@ class DetailsActivity7 : AppCompatActivity() {
         val number=intent.getStringExtra("number").toString()
         val email=intent.getStringExtra("email").toString()
         val note=intent.getStringExtra("note").toString()
-        val lang=intent.getStringExtra("lang").toString()
-        val lat=intent.getStringExtra("lat").toString()
+        val lang="5.0"//intent.getStringExtra("lang").toString()
+        val lat="3.66"//intent.getStringExtra("lat").toString()
         Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
             .show()
 
@@ -64,7 +67,6 @@ class DetailsActivity7 : AppCompatActivity() {
         val report_name ="1"*/
         val report_name =intent.getStringExtra("report").toString()
 
-        textView11 = findViewById<TextView>(R.id.textView11)
         val pickImageButton = findViewById<TextView>(R.id.tv_browsePhoto)
         constraintLayout7 = findViewById(R.id.constraintLayout7)
         img=findViewById(R.id.img)
@@ -81,15 +83,14 @@ class DetailsActivity7 : AppCompatActivity() {
         val btn_next3 = findViewById<Button>(R.id.btn_next3)
         val btn_previous3 = findViewById<Button>(R.id.btn_previous3)
         btn_next3.setOnClickListener {
-
             val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
-            val imagePart = MultipartBody.Part.createFormData("image", file.name, requestFile)
+            val imagePart = MultipartBody.Part.createFormData("image", file?.name, requestFile)
             val requestBody = RequestBody.create(MediaType.parse("text/plain"), name)
 
-            if (report_name == "1")
-            { Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
-                .show()
-                 call = RetrofitClient.instance.sendPersonData(
+            if (report_name == "2") {
+                Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
+                    .show()
+                call = RetrofitClient.instance.sendPersonData(
                     requestBody,
                     RequestBody.create(MediaType.parse("text/plain"), age),
                     RequestBody.create(MediaType.parse("text/plain"), date),
@@ -102,11 +103,10 @@ class DetailsActivity7 : AppCompatActivity() {
                 )
 
 
-            }
-            else
-            { Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
-                .show()
-                 call = RetrofitClient.instance.send_find(
+            } else {
+                Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
+                    .show()
+                call = RetrofitClient.instance.send_find(
                     requestBody,
                     RequestBody.create(MediaType.parse("text/plain"), age),
                     RequestBody.create(MediaType.parse("text/plain"), date),
@@ -119,11 +119,53 @@ class DetailsActivity7 : AppCompatActivity() {
                 )
             }
 
-            call.enqueue(object : Callback<LostPersonResponse> {
-                override fun onResponse(call: Call<LostPersonResponse>, response: Response<LostPersonResponse>) {
+            call.enqueue(object : Callback<FindResponse> {
+                override fun onResponse(
+                    call: Call<FindResponse>,
+                    response: Response<FindResponse>
+                ) {
                     if (response.isSuccessful) {
+                        val findResponse = response.body()
+                        if (findResponse != null) {
+                            if (findResponse.final_result != null) {
+                                val finalResult = findResponse.final_result
+                                // Final result available, do something with it
+                                var intent =
+                                    Intent(this@DetailsActivity7, ResponseActivity::class.java)
+                                intent.putExtra("final", ArrayList(finalResult))
+                                startActivity(intent)
+                                Log.d("test000", finalResult.toString())
+                                Toast.makeText(
+                                    this@DetailsActivity7,
+                                    finalResult.toString(),
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            } else if (findResponse.message != null) {
+                                // No person found, handle the message
+                                Toast.makeText(
+                                    this@DetailsActivity7,
+                                    " Person not found",
+                                    Toast.LENGTH_LONG
+                                )
+                                    .show()
+                                startActivity(Intent(this@DetailsActivity7, DetailsCompleteActivity8::class.java))
+                            } else if (findResponse.error != null) {
+                                // Handle error
+                                Toast.makeText(
+                                    this@DetailsActivity7,
+                                    "Image does not contain exactly one Face or No Face",
+                                    Toast.LENGTH_LONG
+                                )
+                                    .show()
+                            }
+                        } else {
+                            // Handle null response
+                            Toast.makeText(this@DetailsActivity7,"Some thing wrong please try again", Toast.LENGTH_SHORT)
+                                .show()
+                        }
 
-                        val lostPersonResponse = response.body()
+                        /*val lostPersonResponse = response.body()
                         // Check if the response is not null
                         if (lostPersonResponse != null) {
                             Toast.makeText(this@DetailsActivity7, "dfsdssfd!!", Toast.LENGTH_SHORT)
@@ -132,254 +174,61 @@ class DetailsActivity7 : AppCompatActivity() {
 
                             // Check if finalResult is not null and not empty
                             if (finalResult != null && finalResult.isNotEmpty()) {
-                                var intent=Intent(this@DetailsActivity7,ResponseActivity::class.java)
+                                var intent =
+                                    Intent(this@DetailsActivity7, ResponseActivity::class.java)
                                 intent.putExtra("final", ArrayList(finalResult))
                                 startActivity(intent)
-                                Log.d("test000",finalResult.toString())
-                                Toast.makeText(this@DetailsActivity7, "155055055!!", Toast.LENGTH_SHORT)
-                                    .show()
-                                Log.d("result",finalResult.toString())
-
-                                for (person in finalResult) {
-                                    Toast.makeText(this@DetailsActivity7, "2222", Toast.LENGTH_SHORT)
-                                        .show()
-                                }
-                            } else {
-                                Toast.makeText(this@DetailsActivity7, "Not found", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
-                        } else {
-                            Toast.makeText(this@DetailsActivity7, "error", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
-
-
-                    else {
-                        val jsonString = response.body()?.toString()
-                        Log.d("00ttt", jsonString.toString())
-                        Toast.makeText(this@DetailsActivity7, "hear!!", Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
-                }
-
-                override fun onFailure(call: Call<LostPersonResponse>, t: Throwable) {
-                    Toast.makeText(this@DetailsActivity7, t.toString()+"505", Toast.LENGTH_SHORT).show()
-                }
-            })
-
-            /////////////////////////////////////////////////////////////////////////
-
-
-
-
-          /*  call.enqueue(object : Callback<LostPersonResponse> {
-                override fun onResponse(call: Call<LostPersonResponse>, response: Response<LostPersonResponse>) {
-                    if (response.isSuccessful) {
-
-                        /*val jsonString = response.body().toString()
-                        Log.d("00ttt", jsonString)
-                        val jsonObject = JSONObject(jsonString)
-                        val findPeopleResponse = response.body()
-                        val finalResultList = findPeopleResponse?.toString()
-
-                        // Process your finalResultList here
-                        // Handle the JSON response here
-                        val finalResultArray = jsonObject.getJSONArray("final_result")
-                        for (i in 0 until finalResultArray.length()) {
-                            val lostPersonJson = finalResultArray.getJSONObject(i)
-                            val lostPerson = ResponseReport(
-                                person_name = lostPersonJson.getString("person_name"),
-                                age = lostPersonJson.getString("age"),
-                                date_of_lost = lostPersonJson.getString("date_of_lost"),
-                                phone_number = lostPersonJson.getString("phone_number"),
-                                email = lostPersonJson.getString("email"),
-                                lng = lostPersonJson.getString("lng"),
-                                lat = lostPersonJson.getString("lat"),
-                                gender = lostPersonJson.getString("gender"),
-                                image_url = lostPersonJson.optString("image_url")
-                            )
-                            finalResults.add(lostPerson)
-                            Log.d("final res",finalResultList.toString())
-                            startActivity(
-                                Intent(
+                                Log.d("test000", finalResult.toString())
+                                Toast.makeText(
                                     this@DetailsActivity7,
-                                    DetailsCompleteActivity8::class.java
+                                    "155055055!!",
+                                    Toast.LENGTH_SHORT
                                 )
-                            )
-
-                        }*/
-                        val lostPersonResponse = response.body()
-                        // Check if the response is not null
-                        if (lostPersonResponse != null) {
-                            Toast.makeText(this@DetailsActivity7, "dfsdssfd!!", Toast.LENGTH_SHORT)
-                                .show()
-                            val finalResult = lostPersonResponse.final_result
-                           // Check if finalResult is not null and not empty
-                            if (finalResult != null && finalResult.isNotEmpty()) {
-                                
-                                var intent=Intent(this@DetailsActivity7,ResponseActivity::class.java)
-                                intent.putExtra("final", ArrayList(finalResult))
-                                startActivity(intent)
-                                Log.d("test000",finalResult.toString())
-                                Toast.makeText(this@DetailsActivity7, "155055055!!", Toast.LENGTH_SHORT)
                                     .show()
-                                Log.d("result",finalResult.toString())
-                                // Handle the case where finalResult is not empty
-                                // Update your UI with the retrieved data
-                                // For example, you can iterate through the list and display person details
+                                Log.d("result", finalResult.toString())
+
                                 for (person in finalResult) {
-                                    Toast.makeText(this@DetailsActivity7, "2222", Toast.LENGTH_SHORT)
+                                    Toast.makeText(
+                                        this@DetailsActivity7,
+                                        "2222",
+                                        Toast.LENGTH_SHORT
+                                    )
                                         .show()
                                 }
                             } else {
-                                Toast.makeText(this@DetailsActivity7, "Not found", Toast.LENGTH_SHORT)
+                                Toast.makeText(
+                                    this@DetailsActivity7,
+                                    "Not found",
+                                    Toast.LENGTH_SHORT
+                                )
                                     .show()
                             }
                         } else {
                             Toast.makeText(this@DetailsActivity7, "error", Toast.LENGTH_SHORT)
                                 .show()
                         }
-                    }
-
-                    // Now you have finalResults ArrayList with all LostPerson objects
-                    else {
-                        val jsonString = response.body()?.toString()
-                        Log.d("00ttt", jsonString.toString())
-                        Toast.makeText(this@DetailsActivity7, "hear!!", Toast.LENGTH_SHORT)
-                            .show()
-                        // Handle unsuccessful response
-                    }
-                }
-
-                override fun onFailure(call: Call<LostPersonResponse>, t: Throwable) {
-                    Toast.makeText(this@DetailsActivity7, t.toString(), Toast.LENGTH_SHORT).show()
-                }
-            })*/
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-            /*  call.enqueue(object : Callback<Response<List<Person>>> {
-                  override fun onResponse(call: Call<Response<List<Person>>>, response: Response<Response<List<Person>>>) {
-                      if (response.isSuccessful) {
-                          val apiResponse = response.body()
-                          if (apiResponse != null) {
-                              val data = apiResponse.data
-                              val message = apiResponse.message
-
-                              if (data != null) {
-                                  // Handle list of persons
-                              } else if (message != null) {
-                                  // Handle message
-                              }
-                          }
-                      } else {
-                          // Handle unsuccessful response
-                      }
-                  }
-
-                  override fun onFailure(call: Call<Response<List<Person>>>, t: Throwable) {
-                      // Handle failure
-                  }
-              })*/
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       /* val finalResults = ArrayList<ResponseReport>()
-        pickImageButton.setOnClickListener {
-            ImagePicker.with(this)
-                .crop()	    			//Crop image(Optional), Check Customization for more option
-                .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                .start()
-        }
-        val btn_next3 = findViewById<Button>(R.id.btn_next3)
-        val btn_previous3 = findViewById<Button>(R.id.btn_previous3)
-        btn_next3.setOnClickListener {
-            val lostPerson = ReportPerson(
-                    person_name = name,
-                    age = age,
-                    date_of_found = "2024-7-20",
-                    phone_number = number,
-                    image = file, // Provide a File object here
-                    email = email,
-                    lng = lang,
-                    lat = lat,
-                    gender = gender
-                )
-            val call =  RetrofitClient.instance.reportLostPerson(name,age, number,email,date,lat,lang,gender,file)
-            call.enqueue(object : Callback<ApiResponse> {
-                override fun onResponse(
-                    call: Call<ApiResponse>,
-                    response: Response<ApiResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val jsonString = response.body()?.toString()
-                        Log.d("00ttt",jsonString.toString())
-                        val jsonObject = JSONObject(jsonString)
-                        // Handle the JSON response here
-                        val finalResultArray = jsonObject.getJSONArray("final_result")
-                        for (i in 0 until finalResultArray.length()) {
-                            val lostPersonJson = finalResultArray.getJSONObject(i)
-                            val lostPerson = ResponseReport(
-                                person_name = lostPersonJson.getString("person_name"),
-                                age = lostPersonJson.getString("age"),
-                                date_of_lost = lostPersonJson.getString("date_of_lost"),
-                                phone_number = lostPersonJson.getString("phone_number"),
-                                email = lostPersonJson.getString("email"),
-                                lng = lostPersonJson.getString("lng"),
-                                lat = lostPersonJson.getString("lat"),
-                                gender = lostPersonJson.getString("gender"),
-                                image_url = lostPersonJson.optString("image_url"))
-                            finalResults.add(lostPerson)
-                            startActivity(Intent(this@DetailsActivity7, DetailsCompleteActivity8::class.java))
-
-                        }
-
-                        // Now you have finalResults ArrayList with all LostPerson objects
                     } else {
                         val jsonString = response.body()?.toString()
-                        Log.d("00ttt",jsonString.toString())
+                        Log.d("00ttt", jsonString.toString())
                         Toast.makeText(this@DetailsActivity7, "hear!!", Toast.LENGTH_SHORT)
                             .show()
-                        // Handle unsuccessful response
+
+                    }
+                }*/
                     }
                 }
-
-                override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                    Toast.makeText(this@DetailsActivity7, "Failed", Toast.LENGTH_SHORT)
+                override fun onFailure(call: Call<FindResponse>, t: Throwable) {
+                    Toast.makeText(this@DetailsActivity7, t.toString() + "505", Toast.LENGTH_SHORT)
                         .show()
                 }
             })
-
-        }*/
+        }
         btn_previous3.setOnClickListener {
             startActivity(Intent(this, DetailsActivity6::class.java))
+        }
+        delete.setOnClickListener {
+            file=null
+            constraintLayout7.visibility = View.GONE
         }
 
         }
@@ -389,9 +238,11 @@ class DetailsActivity7 : AppCompatActivity() {
             //Image Uri will not be null for RESULT_OK
             val uri: Uri = data?.data!!
             constraintLayout7.visibility = View.VISIBLE
-            textView11.visibility = View.VISIBLE
             // Use Uri object instead of File to avoid storage permissions
             file= File(uri.path)
+            fileName.text=file?.name
+
+
 
             //send it to next page
 

@@ -1,17 +1,20 @@
 package com.example.lostpeoplefinder
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.widget.SearchView.OnQueryTextListener
-import androidx.core.content.ContextCompat
 import com.example.lostpeoplefinder.API.RetrofitClient
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.color.utilities.Cam16
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +28,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
     lateinit var reportFindingButton:Button
     lateinit var reportMissingButton:Button
     lateinit var backBtn:ImageView
+    private lateinit var mShimmerViewContainer: ShimmerFrameLayout
+    private lateinit var mShimmerViewContainer2: ShimmerFrameLayout
 
 
     //    lateinit var filterBtn:ImageView
@@ -38,10 +43,14 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        var personList:ArrayList<Person>
-        personList=ArrayList()
+        var lostList:ArrayList<Person>
+        var foundList:ArrayList<Person>
+        lostList=ArrayList()
+        foundList=ArrayList()
         missingRv=findViewById(R.id.messingRecyclerView)
         foundRv=findViewById(R.id.findingRecyclerView)
+        mShimmerViewContainer = findViewById(R.id.shimmer_view_container)
+        mShimmerViewContainer2 = findViewById(R.id.shimmer_view_container2)
         //searchview=findViewById<SearchView>(R.id.searchView)
         //filterBtn=findViewById(R.id.btn_filter)
         //searchview=findViewById(R.id.searchView)
@@ -66,9 +75,9 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 //            }
 //        })
 
-         val lostPeopleList: ArrayList<Person> = ArrayList()
         val call = RetrofitClient.instance.getLostPeople()
         call.enqueue(object : Callback<Map<String, Person>> {
+            @SuppressLint("SuspiciousIndentation")
             override fun onResponse(
                 call: Call<Map<String, Person>>,
                 response: Response<Map<String, Person>>
@@ -76,22 +85,64 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                 if (response.isSuccessful) {
                     val lostPeople = response.body()
 
-                     personList = ArrayList(lostPeople?.values)
-                            Toast.makeText(this@HomeActivity, personList.toString(), Toast.LENGTH_SHORT).show()
+                     lostList = ArrayList(lostPeople?.values)
+                            //Toast.makeText(this@HomeActivity, personList.toString(), Toast.LENGTH_SHORT).show()
                         // Handle the response here
                         Log.d("MainActivity", "Lost people: $lostPeople")
-                        Log.d("MainActivity", "Lost: $personList")
-                    adapter = CommonAdapter(this@HomeActivity, personList)
+                        Log.d("MainActivity", "Lost: $lostList")
+                    adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
                     missingRv.adapter = adapter
-
-                    adapter=CommonAdapter(this@HomeActivity,personList)
-                    foundRv.adapter=adapter
                         //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
-                }else {
+                }
+
+                else {
                     Log.e("MainActivity", "Error: ${response.message()}")
                     Toast.makeText(this@HomeActivity, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
 
                 }
+                mShimmerViewContainer.stopShimmer()
+                mShimmerViewContainer.visibility=View.GONE
+
+                mShimmerViewContainer2.stopShimmer()
+                mShimmerViewContainer2.visibility=View.GONE
+            }
+
+            override fun onFailure(call: Call<Map<String, Person>>, t: Throwable) {
+                Log.e("MainActivity", "Error: ${t.message}")
+                Toast.makeText(this@HomeActivity, t.message, Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
+        val call2 = RetrofitClient.instance.getFoundPeople()
+        call2.enqueue(object : Callback<Map<String, Person>> {
+            override fun onResponse(
+                call: Call<Map<String, Person>>,
+                response: Response<Map<String, Person>>
+            ) {
+                if (response.isSuccessful) {
+                    val lostPeople = response.body()
+
+                    foundList = ArrayList(lostPeople?.values)
+                    //Toast.makeText(this@HomeActivity, personList.toString(), Toast.LENGTH_SHORT).show()
+                    // Handle the response here
+                    Log.d("MainActivity", "Lost people: $lostPeople")
+                    Log.d("MainActivity", "Lost: $foundList")
+                    adapter=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList)
+                    foundRv.adapter=adapter
+                    //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
+                }
+
+                else {
+                    Log.e("MainActivity", "Error: ${response.message()}")
+                    Toast.makeText(this@HomeActivity, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+
+                }
+                mShimmerViewContainer.stopShimmer()
+                mShimmerViewContainer.visibility=View.GONE
+
+                mShimmerViewContainer2.stopShimmer()
+                mShimmerViewContainer2.visibility=View.GONE
             }
 
             override fun onFailure(call: Call<Map<String, Person>>, t: Throwable) {
@@ -141,7 +192,6 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
             // Navigate to login screen
             navigateToLoginScreen()
         })
-
     }
 
     private fun handleQuery(query: String) {
@@ -185,7 +235,27 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         finish() // Finish the current activity to prevent going back to it after logout
     }
 
+
     override fun onItemClick(Item: Person) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, PersonDetailsActivity::class.java)
+        intent.putExtra("image", Item.image_url)
+        intent.putExtra("name", Item.person_name.toString())
+        intent.putExtra("age", Item.age.toString())
+        intent.putExtra("gender", Item.gender.toString())
+        intent.putExtra("date", Item.date_of_lost.toString())
+        intent.putExtra("location", Item.lat.toString()+Item.lng.toString())
+        startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mShimmerViewContainer.startShimmer()
+        mShimmerViewContainer2.startShimmer()
+    }
+
+    override fun onPause() {
+        mShimmerViewContainer.stopShimmer()
+        mShimmerViewContainer2.stopShimmer()
+        super.onPause()
     }
 }

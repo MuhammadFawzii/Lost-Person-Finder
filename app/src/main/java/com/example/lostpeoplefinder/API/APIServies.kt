@@ -68,7 +68,7 @@ public interface APIServies {
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
         @Part("gender") gender: RequestBody
-    ): Call<LostPersonResponse>
+    ): Call<FindResponse>
 
 
 
@@ -86,9 +86,12 @@ public interface APIServies {
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
         @Part("gender") gender: RequestBody
-    ): Call<LostPersonResponse>
+    ): Call<FindResponse>
 
     @GET("/home_lost")
     fun getLostPeople(): Call<Map<String, Person>>
+
+    @GET("/home_find")
+    fun getFoundPeople(): Call<Map<String, Person>>
 
 }

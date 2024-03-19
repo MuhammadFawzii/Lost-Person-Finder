@@ -26,11 +26,17 @@ class ResponseAdapter (private val listener: OnItemClickListener,var context: Co
         Glide.with(context)
             .load(list[position].image_url)
             .into(holder.img)
-        holder.nameText.text = list[position].person_name.toString()
-        holder.ageText.text=list[position].age.toString()
-        holder.genderText.text=list[position].gender.toString()
-        holder.lastdate.text=list[position].date_of_lost.toString()
-        holder.lastLocation.text=list[position].lat.toString()
+        holder.nameText.text = list[position].person_name
+        holder.ageText.text=list[position].age
+        val x=list[position].gender
+        var gen:String = if(x=="1")
+            "Male"
+        else
+            "female"
+
+        holder.genderText.text=gen
+        holder.lastdate.text=list[position].date_of_lost
+        holder.lastLocation.text=list[position].lat
 
 
     }

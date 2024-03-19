@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -53,49 +55,6 @@
             android:layout_marginEnd="10dp"
             app:layout_goneMarginTop="10dp"
             />
-
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/searchBarLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:padding="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/subtitleLabel">-->
-
-<!--            <androidx.appcompat.widget.SearchView-->
-<!--                android:id="@+id/searchView"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="8dp"-->
-<!--                android:background="@drawable/search_view_bg"-->
-<!--                app:iconifiedByDefault="false"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.5"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:queryHint="Search Here ..."-->
-
-<!--                />-->
-
-
-<!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:id="@+id/btn_filter"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:src="@drawable/baseline_filter_alt_24"&ndash;&gt;-->
-<!--            &lt;!&ndash;                android:layout_margin="10dp"&ndash;&gt;-->
-<!--            &lt;!&ndash;                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
-<!--            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="@+id/searchView"&ndash;&gt;-->
-<!--            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
-<!--            &lt;!&ndash;                />&ndash;&gt;-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-        <!-- Third Section: Horizontal RecyclerView with Cards -->
-
        <androidx.constraintlayout.widget.ConstraintLayout
            android:id="@+id/rvBox1"
            android:layout_width="match_parent"
@@ -125,6 +84,38 @@
                app:layout_constraintStart_toStartOf="parent"
                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                />
+
+           <com.facebook.shimmer.ShimmerFrameLayout
+               android:id="@+id/shimmer_view_container"
+               android:layout_width="wrap_content"
+               android:layout_height="250dp"
+               android:layout_gravity="center"
+               android:orientation="vertical"
+               shimmer:duration="800"
+               shimmer:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+               <!-- Adding 7 rows of placeholders -->
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+
+                   <include layout="@layout/data_placholder" />
+
+                   <include layout="@layout/data_placholder" />
+
+                   <include layout="@layout/data_placholder" />
+
+                   <include layout="@layout/data_placholder" />
+
+                   <include layout="@layout/data_placholder" />
+
+                   <include layout="@layout/data_placholder" />
+               </LinearLayout>
+
+           </com.facebook.shimmer.ShimmerFrameLayout>
+
 
 
        </androidx.constraintlayout.widget.ConstraintLayout>
@@ -159,6 +150,36 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
                 />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container2"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                shimmer:duration="800"
+                shimmer:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle2">
+
+                <!-- Adding 7 rows of placeholders -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/data_placholder" />
+
+                    <include layout="@layout/data_placholder" />
+
+                    <include layout="@layout/data_placholder" />
+
+                    <include layout="@layout/data_placholder" />
+
+                    <include layout="@layout/data_placholder" />
+
+                    <include layout="@layout/data_placholder" />
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

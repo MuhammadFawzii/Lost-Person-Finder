@@ -39,7 +39,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
                             val message = response.body()?.message
                             Log.d("00++++", message.toString())
                             if (message.equals("A verification code has been sent to your email.")) {
-                                val intent = Intent(this@ForgetPasswordActivity, VerifyCodeActivity::class.java)
+                                val intent = Intent(this@ForgetPasswordActivity, VerifyEmailActivity::class.java)
                                 intent.putExtra("email",email)
                                 startActivity(intent)
                             }

@@ -11,7 +11,7 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class CommonAdapter(var context: Context, var list: ArrayList<Person>) :
+class CommonAdapter(private val listener: OnItemClickListener,var context: Context, var list: ArrayList<Person>) :
     RecyclerView.Adapter<CommonAdapter.ViewHolder>() {
 
 //    fun getLayoutFile(context: Context): Int {
@@ -40,7 +40,7 @@ class CommonAdapter(var context: Context, var list: ArrayList<Person>) :
         return list.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) ,View.OnClickListener {
         var headerText: TextView
         var img: ImageView
         var nameText: TextView
@@ -51,6 +51,17 @@ class CommonAdapter(var context: Context, var list: ArrayList<Person>) :
             img = itemView.findViewById(R.id.iv_child_item)
             nameText = itemView.findViewById(R.id.personName)
             dataText = itemView.findViewById(R.id.personData)
+            itemView.setOnClickListener(this)
+
         }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(list[position])
+            }
+        }
+
+
     }
-}
+    }

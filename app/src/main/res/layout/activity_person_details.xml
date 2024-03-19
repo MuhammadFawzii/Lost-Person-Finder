@@ -179,7 +179,7 @@
             android:fontFamily="@font/proxima_nova_reg"
             android:text="23/12/2023 10:14 pm"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/dateLabel"
             app:layout_constraintTop_toBottomOf="@id/personLocationTextView" />
 

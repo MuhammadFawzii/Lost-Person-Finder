@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <!-- custom_dropdown_item.xml -->
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@android:id/text1"
-        android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:padding="10dp"
-        android:textColor="#000000" />
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        shimmer:duration="800"
+        shimmer:layout_constraintEnd_toEndOf="parent"
+        shimmer:layout_constraintTop_toTopOf="parent">
+
+        <!-- Adding 7 rows of placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include layout="@layout/data_placholder" />
+
+            <include layout="@layout/data_placholder" />
+
+            <include layout="@layout/data_placholder" />
+
+            <include layout="@layout/data_placholder" />
+
+            <include layout="@layout/data_placholder" />
+
+            <include layout="@layout/data_placholder" />
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <ListView
+        android:id="@+id/playlistDataLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:paddingBottom="0dp"
+        android:divider="#faf8f8"
+        android:dividerHeight="2dp"
+        android:layout_alignParentStart="true"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

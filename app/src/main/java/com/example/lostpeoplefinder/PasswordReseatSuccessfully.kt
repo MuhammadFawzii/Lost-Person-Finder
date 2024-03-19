@@ -11,7 +11,7 @@ class PasswordReseatSuccessfully : AppCompatActivity() {
         setContentView(R.layout.activity_password_reset_successful)
         val login:Button=findViewById(R.id.bt_go_toLogin)
         login.setOnClickListener {
-            startActivity(Intent(this@PasswordReseatSuccessfully,LoginActivity::class.java))
+            startActivity(Intent(this@PasswordReseatSuccessfully,LoginPageActivity::class.java))
         }
     }
 }
