@@ -34,6 +34,7 @@
     <color name="g_green_app">#02A308</color>
     <color name="g_gray400_app">#717178</color>
     <color name="light_gray">#F5F5F5</color>
+    <color name="indigo_A100"> #8C9EFF</color>
 
 
 </resources>

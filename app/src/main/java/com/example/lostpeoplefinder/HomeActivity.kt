@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.color.utilities.Cam16
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +58,25 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
         backBtn=findViewById(R.id.logoutButton)
+
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("bkr", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+            if (token != null) {
+                // Log and toast
+                Log.d("bkr", token)
+                Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+            } else {
+                Log.w("bkr", "FCM registration token is null")
+            }
+        }
+
 
         //filterBtn=findViewById(R.id.btn_filter)
         //textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
