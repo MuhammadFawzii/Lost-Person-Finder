@@ -1,3 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Lost People Finder</string>
+    <string name="app_name">ahmed_s_application</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_search_for_hope">Search for hope</string>
+    <string name="lbl_more">More</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_emengecy_call">Emengecy Call</string>
+    <string name="lbl_news">News</string>
+    <string name="lbl_finder">Finder</string>
+    <string name="lbl_community">Community</string>
+    <string name="lbl_see_more">See More</string>
+    <string name="lbl_donate">Donate</string>
+    <string name="msg_name_akriti_dw">Name: Akriti Dwivedi
+Age: 5 (Female)
+Last Seen: 1/11/23 12:32:23 IST
+Last Seen Location: Mumbai</string>
+    <string name="lbl_view_details">View Details</string>
+    <string name="lbl_want_to_donate">Want to donate?</string>
+    <string name="lbl_upload">Upload</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_online_service">Online Service</string>
+    <string name="lbl_help">Help</string>
+    <string name="msg_featured_profil">Featured Profiles</string>
 </resources>

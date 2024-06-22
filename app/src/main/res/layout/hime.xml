@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal">
+
+
+<!--    &lt;!&ndash; App Title: Finder &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Finder"-->
+<!--        android:textSize="36sp"-->
+<!--        android:layout_marginTop="10dp" />-->
+
+<!--    &lt;!&ndash; Subtitle: "Search for Hope" &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Search for Hope"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="@android:color/darker_gray"-->
+<!--        android:layout_marginTop="8dp" />-->
+
+<!--    &lt;!&ndash; Second Section: Search Bar &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:padding="16dp">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/searchEditText"-->
+<!--            android:layout_width="320dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="30dp"-->
+<!--            android:hint="Search"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/baseline_search_24"-->
+<!--            android:layout_marginEnd="10dp" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/baseline_filter_alt_24"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginEnd="0dp" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Third Section: Horizontal RecyclerView with Cards &ndash;&gt;-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+
+<!--        >-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20sp"-->
+<!--            android:text="MISSING People"-->
+<!--            android:textColor="@color/app_blue"-->
+<!--            android:layout_margin="10dp"-->
+<!--            />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/messingRecyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="16dp" />-->
+
+
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+
+<!--        >-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20sp"-->
+<!--            android:text="Found People"-->
+<!--            android:textColor="@color/app_blue"-->
+<!--            android:layout_margin="10dp"-->
+<!--            />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/findingRecyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="16dp" />-->
+
+
+
+<!--    </LinearLayout>-->
+
+
+<!--    &lt;!&ndash; Fourth Section: Buttons &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:padding="16dp">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/reportMissingButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Report Missing"-->
+<!--            android:background="#1E7ED4"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_marginRight="60dp"-->
+<!--            />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/reportFindingButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Report Missing"-->
+<!--            android:background="#1E7ED4"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+
+</LinearLayout>
