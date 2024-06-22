@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_child_item"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:backgroundTint="@color/light_gray"
+                app:cardCornerRadius="10dp"> <!-- Updated background color -->
+
+                <View
+                    android:id="@+id/headertext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_blue"
+                    android:paddingLeft="50dp"
+                    android:text="MISSING!!"
+                    android:textColor="@color/light_gray"
+                    android:textSize="25sp" />
+
+                <View
+                    android:id="@+id/iv_child_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="120dp"
+                    android:background="@color/background"
+                    />
+
+                <View
+                    android:id="@+id/personName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="170dp"
+                    android:paddingLeft="15dp"
+                    android:text="DANELA WATSON"
+                    android:background="@color/background"
+                    android:textColor="@color/app_blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/personData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="220dp"
+                    android:fontFamily="@font/proxima_nova_reg"
+                    android:paddingLeft="15dp"
+                    android:background="@color/background"
+                    android:text="AGE:29 | RED HEAD | GREEN EYES | HEIGHT: 187 | WEIGHT : 170.6 lbs"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+
+                    />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </RelativeLayout>
+

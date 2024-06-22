@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".PrivacePolicyActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Heading 1 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout13"
+            android:layout_width="388dp"
+            android:layout_height="78dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:text="Privacy Policy"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.458"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/arrow_vector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.016"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.406"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy And Terms"
+            android:textSize="30sp"
+            android:fontFamily="@font/proxima_nova_bold"
+
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <!-- Subheading 1 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms Of Use"
+            android:fontFamily="@font/mulish"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <!-- Content for Subheading 1 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Finder Mobile App. By using the App, you agree to be bound by these Terms of Use. If you do not agree to these Terms of Use, please do not use the App."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <!-- Subheading 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy Policy"
+            android:fontFamily="@font/mulish"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            />
+
+        <!-- Content for Subheading 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:text="Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using the App, you consent to the practices described in the Privacy Policy."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+
+        <!-- Subheading 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Responsibilities"
+            android:fontFamily="@font/mulish"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <!-- Content for Subheading 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:text="1-You must provide accurate and up-to-date information when using the App, especially when submitting information related to missing persons."
+            android:paddingLeft="10dp"
+            android:paddingBottom="8dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2- You are responsible for maintaining the confidentiality of your account and password and for restricting access to your device to prevent unauthorized access to your account."
+            android:paddingLeft="10dp"
+            android:paddingBottom="8dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:text="3-You must not use the App for any illegal or unauthorized purpose."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Intellectual Property"
+            android:fontFamily="@font/mulish"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+         android:text="The Finder App and its original content (excluding content provided by users), features, and functionality are owned by [Finder] and are protected by international copyright, trademark, and other intellectual property laws."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User-Generated Content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Users may submit content, such as missing person profiles, images, or comments. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, distribute, and publish that content."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Limitations of Liability"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:text=" We do not guarantee that the App will be error-free or continuously available. You agree that we will not be liable for any loss or damage resulting from your use of the App."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Termination"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/mulish"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We reserve the right to terminate or suspend your account and access to the App at our sole discretion without notice."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:fontFamily="@font/mulish"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Changes to Terms"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/mulish"
+            android:layout_marginStart="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mulish"
+
+            android:text=" We may update these Terms of Use from time to time. Any changes will be effective when posted. Your continued use of the App after changes are posted constitutes your acceptance of the new Terms."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Contact Us"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/mulish"
+
+            android:layout_marginStart="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="If you have any questions about these Terms of Use, please contact us at contact@finder.com."
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:fontFamily="@font/mulish"
+
+            />
+
+        <!-- Add more headings and subheadings as needed -->
+
+    </LinearLayout>
+
+</ScrollView>
