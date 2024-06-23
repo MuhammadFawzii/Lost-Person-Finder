@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+<!--    <style name="Base.Theme.LostPeopleFinder" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Theme.LostPeopleFinder" parent="Base.Theme.LostPeopleFinder" />-->
+
+    <style name="btnSolidRounded">
+        <item name="android:textSize">@dimen/_11pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_bg_indigo_a200_radius_8</item>
+    </style>
+
+    <style name="txtProximaNovabold45">
+        <item name="android:textSize">@dimen/_45pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+
+    <style name="txtSatisfyregular18">
+        <item name="android:textSize">@dimen/_18pxh</item>
+        <item name="android:fontFamily">@font/satisfy</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="groupStylewhite_1">
+        <item name="android:background">@drawable/rectangle_bg_white_a700</item>
+    </style>
+
+    <style name="groupStylewhite_A700cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_white_a700_border_black_900_radius_8</item>
+    </style>
+
+    <style name="groupStylewhite_3">
+        <item name="android:background">@drawable/rectangle_bg_white_a700_border_black_901_radius_31</item>
+    </style>
+
+    <style name="btnSolidRounded_1">
+        <item name="android:textSize">@dimen/_23pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+        <item name="android:background">@drawable/rectangle_bg_indigo_a200_radius_8</item>
+    </style>
+
+    <style name="groupStylewhite_2">
+        <item name="android:background">@drawable/rectangle_bg_white_a700_radius_8</item>
+    </style>
+
+    <style name="txtProximaNovaregular16">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="groupStylecornerRadius">
+        <item name="android:background">@drawable/rectangle_radius_8</item>
+    </style>
+
+    <style name="txtProximaNovaregular23">
+        <item name="android:textSize">@dimen/_23pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtProximaNovaregular12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtProximaNovaregular11">
+        <item name="android:textSize">@dimen/_11pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="txtProximaNovaregular11_1">
+        <item name="android:textSize">@dimen/_11pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="groupStyle">
+        <item name="android:background">@drawable/rectangle_gradient_s_black_900_00_e_black_900_b5</item>
+    </style>
+
+    <style name="txtProximaNovamedium36">
+        <item name="android:textSize">@dimen/_36pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+
+    <style name="txtProximaNovaregular16_1">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:fontFamily">@font/proxima_nova</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+
+    <style name="groupStylewhite_A700">
+        <item name="android:background">@drawable/rectangle_bg_white_a700</item>
+    </style>
+
+    <style name="groupStyleindigo_A100cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_indigo_a100_radius_6</item>
+    </style>
+
+</resources>

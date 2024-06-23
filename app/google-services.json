@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "66001007932",
+    "project_id": "test-d8b64",
+    "storage_bucket": "test-d8b64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66001007932:android:9d8fc929a6c3397b46da39",
+        "android_client_info": {
+          "package_name": "com.example.lostpeoplefinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSoZuupgTpr6-PFLX7a-y76b7SBuQ9TDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66001007932:android:a0ce76898fb5f8df46da39",
+        "android_client_info": {
+          "package_name": "com.example.testfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSoZuupgTpr6-PFLX7a-y76b7SBuQ9TDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

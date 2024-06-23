@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.lostpeoplefinder">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -14,8 +13,9 @@
         android:protectionLevel="signature" />
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -34,11 +34,6 @@
         android:theme="@style/Theme.LostPeopleFinder"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-
-
-
-
         <activity
             android:name=".RedirectActivity"
             android:exported="false"/>
@@ -47,13 +42,10 @@
             android:name=".RegisterPageActivity"
             android:exported="false" >
 
-
         </activity>
         <activity
-            android:name=".IntroActivity"
-            android:exported="false">
-
-        </activity>
+            android:name=".DetailsActivity1"
+            android:exported="false"/>
 
         <activity
             android:name=".VerifyCodeActivity"
@@ -86,7 +78,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".DetailsActivity1"
+            android:name=".IntroActivity"
             android:exported="false"/>
 
         <activity
@@ -120,6 +112,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".DetailsCompleteActivity8"
@@ -143,13 +136,9 @@
         <activity android:name=".MapActivity"
             android:exported="false" />
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDnmuO0_0bCgZD6IkYcucvSXJZFxwiuqvE"/>
-
-
-
 
     </application>
 
