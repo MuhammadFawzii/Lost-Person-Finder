@@ -6,7 +6,7 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-data class UserData(val username: String, val email: String, val password: String, val phone_number: String) :
+data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val token:String) :
     Serializable
 
 data class VerifyData(val username: String, val email: String, val password: String, val phone_number: String,val code: String)

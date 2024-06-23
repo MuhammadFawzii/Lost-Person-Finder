@@ -44,7 +44,7 @@ class IntroActivity : AppCompatActivity() {
        // appName.animate().translationY(1500f).setDuration(1000).setStartDelay(5000)
         CoroutineScope(Dispatchers.Main).launch {
             delay(4000)
-            startActivity(Intent(this@IntroActivity, RegisiterPageActivity::class.java))
+            startActivity(Intent(this@IntroActivity, OnBoardActivity::class.java))
             finish()
         }
     }

@@ -4,8 +4,9 @@
     <string name="tv_forget_password_instruction">Please enter the email address associated with your account. We\'ll send you a verification code to reset your password.</string>
     <string name="tv_email">Email</string>
     <string name="star_password">********</string>
+    <string name="notification_channel_id">default</string>
 
-    <string name="tv_email_hint">debra.holt@example.com</string>
+    <string name="tv_email_hint">example@gmail.com</string>
     <string name="tv_send_rest_code">Send Reset Code</string>
     <string name="tv_need_help">Need Help or Have Questions?</string>
     <string name="tv_create_newPassword">Create New Password</string>

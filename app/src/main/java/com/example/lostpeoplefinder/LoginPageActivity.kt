@@ -9,7 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lostpeoplefinder.API.RetrofitClient
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,7 +66,7 @@ class LoginPageActivity : AppCompatActivity() {
 
         }
         textViewSignUp.setOnClickListener {
-            var intent = Intent(this, RegisiterPageActivity::class.java)
+            var intent = Intent(this, RegisterPageActivity::class.java)
             startActivity(intent)
         }
         forgetPassword.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.example.lostpeoplefinder
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.color.utilities.Cam16
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,6 +43,9 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
+
         var lostList:ArrayList<Person>
         var foundList:ArrayList<Person>
         lostList=ArrayList()
@@ -57,6 +60,23 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
         backBtn=findViewById(R.id.logoutButton)
+
+
+
+        //firebase notification
+
+
+//        FirebaseMessaging.getInstance().token
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful && task.result != null) {
+//                    val token = task.result
+//                    Log.d("FCM Token", token)
+//                } else {
+//                    Log.w("FCM Token", "Fetching FCM registration token failed", task.exception)
+//                }
+//            }
+
+
 
         //filterBtn=findViewById(R.id.btn_filter)
         //textView=searchview.findViewById<TextView>(androidx.appcompat.R.id.search_src_text)
@@ -74,6 +94,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 //                return false
 //            }
 //        })
+
 
         val call = RetrofitClient.instance.getLostPeople()
         call.enqueue(object : Callback<Map<String, Person>> {
@@ -192,6 +213,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
             // Navigate to login screen
             navigateToLoginScreen()
         })
+       //getToken();
     }
 
     private fun handleQuery(query: String) {
@@ -258,4 +280,18 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         mShimmerViewContainer2.stopShimmer()
         super.onPause()
     }
+
+//    fun  getToken(){
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+//                return@addOnCompleteListener
+//            }
+//
+//            // Get new FCM registration token
+//            val token = task.result
+//            Log.d("FCM", "FCM Token: $token")
+//            // Send token to your server or save it locally
+//        }
+//    }
 }
