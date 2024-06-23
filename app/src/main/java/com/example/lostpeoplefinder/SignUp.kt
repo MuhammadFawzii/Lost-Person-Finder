@@ -50,7 +50,8 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this, "Phone Number not valid \n Should be 11 char", Toast.LENGTH_LONG).show()
             }
           if (isEmailValid && isPasswordValid && isPhoneNumberValid) {
-              val userData = UserData(username, email, password, phoneNumber)
+              val token=""
+              val userData = UserData(username, email, password, phoneNumber,token)
               // Make sign up request
               val call = RetrofitClient.instance.registerUser(userData)
               call.enqueue(object : Callback<ApiResponse> {

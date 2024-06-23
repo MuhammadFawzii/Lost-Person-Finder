@@ -5,14 +5,23 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission
+        android:name="${applicationId}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -33,46 +42,66 @@
             android:exported="false" />
         <activity
             android:name=".RedirectActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
-            android:name=".RegisiterPageActivity"
-            android:exported="false" />
+            android:name=".RegisterPageActivity"
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".DetailsActivity1"
-            android:exported="false" />
+            android:exported="false"/>
+
+
         <activity
             android:name=".VerifyCodeActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".LoginPageActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".PersonDetailsActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".PasswordReseatSuccessfully"
-            android:exported="false" />
-        <activity
+            android:exported="false"/>
+
+
+
+
+    <activity
             android:name=".ForgetPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ResponseActivity"
             android:exported="false" />
+
         <activity
             android:name=".IntroActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".DetailsActivity7"
-            android:exported="false" />
+            android:exported="false"
+            />
+
+
+
         <activity
             android:name=".DetailsActivity2"
             android:exported="false" />
         <activity
             android:name=".DetailsActivity3"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".DetailsActivity4"
             android:exported="false" />
@@ -84,12 +113,13 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".DetailsCompleteActivity8"
@@ -103,16 +133,19 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".PrivacePolicyActivity"
             android:exported="false" />
-        <activity
-            android:name=".MapActivity"
+
+        <activity android:name=".MapActivity"
             android:exported="false" />
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDnmuO0_0bCgZD6IkYcucvSXJZFxwiuqvE" />
+            android:value="AIzaSyDnmuO0_0bCgZD6IkYcucvSXJZFxwiuqvE"/>
+
     </application>
 
 </manifest>

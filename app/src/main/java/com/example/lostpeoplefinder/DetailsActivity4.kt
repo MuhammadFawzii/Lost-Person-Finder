@@ -55,6 +55,7 @@ class DetailsActivity4 : AppCompatActivity() {
         }
         btn_previous5.setOnClickListener {
             startActivity(Intent(this,DetailsActivity3::class.java))
+
         }
 
     }

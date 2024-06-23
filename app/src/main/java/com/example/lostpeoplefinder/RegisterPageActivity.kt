@@ -1,23 +1,32 @@
 package com.example.lostpeoplefinder
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lostpeoplefinder.API.RetrofitClient
+import com.google.android.gms.tasks.OnCompleteListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisiterPageActivity : AppCompatActivity() {
 
+class RegisterPageActivity : AppCompatActivity() {
+   private var token=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regisiter_page)
+       // FirebaseApp.initializeApp(this)
+        // Check if the default Firebase app is initialized
+
+
+        Toast.makeText(this, "Firebase is not initialized", Toast.LENGTH_SHORT).show()
+
+
         val btnSignUp: Button = findViewById(R.id.bt_Next_Register)
         var textViewLogin: TextView =findViewById(R.id.go_login)
 
@@ -50,7 +59,7 @@ class RegisiterPageActivity : AppCompatActivity() {
                 Toast.makeText(this, "Phone Number not valid \n Should be 11 char", Toast.LENGTH_LONG).show()
             }
             if (isEmailValid && isPasswordValid && isPhoneNumberValid) {
-                val userData = UserData(username, email, password, phoneNumber)
+                val userData = UserData(username, email, password, phoneNumber,token)
                 // Make sign up request
                 val call = RetrofitClient.instance.registerUser(userData)
                 call.enqueue(object : Callback<ApiResponse> {
@@ -62,18 +71,18 @@ class RegisiterPageActivity : AppCompatActivity() {
                             val message = response.body()?.message
                             Log.d("00++++", message.toString())
                             if (message.equals("A verification code has been sent to your email.")) {
-                                val intent = Intent(this@RegisiterPageActivity, VerifyCodeActivity::class.java)
+                                val intent = Intent(this@RegisterPageActivity, VerifyCodeActivity::class.java)
                                 val bundle = Bundle()
                                 bundle.putSerializable("userdata", userData)
                                 intent.putExtras(bundle)
                                 startActivity(intent)
                             }
-                            Toast.makeText(this@RegisiterPageActivity, message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@RegisterPageActivity, message, Toast.LENGTH_SHORT).show()
                         } else {
                             val error = response.body()?.error
                             Log.d("+++0", error.toString())
                             Toast.makeText(
-                                this@RegisiterPageActivity,
+                                this@RegisterPageActivity,
                                 "Something wrong please try again.",
                                 Toast.LENGTH_SHORT
                             ).show()
@@ -82,7 +91,7 @@ class RegisiterPageActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
                         Log.d("+++", t.message.toString())
-                        Toast.makeText(this@RegisiterPageActivity, t.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RegisterPageActivity, t.message, Toast.LENGTH_SHORT).show()
                     }
                 })
             }

@@ -18,6 +18,7 @@ class OnBoardActivity : AppCompatActivity() {
         setAdapter()
     }
 
+
     private fun setAdapter() {
         onBoardViewPager = findViewById(R.id.onBoardViewPager)
         sliderAdapter = SliderAdapter(this)
@@ -45,7 +46,7 @@ class OnBoardActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 if (onBoardViewPager.currentItem == 2) {
                     onBoardButton.setOnClickListener {
-                        val intent = Intent(this@OnBoardActivity, RegisiterPageActivity::class.java)
+                        val intent = Intent(this@OnBoardActivity, LoginPageActivity::class.java)
                         startActivity(intent)
                     }
                 }

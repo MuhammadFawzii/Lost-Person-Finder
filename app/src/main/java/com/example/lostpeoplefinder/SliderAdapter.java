@@ -18,7 +18,7 @@ public class SliderAdapter extends PagerAdapter {
         this.context = context;
     }
 
-    public  int[] sliderImages ={R.drawable.on_board_one,R.drawable.on_board_two,R.drawable.on_board_three};
+    public  int[] sliderImages ={R.drawable.onboard1,R.drawable.onboard2,R.drawable.onboard3};
     public String[] sliderTitles={"Welcome","Find Lost People","Help Others"};
     public String[] sliderDesc={"Welcome to Finder, where hope meets action!","Together, we can bring missing loved ones back home.","Join our community of caring hearts and make a difference."};
 
