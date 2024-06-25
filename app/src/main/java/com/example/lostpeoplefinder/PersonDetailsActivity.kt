@@ -30,6 +30,7 @@ class PersonDetailsActivity : AppCompatActivity() {
         gender=findViewById(R.id.personGenderTextView)
         location=findViewById(R.id.personLocationTextView)
         date=findViewById(R.id.personDateTextView)
+        val city=findViewById<TextView>(R.id.city)
         geocoder = Geocoder(this, Locale.getDefault())
         Toast.makeText(this, convertLatLongToLocation(29.95375640,31.53700030), Toast.LENGTH_SHORT).show()
         val ig=intent.getStringExtra("image")
@@ -38,6 +39,7 @@ class PersonDetailsActivity : AppCompatActivity() {
             .into(img)
         name.text = intent.getStringExtra("name")
         age.text = intent.getStringExtra("age")
+        city.text=intent.getStringExtra("city")
         val x=intent.getStringExtra("gender")
         var gen:String = if(x=="1")
             "Male"

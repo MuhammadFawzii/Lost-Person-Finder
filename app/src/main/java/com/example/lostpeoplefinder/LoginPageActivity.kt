@@ -1,5 +1,6 @@
 package com.example.lostpeoplefinder
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -47,6 +48,11 @@ class LoginPageActivity : AppCompatActivity() {
                             val message = response.body()?.message
                             Log.d("++++", message.toString())
                             if (message.equals("Login successful")) {
+                                val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+                                val editor = sharedPreferences.edit()
+                                editor.putString("USER_ID",response.body()?.id.toString())
+                                editor.apply()
+
                                 startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
                             }
                             Toast.makeText(this@LoginPageActivity, message, Toast.LENGTH_SHORT).show()

@@ -1,6 +1,7 @@
 package com.example.lostpeoplefinder
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +48,8 @@ class DetailsActivity7 : AppCompatActivity() {
         val note=intent.getStringExtra("note").toString()
         val lang="5.0"//intent.getStringExtra("lang").toString()
         val lat="3.66"//intent.getStringExtra("lat").toString()
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getString("USER_ID", null)
         Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
             .show()
 
@@ -71,6 +74,9 @@ class DetailsActivity7 : AppCompatActivity() {
         constraintLayout7 = findViewById(R.id.constraintLayout7)
         img=findViewById(R.id.img)
 
+        val btn_next3 = findViewById<Button>(R.id.btn_next3)
+        val btn_previous3 = findViewById<Button>(R.id.btn_previous3)
+
         pickImageButton.setOnClickListener {
             ImagePicker.with(this)
                 .crop()	    			//Crop image(Optional), Check Customization for more option
@@ -80,92 +86,107 @@ class DetailsActivity7 : AppCompatActivity() {
         }
         Toast.makeText(this@DetailsActivity7, report_name.toString(), Toast.LENGTH_SHORT)
         .show()
-        val btn_next3 = findViewById<Button>(R.id.btn_next3)
-        val btn_previous3 = findViewById<Button>(R.id.btn_previous3)
+
+
+
         btn_next3.setOnClickListener {
-            val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
-            val imagePart = MultipartBody.Part.createFormData("image", file?.name, requestFile)
-            val requestBody = RequestBody.create(MediaType.parse("text/plain"), name)
+            if(file==null){
+                Toast.makeText(this, "an error occure please try upload phote", Toast.LENGTH_SHORT).show()
+            }else {
+                val requestFile = RequestBody.create(MediaType.parse("image/*"), file)
+                val imagePart = MultipartBody.Part.createFormData("image", file?.name, requestFile)
+                val requestBody = RequestBody.create(MediaType.parse("text/plain"), name)
 
-            if (report_name == "2") {
-                Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
-                    .show()
-                call = RetrofitClient.instance.sendPersonData(
-                    requestBody,
-                    RequestBody.create(MediaType.parse("text/plain"), age),
-                    RequestBody.create(MediaType.parse("text/plain"), date),
-                    RequestBody.create(MediaType.parse("text/plain"), number),
-                    RequestBody.create(MediaType.parse("text/plain"), email),
-                    imagePart,
-                    RequestBody.create(MediaType.parse("text/plain"), lang),
-                    RequestBody.create(MediaType.parse("text/plain"), lat),
-                    RequestBody.create(MediaType.parse("text/plain"), gender)
-                )
+                if (report_name == "2") {
+                    Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
+                        .show()
+                    call = RetrofitClient.instance.sendPersonData(
+                        requestBody,
+                        RequestBody.create(MediaType.parse("text/plain"), age),
+                        RequestBody.create(MediaType.parse("text/plain"), date),
+                        RequestBody.create(MediaType.parse("text/plain"), number),
+                        RequestBody.create(MediaType.parse("text/plain"), email),
+                        imagePart,
+                        RequestBody.create(MediaType.parse("text/plain"), lang),
+                        RequestBody.create(MediaType.parse("text/plain"), lat),
+                        RequestBody.create(MediaType.parse("text/plain"), gender),
+                        RequestBody.create(MediaType.parse("text/plain"), userId)
+                    )
 
 
-            } else {
-                Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
-                    .show()
-                call = RetrofitClient.instance.send_find(
-                    requestBody,
-                    RequestBody.create(MediaType.parse("text/plain"), age),
-                    RequestBody.create(MediaType.parse("text/plain"), date),
-                    RequestBody.create(MediaType.parse("text/plain"), number),
-                    RequestBody.create(MediaType.parse("text/plain"), email),
-                    imagePart,
-                    RequestBody.create(MediaType.parse("text/plain"), lang),
-                    RequestBody.create(MediaType.parse("text/plain"), lat),
-                    RequestBody.create(MediaType.parse("text/plain"), gender)
-                )
-            }
+                } else {
+                    Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
+                        .show()
+                    call = RetrofitClient.instance.send_find(
+                        requestBody,
+                        RequestBody.create(MediaType.parse("text/plain"), age),
+                        RequestBody.create(MediaType.parse("text/plain"), date),
+                        RequestBody.create(MediaType.parse("text/plain"), number),
+                        RequestBody.create(MediaType.parse("text/plain"), email),
+                        imagePart,
+                        RequestBody.create(MediaType.parse("text/plain"), lang),
+                        RequestBody.create(MediaType.parse("text/plain"), lat),
+                        RequestBody.create(MediaType.parse("text/plain"), gender),
+                        RequestBody.create(MediaType.parse("text/plain"), userId)
+                    )
+                }
 
-            call.enqueue(object : Callback<FindResponse> {
-                override fun onResponse(
-                    call: Call<FindResponse>,
-                    response: Response<FindResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val findResponse = response.body()
-                        if (findResponse != null) {
-                            if (findResponse.final_result != null) {
-                                val finalResult = findResponse.final_result
-                                // Final result available, do something with it
-                                var intent =
-                                    Intent(this@DetailsActivity7, ResponseActivity::class.java)
-                                intent.putExtra("final", ArrayList(finalResult))
-                                startActivity(intent)
-                                Log.d("test000", finalResult.toString())
+                call.enqueue(object : Callback<FindResponse> {
+                    override fun onResponse(
+                        call: Call<FindResponse>,
+                        response: Response<FindResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val findResponse = response.body()
+                            if (findResponse != null) {
+                                if (findResponse.final_result != null) {
+                                    val finalResult = findResponse.final_result
+                                    // Final result available, do something with it
+                                    var intent =
+                                        Intent(this@DetailsActivity7, ResponseActivity::class.java)
+                                    intent.putExtra("final", ArrayList(finalResult))
+                                    startActivity(intent)
+                                    Log.d("test000", finalResult.toString())
+                                    Toast.makeText(
+                                        this@DetailsActivity7,
+                                        finalResult.toString(),
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                } else if (findResponse.message != null) {
+                                    // No person found, handle the message
+                                    Toast.makeText(
+                                        this@DetailsActivity7,
+                                        " Person not found",
+                                        Toast.LENGTH_LONG
+                                    )
+                                        .show()
+                                    startActivity(
+                                        Intent(
+                                            this@DetailsActivity7,
+                                            DetailsCompleteActivity8::class.java
+                                        )
+                                    )
+                                } else if (findResponse.error != null) {
+                                    // Handle error
+                                    Toast.makeText(
+                                        this@DetailsActivity7,
+                                        "Image does not contain exactly one Face or No Face",
+                                        Toast.LENGTH_LONG
+                                    )
+                                        .show()
+                                }
+                            } else {
+                                // Handle null response
                                 Toast.makeText(
                                     this@DetailsActivity7,
-                                    finalResult.toString(),
+                                    "Some thing wrong please try again",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
-                            } else if (findResponse.message != null) {
-                                // No person found, handle the message
-                                Toast.makeText(
-                                    this@DetailsActivity7,
-                                    " Person not found",
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
-                                startActivity(Intent(this@DetailsActivity7, DetailsCompleteActivity8::class.java))
-                            } else if (findResponse.error != null) {
-                                // Handle error
-                                Toast.makeText(
-                                    this@DetailsActivity7,
-                                    "Image does not contain exactly one Face or No Face",
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
                             }
-                        } else {
-                            // Handle null response
-                            Toast.makeText(this@DetailsActivity7,"Some thing wrong please try again", Toast.LENGTH_SHORT)
-                                .show()
-                        }
 
-                        /*val lostPersonResponse = response.body()
+                            /*val lostPersonResponse = response.body()
                         // Check if the response is not null
                         if (lostPersonResponse != null) {
                             Toast.makeText(this@DetailsActivity7, "dfsdssfd!!", Toast.LENGTH_SHORT)
@@ -215,13 +236,19 @@ class DetailsActivity7 : AppCompatActivity() {
 
                     }
                 }*/
+                        }
                     }
-                }
-                override fun onFailure(call: Call<FindResponse>, t: Throwable) {
-                    Toast.makeText(this@DetailsActivity7, t.toString() + "505", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
+
+                    override fun onFailure(call: Call<FindResponse>, t: Throwable) {
+                        Toast.makeText(
+                            this@DetailsActivity7,
+                            t.toString() + "505",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                })
+            }
         }
         btn_previous3.setOnClickListener {
             startActivity(Intent(this, DetailsActivity6::class.java))
@@ -252,4 +279,11 @@ class DetailsActivity7 : AppCompatActivity() {
             Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
         }
     }
+
+//    val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+//    val editor = sharedPreferences.edit()
+//    editor.remove("USER_ID")
+//    editor.apply()
+
+
 }

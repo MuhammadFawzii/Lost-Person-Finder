@@ -98,13 +98,12 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/proxima_nova_reg_it"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/proxima_nova_bold"
         android:text="Last Known Location"
         android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        android:textSize="18sp"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
          />
@@ -112,45 +111,26 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_uploadPhotographs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_corner_background"
+        android:layout_height="60dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/search_view_bg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="347dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:text="Exact Location or Location where the person was last seen"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.106"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.119"
-            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tv_enter_location"
-            android:layout_width="352dp"
-            android:layout_height="92dp"
-            android:background="@drawable/edit_text_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/mulishromanregular"
             android:gravity="center"
             android:text="Click here to chose your location on Map"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.304"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView12"
-            app:layout_constraintVertical_bias="0.96" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,13 +140,12 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/proxima_nova_bold"
         android:text="Date of the last known sighting"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_uploadPhotographs"
         tools:ignore="MissingConstraints" />
@@ -174,27 +153,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/rounded_corner_background"
+        android:layout_height="60dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/search_view_bg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         tools:ignore="MissingConstraints">
 
-        <EditText
+        <TextView
             android:id="@+id/et_last_Data"
-            android:layout_width="312dp"
-            android:layout_height="54dp"
-            android:background="@drawable/edit_text_background"
-            android:ems="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/mulishromanregular"
-            android:hint="enter data and time"
-            android:inputType="datetime"
+            android:hint="Data"
+            android:textColorHint="@color/black"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.078"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -202,15 +178,47 @@
             android:id="@+id/calender"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_margin="12dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/baseline_calendar_month_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="12dp"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:text="City Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/search_view_bg"
+        android:ems="10"
+        android:fontFamily="@font/mulishromanregular"
+        android:hint="Cairo"
+        android:textColorHint="@color/black"
+        android:paddingStart="10dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+
 
     <Button
         android:id="@+id/bt_next4"
