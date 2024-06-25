@@ -16,7 +16,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -36,15 +35,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".UserReports"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false">
-
-
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".RedirectActivity"
             android:exported="false"/>
@@ -69,17 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginPageActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
-
-
+            android:exported="false"/>
 
         <activity
             android:name=".PersonDetailsActivity"
@@ -128,7 +125,14 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".DetailsCompleteActivity8"
             android:exported="false" />
@@ -138,9 +142,7 @@
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".PrivacePolicyActivity"

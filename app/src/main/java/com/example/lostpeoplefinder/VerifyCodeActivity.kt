@@ -32,7 +32,7 @@ class VerifyCodeActivity : AppCompatActivity() {
             val toast = Toast.makeText(this, "Verification Code: $verificationCode", Toast.LENGTH_SHORT)
             toast.show()
 
-            val call=RetrofitClient.instance.verifyCode(userData!!.username,userData.password,userData.phone_number,userData.email,verificationCode)
+            val call=RetrofitClient.instance.verifyCode(userData!!.username,userData.password,userData.phone_number,userData.email,verificationCode,userData.city,userData.token,userData.isEnabledNofification)
             call.enqueue(object : Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {

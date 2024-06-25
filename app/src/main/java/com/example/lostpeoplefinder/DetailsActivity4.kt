@@ -19,6 +19,7 @@ class DetailsActivity4 : AppCompatActivity() {
         val date=intent.getStringExtra("date")
         val lang=intent.getStringExtra("lang")
         val lat=intent.getStringExtra("lat")
+        val cityName=intent.getStringExtra("city")
         val btn_next5=findViewById<Button>(R.id.bt_next5)
         val btn_previous5=findViewById<Button>(R.id.bt_previous5)
         val eNumber=findViewById<EditText>(R.id.number)
@@ -49,12 +50,22 @@ class DetailsActivity4 : AppCompatActivity() {
                 intent.putExtra("lang", lang)
                 intent.putExtra("lat",lat)
                 intent.putExtra("report", report_name)
+                intent.putExtra("city",cityName)
                 startActivity(intent)
 
             }
         }
         btn_previous5.setOnClickListener {
-            startActivity(Intent(this,DetailsActivity3::class.java))
+            var intent=Intent(this,DetailsActivity3::class.java)
+            intent.putExtra("name", name)
+            intent.putExtra("gender", gender)
+            intent.putExtra("age", age)
+            intent.putExtra("date",date)
+            intent.putExtra("lang", lang)
+            intent.putExtra("lat",lat)
+            intent.putExtra("report", report_name)
+            intent.putExtra("city",cityName)
+            startActivity(intent)
 
         }
 

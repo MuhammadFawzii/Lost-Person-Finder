@@ -6,10 +6,13 @@ import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.*
 
 class DetailsActivity3 : AppCompatActivity() {
-    lateinit var date:EditText
+    lateinit var date:TextView
+    lateinit var city:EditText
+    lateinit var report:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details4)
@@ -19,16 +22,21 @@ class DetailsActivity3 : AppCompatActivity() {
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
         val gender=intent.getStringExtra("gender")
         val btn_next4=findViewById<Button>(R.id.bt_next4)
+        city=findViewById<EditText>(R.id.city)
+        report=findViewById(R.id.textView6)
         val btn_previous4=findViewById<Button>(R.id.btn_previous4)
         val calendarIcon = findViewById<ImageView>(R.id.calender)
-         date=findViewById<EditText>(R.id.et_last_Data)
-        Toast.makeText(this@DetailsActivity3, report_name.toString(), Toast.LENGTH_SHORT)
-            .show()
+         date=findViewById<TextView>(R.id.et_last_Data)
+        val dateConstrain=findViewById<ConstraintLayout>(R.id.constraintLayout9)
+        getData()
+//        Toast.makeText(this@DetailsActivity3, report_name.toString(), Toast.LENGTH_SHORT)
+//            .show()
         btn_next4.setOnClickListener {
             val date=date.text.toString()
             val lang="160"
             val lat="120"
-            if(date.isNotEmpty()) {
+            val cityName=city.text.toString()
+            if(date.isNotEmpty()&&cityName.isNotEmpty()) {
                 val intent = Intent(this, DetailsActivity4::class.java)
                 intent.putExtra("name", name)
                 intent.putExtra("gender", gender)
@@ -37,11 +45,23 @@ class DetailsActivity3 : AppCompatActivity() {
                 intent.putExtra("lang", lang)
                 intent.putExtra("lat",lat)
                 intent.putExtra("report", report_name)
+                intent.putExtra("city",cityName)
                 startActivity(intent)
             }
+            else{
+                Toast.makeText(this, "Fill all data.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        dateConstrain.setOnClickListener {
+            showDatePicker()
         }
         btn_previous4.setOnClickListener {
-            startActivity(Intent(this,DetailsActivity1::class.java))
+           val intent= Intent(this,DetailsActivity1::class.java)
+            intent.putExtra("name",name)
+            intent.putExtra("age",age)
+            intent.putExtra("gender",gender)
+            intent.putExtra("report",report_name)
+            startActivity(intent)
         }
         calendarIcon.setOnClickListener {
             showDatePicker()
@@ -64,7 +84,7 @@ class DetailsActivity3 : AppCompatActivity() {
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, dayOfMonth ->
                 val selectedDate = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
                 val date1 = convertDateFormat(selectedDate)
-                date.setText(date1)
+                date.text=date1
 
             },
             year,
@@ -95,5 +115,19 @@ class DetailsActivity3 : AppCompatActivity() {
         // Format the date in "yyyy-MM-dd" format
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return sdf.format(calendar.time)
+    }
+
+    fun getData(){
+        val cityName:String=intent.getStringExtra("city")?:""
+        if(cityName!=null)
+            city.setText(cityName)
+        val Date:String=intent.getStringExtra("date")?:""
+        if(Date!=null)
+            date.setText(Date)
+        val genderText:String=intent.getStringExtra("gender")?:"1"
+        val reportNum:String=intent.getStringExtra("report")?:""
+        if(reportNum!=null)
+            if(reportNum.equals("1"))
+                report.text="Found Person Details"
     }
 }

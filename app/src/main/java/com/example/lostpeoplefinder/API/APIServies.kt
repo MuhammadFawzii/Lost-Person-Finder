@@ -3,11 +3,8 @@ package com.example.lostpeoplefinder.API
 import com.example.lostpeoplefinder.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
-import java.io.File
 
 public interface APIServies {
     @POST("register")
@@ -26,7 +23,10 @@ public interface APIServies {
         @Field("password") password: String,
         @Field("phone_number") phoneNumber: String,
         @Field("email") email: String,
-        @Field("code") code: String
+        @Field("code") code: String,
+        @Field("city") city: String,
+        @Field("token") token: String,
+        @Field("notifications") isEnabled: Boolean,
     ): Call<ApiResponse>
     @FormUrlEncoded
     @POST("forgot_password")
@@ -67,7 +67,8 @@ public interface APIServies {
         @Part image: MultipartBody.Part,
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
-        @Part("gender") gender: RequestBody
+        @Part("gender") gender: RequestBody,
+        @Part("id") id:RequestBody
     ): Call<FindResponse>
 
 
@@ -85,12 +86,14 @@ public interface APIServies {
         @Part image: MultipartBody.Part,
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
-        @Part("gender") gender: RequestBody
+        @Part("gender") gender: RequestBody,
+        @Part("id") id:RequestBody
     ): Call<FindResponse>
 
     @GET("/home_lost")
     fun getLostPeople(): Call<Map<String, Person>>
-
+    @GET("/reports/{user_id}")
+    fun getUserReports(@Path("user_id") userId: Int): Call<Map<String, Person>>
     @GET("/home_find")
     fun getFoundPeople(): Call<Map<String, Person>>
 

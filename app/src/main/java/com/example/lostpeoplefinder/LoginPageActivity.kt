@@ -1,5 +1,6 @@
 package com.example.lostpeoplefinder
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -109,33 +110,45 @@ class LoginPageActivity : AppCompatActivity() {
            } else {
                val loginData = LoginData(email, password)
 
-               // Make login request
-               val call = RetrofitClient.instance.loginUser(loginData)
-               call.enqueue(object : Callback<LoginResponse> {
-                   override fun onResponse(
-                       call: Call<ApiResponse>,
-                       response: Response<ApiResponse>
-                   ) {
-                       if (response.isSuccessful) {
-                           val message = response.body()?.message
-                           Log.d("++++", message.toString())
-                           if (message.equals("Login successful")) {
-                               startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
-                               RememberHandler.getInstance(this@LoginPageActivity).saveUserId(1);
-                           }
-                           Toast.makeText(this@LoginPageActivity, message, Toast.LENGTH_SHORT).show()
-                       } else {
-                           val error = response.body()?.error
-                           Log.d("00++", error.toString())
-                           Toast.makeText(this@LoginPageActivity, error, Toast.LENGTH_SHORT).show()
-                       }
-                   }
+                // Make login request
+                val call = RetrofitClient.instance.loginUser(loginData)
+                call.enqueue(object : Callback<ApiResponse> {
+                    override fun onResponse(
+                        call: Call<ApiResponse>,
+                        response: Response<ApiResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val message = response.body()?.message
+                            Log.d("++++", message.toString())
+                            if (message.equals("Login successful")) {
+                                startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
+                            }
+                            Toast.makeText(this@LoginPageActivity, message, Toast.LENGTH_SHORT).show()
+                        } else {
+                            val error = response.body()?.error
+                            Log.d("00++", error.toString())
+                            Toast.makeText(this@LoginPageActivity, error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
-                   override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                       Toast.makeText(this@LoginPageActivity, "Failed to login", Toast.LENGTH_SHORT)
-                           .show()
-                   }
-               })
-           }
+                    override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginPageActivity, "Failed to login", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                })
+            }
 
-       }*/
+        }
+        textViewSignUp.setOnClickListener {
+            var intent = Intent(this, RegisterPageActivity::class.java)
+            startActivity(intent)
+        }
+        forgetPassword.setOnClickListener {
+            var intent = Intent(this, ForgetPasswordActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun setRememberMeWhenLoginSuccess(email:String,password:String){
+        RememberMeHandler.getInstance(this).createRememberMeSession(email,password,false);
+    }
+}

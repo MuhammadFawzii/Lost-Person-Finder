@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +23,18 @@ class RegisterPageActivity : AppCompatActivity() {
        // FirebaseApp.initializeApp(this)
         // Check if the default Firebase app is initialized
 
+        var isEnabled=false
+
+        val  city: Spinner = findViewById(R.id.citySpinner)
+        val cities = arrayOf(
+            "Cairo", "Giza", "Alexandria", "Shubra El-Kheima", "Port Said", "Suez", "El Mahalla El Kubra",
+            "Luxor", "Mansoura", "Tanta", "Asyut", "Ismailia", "Faiyum", "Zagazig", "Aswan", "Damietta",
+            "Damanhur", "Al-Minya", "Beni Suef", "Qena", "Sohag", "Hurghada", "6th of October City",
+            "Shibin El Kom", "Banha", "Arish", "Mallawi", "Belbeis", "10th of Ramadan City", "Qalyub",
+            "Kafr el-Sheikh", "Minya", "Abu Kabir", "Kafr el-Dawwar", "Desouk", "Marsa Matruh",
+            "Idfu", "El Alamein", "Beni Mazar", "Basyoun", "El-Mahalla El-Kubra", "Samalut", "Abu Qurqas",
+            "Qus", "El-Hawamdeya", "El-Qantara", "Beba", "Marsa Alam"
+        )
         var token=""
         //Toast.makeText(this, "Firebase is not initialized", Toast.LENGTH_SHORT).show()
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
@@ -39,11 +50,12 @@ class RegisterPageActivity : AppCompatActivity() {
                 Log.d("bkr", token)
                 Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
 
-            } else {
-                Log.w("bkr", "FCM registration token is null")
-            }
-        }
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, cities)
 
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        city.adapter = adapter
 
 
         val btnSignUp: Button = findViewById(R.id.bt_Next_Register)
@@ -58,7 +70,7 @@ class RegisterPageActivity : AppCompatActivity() {
             val email = editTextEmail.text.toString()
             val password =editTextPassword.text.toString()
             val phoneNumber = editTextPhoneNumber.text.toString()
-
+            val selectedCity=city.selectedItem.toString()
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
             val passwordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}"
             val phoneNumberPattern = "\\d{11}"
@@ -77,9 +89,8 @@ class RegisterPageActivity : AppCompatActivity() {
             if (!isPhoneNumberValid) {
                 Toast.makeText(this, "Phone Number not valid \n Should be 11 char", Toast.LENGTH_LONG).show()
             }
-
-            if (isEmailValid && isPasswordValid && isPhoneNumberValid) {
-                val userData = UserData(username, email, password, phoneNumber,token)
+            if (isEmailValid && isPasswordValid && isPhoneNumberValid&&selectedCity!=null) {
+                val userData = UserData(username, email, password, phoneNumber,selectedCity,token,isEnabled)
                 // Make sign up request
                 val call = RetrofitClient.instance.registerUser(userData)
                 call.enqueue(object : Callback<ApiResponse> {
