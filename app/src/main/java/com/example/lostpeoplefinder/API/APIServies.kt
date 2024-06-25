@@ -14,7 +14,7 @@ public interface APIServies {
     fun registerUser(@Body userData: UserData): Call<ApiResponse>
 
     @POST("login")
-    fun loginUser(@Body loginData: LoginData): Call<ApiResponse>
+    fun loginUser(@Body loginData: LoginData): Call<LoginResponse>
 
 
     @POST("logout")
@@ -93,5 +93,20 @@ public interface APIServies {
 
     @GET("/home_find")
     fun getFoundPeople(): Call<Map<String, Person>>
+
+    @GET("getuser/{id}")
+    fun getUser(@Path("id") id: Int): Call<User>
+
+    @POST("update_user")
+    @FormUrlEncoded
+    fun updateUser(
+        @Field("id") id: String,
+        @Field("username") username: String,
+        @Field("phone_number") phoneNumber: String,
+        @Field("lng") lng: String,
+        @Field("lat") lat: String,
+        @Field("city") city: String,
+        @Field("notifications") notifications: String
+    ): Call<Void> // Modify return type based on your response
 
 }

@@ -120,7 +120,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_corner_background"
-        android:drawableStart="@drawable/ic_phone"
+        android:drawableStart="@drawable/img_call"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="0121548887"

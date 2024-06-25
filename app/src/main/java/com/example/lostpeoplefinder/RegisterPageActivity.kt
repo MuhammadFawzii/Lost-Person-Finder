@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,8 +24,26 @@ class RegisterPageActivity : AppCompatActivity() {
        // FirebaseApp.initializeApp(this)
         // Check if the default Firebase app is initialized
 
+        var token=""
+        //Toast.makeText(this, "Firebase is not initialized", Toast.LENGTH_SHORT).show()
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("bkr", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
 
-        Toast.makeText(this, "Firebase is not initialized", Toast.LENGTH_SHORT).show()
+            // Get new FCM registration token
+            token = task.result
+            if (token != null) {
+                // Log and toast
+                Log.d("bkr", token)
+                Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+
+            } else {
+                Log.w("bkr", "FCM registration token is null")
+            }
+        }
+
 
 
         val btnSignUp: Button = findViewById(R.id.bt_Next_Register)
@@ -58,6 +77,7 @@ class RegisterPageActivity : AppCompatActivity() {
             if (!isPhoneNumberValid) {
                 Toast.makeText(this, "Phone Number not valid \n Should be 11 char", Toast.LENGTH_LONG).show()
             }
+
             if (isEmailValid && isPasswordValid && isPhoneNumberValid) {
                 val userData = UserData(username, email, password, phoneNumber,token)
                 // Make sign up request

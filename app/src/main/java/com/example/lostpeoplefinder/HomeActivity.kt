@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
+import com.example.yourapp.RememberHandler
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.color.utilities.Cam16
 import com.google.firebase.messaging.FirebaseMessaging
@@ -29,6 +30,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
     lateinit var reportFindingButton:Button
     lateinit var reportMissingButton:Button
     lateinit var backBtn:ImageView
+    lateinit var profileBtn:ImageView
+
     private lateinit var mShimmerViewContainer: ShimmerFrameLayout
     private lateinit var mShimmerViewContainer2: ShimmerFrameLayout
 
@@ -58,24 +61,12 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
         backBtn=findViewById(R.id.logoutButton)
+        profileBtn=findViewById(R.id.profileButton)
+        Log.d("srsr", RememberHandler.getInstance(this).getUserId().toString())
 
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("bkr", "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
-            }
 
-            // Get new FCM registration token
-            val token = task.result
-            if (token != null) {
-                // Log and toast
-                Log.d("bkr", token)
-                Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
-            } else {
-                Log.w("bkr", "FCM registration token is null")
-            }
-        }
+
 
 
         //filterBtn=findViewById(R.id.btn_filter)
@@ -95,7 +86,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 //            }
 //        })
 
-        val call = RetrofitClient.instance.getLostPeople()
+       /* val call = RetrofitClient.instance.getLostPeople()
         call.enqueue(object : Callback<Map<String, Person>> {
             @SuppressLint("SuspiciousIndentation")
             override fun onResponse(
@@ -108,8 +99,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                      lostList = ArrayList(lostPeople?.values)
                             //Toast.makeText(this@HomeActivity, personList.toString(), Toast.LENGTH_SHORT).show()
                         // Handle the response here
-                        Log.d("MainActivity", "Lost people: $lostPeople")
-                        Log.d("MainActivity", "Lost: $lostList")
+                        Log.d("ray2", "Lost people: $lostPeople")
+                        Log.d("ray2", "Lost: $lostList")
                     adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
                     missingRv.adapter = adapter
                         //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
@@ -172,7 +163,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
             }
         })
 
-
+*/
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         //searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
@@ -212,6 +203,12 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
             // Navigate to login screen
             navigateToLoginScreen()
         })
+        profileBtn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish() // Finish the current activity to prevent going back to it after logout
+        })
+
     }
 
     private fun handleQuery(query: String) {

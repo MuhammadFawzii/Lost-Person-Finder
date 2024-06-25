@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "66001007932",
-    "project_id": "test-d8b64",
-    "storage_bucket": "test-d8b64.appspot.com"
+    "project_number": "249283416844",
+    "project_id": "notifications-31e2b",
+    "storage_bucket": "notifications-31e2b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:66001007932:android:9d8fc929a6c3397b46da39",
+        "mobilesdk_app_id": "1:249283416844:android:b42172a0ca32a43b832f29",
         "android_client_info": {
           "package_name": "com.example.lostpeoplefinder"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBSoZuupgTpr6-PFLX7a-y76b7SBuQ9TDw"
+          "current_key": "AIzaSyDiZrNbr9fgj2nIYFeD9uoy3G3AOX3oWLo"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:66001007932:android:a0ce76898fb5f8df46da39",
+        "mobilesdk_app_id": "1:249283416844:android:76001ab8efec8ba3832f29",
         "android_client_info": {
           "package_name": "com.example.testfirebase"
         }
@@ -34,7 +34,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBSoZuupgTpr6-PFLX7a-y76b7SBuQ9TDw"
+          "current_key": "AIzaSyDiZrNbr9fgj2nIYFeD9uoy3G3AOX3oWLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249283416844:android:a5fe81aa2d098175832f29",
+        "android_client_info": {
+          "package_name": "com.example.testnotification"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiZrNbr9fgj2nIYFeD9uoy3G3AOX3oWLo"
         }
       ],
       "services": {

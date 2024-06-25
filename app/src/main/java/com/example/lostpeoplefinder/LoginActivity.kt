@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         var editTextEmail: EditText = findViewById(R.id.editTextEmail)
         var editTextPassword: EditText = findViewById(R.id.editTextPassword)
         var forgetPassword:TextView=findViewById(R.id.forgetpassword)
-        btnLogin.setOnClickListener {
+        /*btnLogin.setOnClickListener {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
                 })
             }
 
-        }
+        }*/
         textViewSignUp.setOnClickListener {
             var intent = Intent(this, SignUp::class.java)
             startActivity(intent)

@@ -14,6 +14,11 @@ data class VerifyData(val username: String, val email: String, val password: Str
 data class LoginData(val email: String, val password: String)
 
 data class ApiResponse(val message: String?, val error: String?)
+
+data class LoginResponse(
+    val id: Int?,
+    val message: String
+)
 data class PersonModel(var headerText:String,val img:Int,var personName:String,var personData:String)
 
 data class OutputModel(val img:Int, var personName:String, var personAge:Int,
@@ -74,3 +79,14 @@ val image_url: String? // Optional, if you need to display the image
 
 data class ParentModel(var title:String, var list:ArrayList<OutputModel>)
 
+data class User(
+    val id: Int,
+    val username: String,
+    val email: String,
+    val phone_number: String,
+    val longitude: String,
+    val latitude: String,
+    val city: String,
+    val notification_enabled: Boolean,
+    val token: String
+):Serializable
