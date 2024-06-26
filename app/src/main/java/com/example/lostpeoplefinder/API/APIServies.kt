@@ -6,10 +6,12 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
-public interface APIServies {
-    @POST("register")
-    fun registerUser(@Body userData: UserData): Call<ApiResponse>
 
+public interface APIServies {
+//    @POST("register")
+//    fun registerUser(@Body email: String): Call<ApiResponse>
+@POST("/register")
+open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse>
     @POST("login")
     fun loginUser(@Body loginData: LoginData): Call<LoginResponse>
 
@@ -26,11 +28,13 @@ public interface APIServies {
         @Field("code") code: String,
         @Field("city") city: String,
         @Field("token") token: String,
-        @Field("notifications") isEnabled: Boolean,
+        @Field("notifications") isEnabled: Int,
     ): Call<ApiResponse>
+
+
     @FormUrlEncoded
     @POST("forgot_password")
-    fun forgotPassword(@Field("email") email: String,): Call<ApiResponse>
+    fun forgotPassword(@Field("email") email: String): Call<ApiResponse>
     @FormUrlEncoded
     @POST("verify_reset_code_password")
     fun verifyResetPassword(

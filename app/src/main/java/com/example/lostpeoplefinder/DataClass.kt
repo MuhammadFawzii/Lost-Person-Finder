@@ -6,7 +6,7 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Boolean) :
+data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Int) :
     Serializable
 
 data class VerifyData(val username: String, val email: String, val password: String, val phone_number: String,val code: String)
@@ -18,6 +18,9 @@ data class ApiResponse(val message: String?, val error: String?)
 data class LoginResponse(
     val id: Int?,
     val message: String
+)
+data class RegisterRequest(
+    val email: String
 )
 data class PersonModel(var headerText:String,val img:Int,var personName:String,var personData:String)
 

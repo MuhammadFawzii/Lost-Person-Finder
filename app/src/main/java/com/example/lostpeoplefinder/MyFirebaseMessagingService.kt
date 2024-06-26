@@ -36,7 +36,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(0, notificationBuilder.build())
     }
-    override fun onNewToken(token: String) {
 
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        Log.d("FCM", "New token: $token")
+        // Send the new token to your server or save it locally as needed
+        sendTokenToServer(token)
+    }
+
+    private fun sendTokenToServer(token: String) {
+        // Implement your logic to send the token to your server
     }
 }

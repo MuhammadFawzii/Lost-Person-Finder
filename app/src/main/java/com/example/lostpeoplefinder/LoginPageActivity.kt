@@ -96,7 +96,8 @@ class LoginPageActivity : AppCompatActivity() {
 
 
 
-/*btnLogin.setOnClickListener {
+/*
+btnLogin.setOnClickListener {
            val email = editTextEmail.text.toString()
            val password = editTextPassword.text.toString()
            val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
@@ -151,4 +152,4 @@ class LoginPageActivity : AppCompatActivity() {
     private fun setRememberMeWhenLoginSuccess(email:String,password:String){
         RememberMeHandler.getInstance(this).createRememberMeSession(email,password,false);
     }
-}
+}*/
