@@ -39,22 +39,24 @@ class DetailsActivity7 : AppCompatActivity() {
         setContentView(R.layout.activity_template)
         fileName=findViewById(R.id.filename)
         delete=findViewById(R.id.icon_delete)
-        val name=intent.getStringExtra("name").toString()
-        val age=intent.getStringExtra("age").toString()
-        val gender=intent.getStringExtra("gender").toString()
-        val date=intent.getStringExtra("date").toString()
-        val number=intent.getStringExtra("number").toString()
-        val email=intent.getStringExtra("email").toString()
-        val note=intent.getStringExtra("note").toString()
-        val lang="5.0"//intent.getStringExtra("lang").toString()
-        val lat="3.66"//intent.getStringExtra("lat").toString()
+        val name=intent.getStringExtra("name")
+        val age=intent.getStringExtra("age")
+        val gen=intent.getStringExtra("gender")
+        val date="2020/11/11"//intent.getStringExtra("date")
+        val number=intent.getStringExtra("number")
+        val email=intent.getStringExtra("email")
+        val note=intent.getStringExtra("note")
+        val lang=intent.getStringExtra("lng")
+        val lat=intent.getStringExtra("lat")
+        val city=intent.getStringExtra("city")
         val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val userId = sharedPreferences.getString("USER_ID", null)
-        Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
+        Toast.makeText(this@DetailsActivity7, name+age+gen+date, Toast.LENGTH_SHORT)
             .show()
 
         Toast.makeText(this@DetailsActivity7, number+email+lang+lat, Toast.LENGTH_SHORT)
             .show()
+        Log.d("userData",name+age+gen+date+number+email+lang+lat+userId)
 
 
 
@@ -68,7 +70,7 @@ class DetailsActivity7 : AppCompatActivity() {
         val lang="-50"
         val lat="533.54545"
         val report_name ="1"*/
-        val report_name =intent.getStringExtra("report").toString()
+        val report_name = (Integer.parseInt(intent.getStringExtra("report").toString()))
 
         val pickImageButton = findViewById<TextView>(R.id.tv_browsePhoto)
         constraintLayout7 = findViewById(R.id.constraintLayout7)
@@ -97,19 +99,22 @@ class DetailsActivity7 : AppCompatActivity() {
                 val imagePart = MultipartBody.Part.createFormData("image", file?.name, requestFile)
                 val requestBody = RequestBody.create(MediaType.parse("text/plain"), name)
 
-                if (report_name == "2") {
+                if (report_name == 2) {
                     Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
                         .show()
-                    call = RetrofitClient.instance.sendPersonData(
-                        requestBody,
+                    call = RetrofitClient.instance.send_find(
+                        RequestBody.create(MediaType.parse("text/plain"),"2"),
+                        RequestBody.create(MediaType.parse("text/plain"), name),
                         RequestBody.create(MediaType.parse("text/plain"), age),
                         RequestBody.create(MediaType.parse("text/plain"), date),
                         RequestBody.create(MediaType.parse("text/plain"), number),
                         RequestBody.create(MediaType.parse("text/plain"), email),
                         imagePart,
+                        RequestBody.create(MediaType.parse("text/plain"), city),
                         RequestBody.create(MediaType.parse("text/plain"), lang),
                         RequestBody.create(MediaType.parse("text/plain"), lat),
-                        RequestBody.create(MediaType.parse("text/plain"), gender),
+                        RequestBody.create(MediaType.parse("text/plain"), gen),
+                        RequestBody.create(MediaType.parse("text/plain"), note),
                         RequestBody.create(MediaType.parse("text/plain"), userId)
                     )
 
@@ -118,15 +123,18 @@ class DetailsActivity7 : AppCompatActivity() {
                     Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
                         .show()
                     call = RetrofitClient.instance.send_find(
-                        requestBody,
+                        RequestBody.create(MediaType.parse("text/plain"),"1"),
+                        RequestBody.create(MediaType.parse("text/plain"), name),
                         RequestBody.create(MediaType.parse("text/plain"), age),
                         RequestBody.create(MediaType.parse("text/plain"), date),
                         RequestBody.create(MediaType.parse("text/plain"), number),
                         RequestBody.create(MediaType.parse("text/plain"), email),
                         imagePart,
+                        RequestBody.create(MediaType.parse("text/plain"), city),
                         RequestBody.create(MediaType.parse("text/plain"), lang),
                         RequestBody.create(MediaType.parse("text/plain"), lat),
-                        RequestBody.create(MediaType.parse("text/plain"), gender),
+                        RequestBody.create(MediaType.parse("text/plain"), gen),
+                        RequestBody.create(MediaType.parse("text/plain"), note),
                         RequestBody.create(MediaType.parse("text/plain"), userId)
                     )
                 }

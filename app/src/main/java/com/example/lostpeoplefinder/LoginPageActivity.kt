@@ -53,7 +53,7 @@ class LoginPageActivity : AppCompatActivity() {
                                 editor.putString("USER_ID",response.body()?.id.toString())
                                 editor.apply()
 
-                                startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
+                                startActivity(Intent(this@LoginPageActivity, BaseActivity::class.java))
                             }
                             Toast.makeText(this@LoginPageActivity, message, Toast.LENGTH_SHORT).show()
                         } else {
@@ -64,6 +64,7 @@ class LoginPageActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginPageActivity, t.message, Toast.LENGTH_SHORT).show()
                         Toast.makeText(this@LoginPageActivity, "Failed to login", Toast.LENGTH_SHORT)
                             .show()
                     }

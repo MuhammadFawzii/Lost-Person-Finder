@@ -19,8 +19,9 @@ class DetailsActivity5 : AppCompatActivity() {
         val date=intent.getStringExtra("date")
         val number=intent.getStringExtra("number")
         val email=intent.getStringExtra("email")
-        val lang=intent.getStringExtra("lang")
+        val lang=intent.getStringExtra("lng")
         val lat=intent.getStringExtra("lat")
+        val cityName=intent.getStringExtra("city")
 
         Toast.makeText(this@DetailsActivity5, report_name.toString(), Toast.LENGTH_SHORT)
             .show()
@@ -36,9 +37,10 @@ class DetailsActivity5 : AppCompatActivity() {
             intent1.putExtra("number",number)
             intent1.putExtra("email",email)
             intent1.putExtra("note",note)
-            intent1.putExtra("lang", lang)
+            intent1.putExtra("lng", lang)
             intent1.putExtra("lat",lat)
             intent1.putExtra("report", report_name)
+            intent1.putExtra("city",cityName)
             startActivity(intent1)
 
         }

@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.utilities.Cam16
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +59,30 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
         backBtn=findViewById(R.id.logoutButton)
+       // FirebaseApp.initializeApp(this)
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    //startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_reports -> {
+                    startActivity(Intent(this, UserReports::class.java))
+                    true
+                }
+                R.id.navigation_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+
 
 
 //        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
@@ -109,7 +135,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                         // Handle the response here
                         Log.d("MainActivity", "Lost people: $lostPeople")
                         Log.d("MainActivity", "Lost: $lostList")
-                    adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
+                    adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList,"Missing")
                     missingRv.adapter = adapter
                         //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
                 }
@@ -147,7 +173,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                     // Handle the response here
                     Log.d("MainActivity", "Lost people: $lostPeople")
                     Log.d("MainActivity", "Lost: $foundList")
-                    adapter=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList)
+                    adapter=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList,"Found")
                     foundRv.adapter=adapter
                     //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
                 }

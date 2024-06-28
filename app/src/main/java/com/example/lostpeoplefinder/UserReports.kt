@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,7 +68,25 @@ class UserReports : AppCompatActivity(),OnItemClickListener {
             }
         })
 
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_reports -> {
+                    //startActivity(Intent(this, UserReports::class.java))
+                    true
+                }
+                R.id.navigation_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
 
 //        reportList.add(Person("abdo","20","26/5/2002","01013513652","abdo@gmail.com","test","35.2555","30.2200","1","Cairo"))

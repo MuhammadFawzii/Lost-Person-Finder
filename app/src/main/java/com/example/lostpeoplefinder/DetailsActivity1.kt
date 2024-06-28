@@ -16,21 +16,41 @@ import com.google.android.material.textfield.TextInputEditText
 import java.util.Calendar
 
 class DetailsActivity1 : AppCompatActivity() {
+    private val REQUEST_CODE = 1
     lateinit var ETName:TextInputEditText
     lateinit var age:EditText
     lateinit var gender:Spinner
     lateinit var report:TextView
+    lateinit var report_name:String
+   // lateinit var reportData:ReportData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details1)
-        val report_name = intent.getStringExtra("report")
         ETName = findViewById(R.id.name)
         age = findViewById(R.id.age)
-        val btn_next1 = findViewById<Button>(R.id.btn_next1)
-        val btn_previous1 = findViewById<Button>(R.id.btn_previous1)
         gender = findViewById(R.id.textInputLayout2)
         report=findViewById(R.id.report)
-        getData()
+//        if (intent.hasExtra("data")) {
+//             reportData = (intent.getSerializableExtra("data") as? ReportData)!!
+//            if (reportData != null) {
+//                setData()
+//            } else {
+//                // Handle the case where data is null
+//            }
+//        } else {
+//            report_name= intent.getStringExtra("report")!!
+//        }
+        report_name= intent.getStringExtra("report")?:"1"
+//        ETName = findViewById(R.id.name)
+//        age = findViewById(R.id.age)
+//        report_name=reportdata.person_name
+
+
+        val btn_next1 = findViewById<Button>(R.id.btn_next1)
+        val btn_previous1 = findViewById<Button>(R.id.btn_previous1)
+
+        //setData()
+        //getData()
 
         val genders = arrayOf("Male", "Female")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genders)
@@ -52,12 +72,15 @@ class DetailsActivity1 : AppCompatActivity() {
                 if(Integer.parseInt(age)>100){
                     Toast.makeText(this, "age must be less than 100 year", Toast.LENGTH_SHORT).show()
                 }else{
-                val intent=Intent(this, DetailsActivity3::class.java)
-                intent.putExtra("name",name)
+                   val intent=Intent(this, DetailsActivity3::class.java)
+                   // reportData=ReportData(person_name = name, check_lost = report_name,age=age,null,null,null,null,null, gender = x,null,null,null)
+                    //Toast.makeText(this, reportData.person_name, Toast.LENGTH_SHORT).show()
+                   // intent.putExtra("data",reportData)
+                    intent.putExtra("name",name)
                 intent.putExtra("gender",x)
                 intent.putExtra("age",age)
                 intent.putExtra("report", report_name)
-                startActivity(intent)
+                 startActivity(intent)
               }
             }
             else {
@@ -68,23 +91,28 @@ class DetailsActivity1 : AppCompatActivity() {
             startActivity(Intent(this, HomeActivity::class.java))
         }
     }
-    fun getData(){
-        val name:String=intent.getStringExtra("name")?:""
-        if(name!=null)
-            ETName.setText(name)
-        val ageText:String=intent.getStringExtra("age")?:""
-        if(ageText!=null)
-            age.setText(ageText)
-        val genderText:String=intent.getStringExtra("gender")?:"0"
-        Toast.makeText(this, genderText, Toast.LENGTH_SHORT).show()
-        if(genderText!=null)
-            gender.setSelection(Integer.parseInt(genderText))
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+//            val name = data?.getStringExtra("name")
+//            val age1=data?.getStringExtra("age")
+//            val gender1=data?.getIntExtra("gender",1)
+//            report_name=data?.getStringExtra("report")!!
+//            ETName.setText(name)
+//            age.setText(age1)
+//            gender.setSelection(gender1!!)
+//        }
+//    }
 
-        val reportNum:String=intent.getStringExtra("report")?:""
-        if(reportNum!=null)
-        if(reportNum.equals("1"))
-            report.text="Found Person Details"
-        Toast.makeText(this@DetailsActivity1, reportNum, Toast.LENGTH_SHORT)
-            .show()
-    }
+
+//    fun setData(){
+//        if(reportData?.person_name!=null)
+//            ETName.setText(reportData?.person_name)
+//        if(reportData?.age!=null)
+//            age.setText(reportData?.age)
+//        if(reportData?.gender!=null)
+//            gender.setSelection(reportData?.gender!!)
+//        if(reportData?.check_lost!=null)
+//            report_name= reportData?.check_lost!!
+//    }
 }

@@ -10,17 +10,35 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.*
 
 class DetailsActivity3 : AppCompatActivity() {
+    private val REQUEST_CODE_A = 2
+    private val REQUEST_CODE_B = 1
     lateinit var date:TextView
+    lateinit var location:TextView
     lateinit var city:EditText
     lateinit var report:TextView
+    var name:String?=""
+    var age:String?=""
+    //lateinit var reportData:ReportData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details4)
-        val report_name = intent.getStringExtra("report")
-        val name=intent.getStringExtra("name")
-        val age=intent.getStringExtra("age")
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
-        val gender=intent.getStringExtra("gender")
+        val reportName = intent.getStringExtra("report")
+         name=intent.getStringExtra("name")
+         age=intent.getStringExtra("age")
+        var gender=intent.getStringExtra("gender")
+
+//        if (intent.hasExtra("data")) {
+//            reportData = (intent.getSerializableExtra("data") as? ReportData)!!
+//            if (reportData != null) {
+//                setData()
+//            } else {
+//                // Handle the case where data is null
+//            }
+//        } else {
+//            // Handle the case where the intent does not have the extra "data"
+//        }
+       // Toast.makeText(this, reportData.person_name, Toast.LENGTH_SHORT).show()
+        location=findViewById<TextView>(R.id.tv_enter_location)
         val btn_next4=findViewById<Button>(R.id.bt_next4)
         city=findViewById<EditText>(R.id.city)
         report=findViewById(R.id.textView6)
@@ -28,13 +46,13 @@ class DetailsActivity3 : AppCompatActivity() {
         val calendarIcon = findViewById<ImageView>(R.id.calender)
          date=findViewById<TextView>(R.id.et_last_Data)
         val dateConstrain=findViewById<ConstraintLayout>(R.id.constraintLayout9)
-        getData()
+       // getData()
 //        Toast.makeText(this@DetailsActivity3, report_name.toString(), Toast.LENGTH_SHORT)
 //            .show()
         btn_next4.setOnClickListener {
             val date=date.text.toString()
-            val lang="160"
-            val lat="120"
+            val lang="31.525"
+            val lat="30.552"
             val cityName=city.text.toString()
             if(date.isNotEmpty()&&cityName.isNotEmpty()) {
                 val intent = Intent(this, DetailsActivity4::class.java)
@@ -42,9 +60,15 @@ class DetailsActivity3 : AppCompatActivity() {
                 intent.putExtra("gender", gender)
                 intent.putExtra("age", age)
                 intent.putExtra("date",date)
-                intent.putExtra("lang", lang)
+                intent.putExtra("lng", lang)
                 intent.putExtra("lat",lat)
-                intent.putExtra("report", report_name)
+                intent.putExtra("report", reportName)
+//                reportData?.lng=lang
+//                reportData?.lat=lat
+//                reportData?.city=cityName
+//                reportData?.date_of_lost=date
+                //reportData=ReportData(person_name = reportData.person_name, check_lost = reportData.check_lost,age=reportData.age, date_of_lost = date,null,null, lat = lat, lng = lang, gender = reportData.gender, image_url = null, city = cityName, notes = null)
+                //intent.putExtra("data",reportData)
                 intent.putExtra("city",cityName)
                 startActivity(intent)
             }
@@ -56,11 +80,21 @@ class DetailsActivity3 : AppCompatActivity() {
             showDatePicker()
         }
         btn_previous4.setOnClickListener {
-           val intent= Intent(this,DetailsActivity1::class.java)
-            intent.putExtra("name",name)
-            intent.putExtra("age",age)
-            intent.putExtra("gender",gender)
-            intent.putExtra("report",report_name)
+            val intent = Intent(this, DetailsActivity1::class.java)
+//            val resultIntent = Intent()
+//            resultIntent.putExtra("name", name)
+//            resultIntent.putExtra("age", age)
+//            resultIntent.putExtra("gender", gender)
+//            resultIntent.putExtra("report", reportName)
+//            setResult(RESULT_OK, resultIntent)
+//            finish() // Go back to the previous activity
+//           val intent= Intent(this,DetailsActivity1::class.java)
+//            intent.putExtra("name",name)
+//            intent.putExtra("age",age)
+//            intent.putExtra("gender",gender)
+//            intent.putExtra("report",report_name)
+//
+            //intent.putExtra("data",reportData)
             startActivity(intent)
         }
         calendarIcon.setOnClickListener {
@@ -72,6 +106,29 @@ class DetailsActivity3 : AppCompatActivity() {
             startActivity(Intent(this@DetailsActivity3, MapActivity::class.java))
         }
     }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == RESULT_OK) {
+//            when (requestCode) {
+//                REQUEST_CODE_A -> {
+//                    name=data?.getStringExtra("name")
+//                    gender= data?.getIntExtra("gender",1)
+//                    age=data?.getStringExtra("age")
+//                    date.setText(data?.getStringExtra("date"))
+//                    location.setText(data?.getStringExtra("lat")+" "+ data?.getStringExtra("lng"))
+//                    data?.getStringExtra("report")
+//                    city.setText(data?.getStringExtra("city"))
+//
+//                }
+//                REQUEST_CODE_B -> {
+//                    city.setText(data?.getStringExtra("cityName"))
+//                    val latitude = data?.getStringExtra("latitude")
+//                    val longitude = data?.getStringExtra("longitude")
+//                    location.text = latitude + " " + longitude
+//                }
+//            }
+//        }
+    //}
 
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
@@ -117,17 +174,12 @@ class DetailsActivity3 : AppCompatActivity() {
         return sdf.format(calendar.time)
     }
 
-    fun getData(){
-        val cityName:String=intent.getStringExtra("city")?:""
-        if(cityName!=null)
-            city.setText(cityName)
-        val Date:String=intent.getStringExtra("date")?:""
-        if(Date!=null)
-            date.setText(Date)
-        val genderText:String=intent.getStringExtra("gender")?:"1"
-        val reportNum:String=intent.getStringExtra("report")?:""
-        if(reportNum!=null)
-            if(reportNum.equals("1"))
-                report.text="Found Person Details"
-    }
+//    fun setData(){
+//       if(reportData.date_of_lost!=null)
+//           date.setText(reportData.date_of_lost)
+//        if(reportData.city!=null)
+//            city.setText(reportData.city)
+//        if(reportData.lat!=null &&reportData.lng!=null)
+//            location.setText(reportData.lat)
+//    }
 }

@@ -16,4 +16,6 @@
     <string name="tv_password_8char_string">Password length must be 8 character.  </string>
     <string name="tv_password_reset_successfull">You\'ve successfully created a new password and taken another step in reuniting hearts. Now, you can go to the login screen to access your account.</string>
     <string name="notFound">Your information has been successfully submitted;We don\'t find any match we will store you report so the right one can found you.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

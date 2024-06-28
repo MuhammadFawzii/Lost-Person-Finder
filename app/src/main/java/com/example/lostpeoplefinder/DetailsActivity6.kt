@@ -25,8 +25,9 @@ class DetailsActivity6 : AppCompatActivity() {
         val number=intent.getStringExtra("number")
         val email=intent.getStringExtra("email")
         val note=intent.getStringExtra("note")
-        val lang=intent.getStringExtra("lang")
+        val lang=intent.getStringExtra("lng")
         val lat=intent.getStringExtra("lat")
+        val cityName=intent.getStringExtra("city")
 
         val checkbox = findViewById<CheckBox>(R.id.checkbox_privacy_terms)
         val termsLink = findViewById<TextView>(R.id.terms_link)
@@ -58,9 +59,10 @@ class DetailsActivity6 : AppCompatActivity() {
             intent.putExtra("number",number)
             intent.putExtra("email",email)
             intent.putExtra("note",note)
-            intent.putExtra("lang", lang)
+            intent.putExtra("lng", lang)
             intent.putExtra("lat",lat)
             intent.putExtra("report", report)
+            intent.putExtra("city",cityName)
             startActivity(intent)
         }
         btn_previous.setOnClickListener {
