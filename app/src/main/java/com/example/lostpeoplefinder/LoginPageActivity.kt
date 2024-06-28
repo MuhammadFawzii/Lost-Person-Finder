@@ -14,6 +14,11 @@ import com.example.yourapp.RememberHandler
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.location.Geocoder
+import android.location.Address
+import java.io.IOException
+import java.util.Locale
+
 
 class LoginPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,14 +30,14 @@ class LoginPageActivity : AppCompatActivity() {
         var editTextPassword: EditText = findViewById(R.id.et_password_login)
         var forgetPassword:TextView=findViewById(R.id.tv_forgetPassword_Login)
 
-        val email = "abdulrhmansaad78@gmail.com"
-        val password = "1234"
-        editTextEmail.setText(email);
-        editTextPassword.setText(password);
+//        val email = "ahmedhomes611@gmail.com"
+//        val password = "Bakr1234"
+//        editTextEmail.setText(email);
+//        editTextPassword.setText(password);
 
         btnLogin.setOnClickListener {
-            //val email = editTextEmail.text.toString()
-            //val password = editTextPassword.text.toString()
+            val email = editTextEmail.text.toString()
+            val password = editTextPassword.text.toString()
 
 
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
@@ -56,11 +61,13 @@ class LoginPageActivity : AppCompatActivity() {
                             val loginResponse = response.body()
                             val message = loginResponse?.message
                             Log.d("++++", message.toString())
+                            Log.d("++ms", email+" "+password);
+
 
                             if (message == "Login successful") {
                                 val userId = loginResponse.id
                                 userId?.let {
-                                    RememberHandler.getInstance(this@LoginPageActivity).saveUserId(it)
+                                    saveCurrentUser(it)
                                     startActivity(Intent(this@LoginPageActivity, HomeActivity::class.java))
                                 }
                             }
@@ -91,6 +98,67 @@ class LoginPageActivity : AppCompatActivity() {
     private fun setRememberMeWhenLoginSuccess(email:String,password:String){
         RememberMeHandler.getInstance(this).createRememberMeSession(email,password,false);
     }
+    fun saveCurrentUser(id:Int){
+        val call = RetrofitClient.instance.getUser(id) // Use a default value if user ID is null
+
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val user = response.body()
+                    if (user != null) {
+
+                        val o=RememberHandler.getInstance(this@LoginPageActivity)
+                            o.setUserId(user.id)
+                            o.setUserCity(user.city)
+                            o.setUserEmail(user.email)
+                            o.setUserName(user.username)
+                            o.setUserPhone(user.phone_number)
+                            o.setUser_Long_itutde(user.longitude.toString())
+                            o.setUser_Lat_itude(user.latitude.toString())
+                            o.setUserNotification(user.notification_enabled)
+                            o.setUserToken(user.token)
+                        o.setUserLocation(getAddressFromLocation(this@LoginPageActivity,user.longitude,user.latitude).toString())
+                        Log.d("hhg", o.toString())
+                        Log.d("loginTAG", "User saved successfully")
+
+                    } else {
+                        Log.d("loginTAG", "User object is null")
+                    }
+                } else {
+                    Log.d("loginTAG", "Response failed: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.d("loginTAG", "Failed to fetch user details: ${t.message}")
+            }
+        })
+
+    }
+    fun getAddressFromLocation(context: Context, latitude: Double, longitude: Double): String? {
+        val geocoder = Geocoder(context, Locale.getDefault())
+        return try {
+            val addresses: List<Address>? = geocoder.getFromLocation(latitude, longitude, 4)
+            if (addresses != null && addresses.isNotEmpty()) {
+                val address: Address = addresses[0]
+                val addressLines = StringBuilder()
+                for (i in 0..address.maxAddressLineIndex) {
+                    addressLines.append(address.getAddressLine(i)).append("\n")
+                }
+                Log.d("addddd",addressLines.toString().trim())
+                addressLines.toString().trim() // Trim to remove the last newline
+            } else {
+                Log.d("loginLoc","address is null");
+                null
+            }
+        } catch (e: IOException) {
+            Log.d("loginLoc",e.message.toString());
+            e.printStackTrace()
+            null
+        }
+    }
+
+
 }
 
 

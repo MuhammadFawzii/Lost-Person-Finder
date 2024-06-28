@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.example.yourapp.RememberHandler
 import retrofit2.Call
@@ -31,8 +32,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var userMobile:TextView
     lateinit var userCity:TextView
     lateinit var userLocation:TextView
-
-
+    lateinit var curUser:User
+    lateinit var o:RememberHandler
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,72 +52,85 @@ class ProfileActivity : AppCompatActivity() {
         userLocation=addressView.findViewById(R.id.user_location)
         userEmail=emailView.findViewById(R.id.user_email)
         userMobile=mobileView.findViewById(R.id.user_mobile)
-        var curUser=User(
-            id = -1,
-            username = "na",
-            email = "na",
-            phone_number = "na",
-            longitude = "na",
-            latitude = "na",
-            city = "na",
-            notification_enabled = true,
-            token = "na"
-        )
+        o=RememberHandler.getInstance(this)
 
-        val userLoggingid = RememberHandler.getInstance(this).getUserId()
+        Log.d("profileTAG", o.getUserId().toString())
+        reflectUserData()
 
-// Log the user ID for debugging purposes
-        Log.d("profileTAG", userLoggingid.toString())
-
-        // Example API call to get user by email
-        val call = RetrofitClient.instance.getUser(userLoggingid ?: -1) // Use a default value if user ID is null
-
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                if (response.isSuccessful) {
-                    val user = response.body()
-                    if (user != null) {
-                        // Update the UI with user details
-                        curUser=user
-                        userName.setText(user.username)
-                        userCity.setText(user.city)
-                        userMobile.setText(user.phone_number)
-                        userEmail.setText(user.email)
-                        userLocation.setText("Nasir City\n Mustafa Elnahas Street") // Static text, adjust as needed
-                        Log.d("profileTAG", "User details updated successfully")
-                    } else {
-                        Log.d("profileTAG", "User object is null")
-                    }
-                } else {
-                    Log.d("profileTAG", "Response failed: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.d("profileTAG", "Failed to fetch user details: ${t.message}")
-            }
-        })
         editBtn.setOnClickListener(){
-            /*val intent = Intent(this, EditProfileActivity::class.java).apply {
-                putExtra("name", userName.text)
-                putExtra("city", userCity.text)
-                putExtra("loc", userLocation.text)
-                putExtra("mob", userMobile.text)
-            }*/
-
-            val intent = Intent(this, EditProfileActivity::class.java).apply {
-                Log.d("bkr",curUser.username.toString())
-                putExtra("user", curUser)
-                putExtra("loc",userLocation.text)
-            }
+            val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
+        }
+        notify.setOnClickListener(){
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+        back.setOnClickListener(){
+            finish()
 
+        }
+        logout.setOnClickListener(){
+            //show dialoug
+            //clear shared prefrence
+            showLogoutConfirmationDialog()
         }
 
 
 
 
+    }
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log out?")
+            .setPositiveButton("Logout") { dialog, which ->
+                logoutUser()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun logoutUser() {
+      o.clearUserData()
+      o.clearUserLocation()
+       startActivity(Intent(this@ProfileActivity, LoginPageActivity::class.java))
+//        val call = RetrofitClient.instance.logoutUser()
+//
+//            call.enqueue(object : Callback<ApiResponse> {
+//            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+//                if (response.isSuccessful) {
+//                    // Handle successful logout
+//                    Toast.makeText(this@ProfileActivity, "Logged out successfully", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this@ProfileActivity, LoginPageActivity::class.java)
+//                    startActivity(intent)
+//                    // Navigate to login screen or perform any cleanup
+//                } else {
+//                    // Handle unsuccessful logout
+//                    Toast.makeText(this@ProfileActivity, "Failed to logout", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+//                // Handle failure to make the API call
+//                Toast.makeText(this@ProfileActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("profileTAG","iam back after update with id : "+o.getUserId().toString())
+        reflectUserData()
 
 
+    }
+    fun reflectUserData(){
+
+                        userName.setText(o.getUserName().toString())
+                        userCity.setText(o.getUserCity().toString())
+                        userMobile.setText(o.getUserPhone().toString())
+                        userEmail.setText(o.getUserEmail().toString())
+                        userLocation.setText(o.getUserLocation().toString())
     }
 }

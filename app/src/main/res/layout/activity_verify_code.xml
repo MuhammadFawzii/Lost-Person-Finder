@@ -168,8 +168,8 @@
         android:id="@+id/bt_VerifyCode"
         android:layout_width="367dp"
         android:layout_height="64dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/btn_background"
+        android:layout_marginTop="10dp"
+
         android:backgroundTint="@color/app_blue"
         android:fontFamily="@font/proxima_nova_semibold"
         android:text="Verify Code"

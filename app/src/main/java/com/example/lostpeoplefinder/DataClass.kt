@@ -6,8 +6,8 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Int) :
-    Serializable
+data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Int,
+                    var lng:Double, var lat:Double) : Serializable
 
 data class VerifyData(val username: String, val email: String, val password: String, val phone_number: String,val code: String)
 
@@ -102,9 +102,9 @@ data class User(
     val username: String,
     val email: String,
     val phone_number: String,
-    val longitude: String,
-    val latitude: String,
+    val longitude: Double,
+    val latitude: Double,
     val city: String,
-    val notification_enabled: Boolean,
+    val notification_enabled: Int,
     val token: String
 ):Serializable

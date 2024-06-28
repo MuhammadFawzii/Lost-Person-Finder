@@ -86,7 +86,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 //            }
 //        })
 
-       /* val call = RetrofitClient.instance.getLostPeople()
+      /*  val call = RetrofitClient.instance.getLostPeople()
         call.enqueue(object : Callback<Map<String, Person>> {
             @SuppressLint("SuspiciousIndentation")
             override fun onResponse(
@@ -162,8 +162,16 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 
             }
         })
-
 */
+        lostList=init_lost()
+        foundList=init_lost()
+
+        val adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
+        missingRv.adapter = adapter
+
+        val adapter2=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList)
+        foundRv.adapter=adapter2
+
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         //searchIcon = searchview.findViewById(androidx.appcompat.R.id.search_mag_icon)
@@ -206,7 +214,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         profileBtn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
-            finish() // Finish the current activity to prevent going back to it after logout
+            //finish() // Finish the current activity to prevent going back to it after logout
         })
 
     }
@@ -268,6 +276,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         super.onResume()
         mShimmerViewContainer.startShimmer()
         mShimmerViewContainer2.startShimmer()
+
     }
 
     override fun onPause() {
@@ -275,4 +284,33 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         mShimmerViewContainer2.stopShimmer()
         super.onPause()
     }
-}
+    fun init_lost():ArrayList<Person>{
+        return arrayListOf(
+            Person(
+                person_name = "John Doe",
+                age = "30",
+                date_of_lost = "2023-05-01",
+                phone_number = "123-456-7890",
+                email ="John Doe@gmail.com" ,
+                image_url = "D:\\CS\\4th Senior Year\\Projects\\Lost-Person-Finder\\app\\src\\main\\res\\drawable\\m1.jpg",
+                lng = "31.2357",
+                lat = "30.0444",
+                gender = "Male",
+                city = "Cairo"
+            ),
+            Person(
+                person_name = "Jane Smith",
+                age = "25",
+                date_of_lost = "2023-05-15",
+                phone_number = "987-654-3210",
+                email = "jane.smith@example.com",
+                image_url = "D:\\CS\\4th Senior Year\\Projects\\Lost-Person-Finder\\app\\src\\main\\res\\drawable\\m2.jpg",
+                lng = "31.2001",
+                lat = "29.9187",
+                gender = "Female",
+                city = "Alexandria"
+            )
+            // Add more Person objects as needed
+        )
+    }
+    }

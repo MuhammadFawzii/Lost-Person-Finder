@@ -12,6 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.text.TextWatcher
 import android.text.Editable
+import com.example.yourapp.RememberHandler
 
 class VerifyCodeActivity : AppCompatActivity() {
     private lateinit var vCode1: EditText
@@ -26,13 +27,26 @@ class VerifyCodeActivity : AppCompatActivity() {
         moveToNext()
         val bundle = intent.extras
         val userData = bundle?.getSerializable("userdata") as? UserData
+        val o= RememberHandler.getInstance(this)
+
         submit.setOnClickListener {
             val verificationCode = buildVerificationCode()//Get VCode 4
             // **Show the toast with the verification code**
             val toast = Toast.makeText(this, "Verification Code: $verificationCode", Toast.LENGTH_SHORT)
             toast.show()
 
-            val call=RetrofitClient.instance.verifyCode(userData!!.username,userData.password,userData.phone_number,userData.email,verificationCode,userData.city,userData.token,userData.isEnabledNofification)
+            val call=RetrofitClient.instance.verifyCode(
+                userData!!.username,
+                userData.password,
+                userData.phone_number,
+                userData.email,
+                verificationCode,
+                userData.city,
+                userData.token,
+                userData.lng,
+                userData.lat,
+                userData.isEnabledNofification)
+
             call.enqueue(object : Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {

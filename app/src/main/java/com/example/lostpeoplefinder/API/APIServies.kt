@@ -28,8 +28,11 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
         @Field("code") code: String,
         @Field("city") city: String,
         @Field("token") token: String,
+        @Field("lng") lng: Double,
+        @Field("lat") lat: Double,
         @Field("notifications") isEnabled: Int,
-    ): Call<ApiResponse>
+
+        ): Call<ApiResponse>
 
 
     @FormUrlEncoded
@@ -110,8 +113,8 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
         @Field("id") id: String,
         @Field("username") username: String,
         @Field("phone_number") phoneNumber: String,
-        @Field("lng") lng: String,
-        @Field("lat") lat: String,
+        @Field("lng") lng: Double,
+        @Field("lat") lat: Double,
         @Field("city") city: String,
         @Field("notifications") notifications: String
     ): Call<Void> // Modify return type based on your response

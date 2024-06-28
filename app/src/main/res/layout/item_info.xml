@@ -40,8 +40,8 @@
         </LinearLayout>
         <TextView
             android:id="@+id/user_mobile"
-            android:text="+20 1123213606"
             android:textStyle="bold"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginStart="25dp"
