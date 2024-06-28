@@ -6,14 +6,22 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Boolean) :
-    Serializable
+data class UserData(val username: String, val email: String, val password: String, val phone_number: String,val city:String,val token:String,var isEnabledNofification:Int,
+                    var lng:Double, var lat:Double) : Serializable
 
 data class VerifyData(val username: String, val email: String, val password: String, val phone_number: String,val code: String)
 
 data class LoginData(val email: String, val password: String)
 
-data class ApiResponse(val message: String?, val error: String?,val id:Int)
+data class ApiResponse(val message: String?, val error: String?)
+
+data class LoginResponse(
+    val id: Int?,
+    val message: String
+)
+data class RegisterRequest(
+    val email: String
+)
 data class PersonModel(var headerText:String,val img:Int,var personName:String,var personData:String)
 
 data class OutputModel(val img:Int, var personName:String, var personAge:Int,
@@ -105,3 +113,14 @@ data class ReportData(
 ):Serializable
 data class ParentModel(var title:String, var list:ArrayList<OutputModel>)
 
+data class User(
+    val id: Int,
+    val username: String,
+    val email: String,
+    val phone_number: String,
+    val longitude: Double,
+    val latitude: Double,
+    val city: String,
+    val notification_enabled: Int,
+    val token: String
+):Serializable

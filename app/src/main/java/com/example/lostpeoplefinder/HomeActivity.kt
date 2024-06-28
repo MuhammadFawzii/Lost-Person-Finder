@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.utilities.Cam16
-import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,6 +28,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
     lateinit var reportFindingButton:Button
     lateinit var reportMissingButton:Button
     lateinit var backBtn:ImageView
+    lateinit var profileBtn:ImageView
+
     private lateinit var mShimmerViewContainer: ShimmerFrameLayout
     private lateinit var mShimmerViewContainer2: ShimmerFrameLayout
 
@@ -59,29 +59,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         reportFindingButton=findViewById(R.id.reportFindingButton)
         reportMissingButton=findViewById(R.id.reportMissingButton)
         backBtn=findViewById(R.id.logoutButton)
-       // FirebaseApp.initializeApp(this)
-
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
-
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    //startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-                R.id.navigation_reports -> {
-                    startActivity(Intent(this, UserReports::class.java))
-                    true
-                }
-                R.id.navigation_profile -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
-
-
+        profileBtn=findViewById(R.id.profileButton)
+        Log.d("srsr", RememberHandler.getInstance(this).getUserId().toString())
 
 
 
@@ -135,7 +114,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                         // Handle the response here
                         Log.d("MainActivity", "Lost people: $lostPeople")
                         Log.d("MainActivity", "Lost: $lostList")
-                    adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList,"Missing")
+                    adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
                     missingRv.adapter = adapter
                         //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
                 }
@@ -173,7 +152,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                     // Handle the response here
                     Log.d("MainActivity", "Lost people: $lostPeople")
                     Log.d("MainActivity", "Lost: $foundList")
-                    adapter=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList,"Found")
+                    adapter=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList)
                     foundRv.adapter=adapter
                     //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
                 }
@@ -196,7 +175,15 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 
             }
         })
+*/
+        lostList=init_lost()
+        foundList=init_lost()
 
+        val adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
+        missingRv.adapter = adapter
+
+        val adapter2=CommonAdapter(this@HomeActivity,this@HomeActivity,foundList)
+        foundRv.adapter=adapter2
 
         missingRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         foundRv.layoutManager= LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -237,6 +224,12 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
             // Navigate to login screen
             navigateToLoginScreen()
         })
+        profileBtn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            //finish() // Finish the current activity to prevent going back to it after logout
+        })
+
     }
 
     private fun handleQuery(query: String) {
@@ -294,4 +287,33 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         mShimmerViewContainer2.stopShimmer()
         super.onPause()
     }
-}
+    fun init_lost():ArrayList<Person>{
+        return arrayListOf(
+            Person(
+                person_name = "John Doe",
+                age = "30",
+                date_of_lost = "2023-05-01",
+                phone_number = "123-456-7890",
+                email ="John Doe@gmail.com" ,
+                image_url = "D:\\CS\\4th Senior Year\\Projects\\Lost-Person-Finder\\app\\src\\main\\res\\drawable\\m1.jpg",
+                lng = "31.2357",
+                lat = "30.0444",
+                gender = "Male",
+                city = "Cairo"
+            ),
+            Person(
+                person_name = "Jane Smith",
+                age = "25",
+                date_of_lost = "2023-05-15",
+                phone_number = "987-654-3210",
+                email = "jane.smith@example.com",
+                image_url = "D:\\CS\\4th Senior Year\\Projects\\Lost-Person-Finder\\app\\src\\main\\res\\drawable\\m2.jpg",
+                lng = "31.2001",
+                lat = "29.9187",
+                gender = "Female",
+                city = "Alexandria"
+            )
+            // Add more Person objects as needed
+        )
+    }
+    }

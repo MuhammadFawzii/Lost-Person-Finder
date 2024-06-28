@@ -6,12 +6,14 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
-public interface APIServies {
-    @POST("register")
-    fun registerUser(@Body userData: UserData): Call<ApiResponse>
 
+public interface APIServies {
+//    @POST("register")
+//    fun registerUser(@Body email: String): Call<ApiResponse>
+@POST("/register")
+open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse>
     @POST("login")
-    fun loginUser(@Body loginData: LoginData): Call<ApiResponse>
+    fun loginUser(@Body loginData: LoginData): Call<LoginResponse>
 
     @FormUrlEncoded
     @POST("verify_code")
@@ -23,11 +25,16 @@ public interface APIServies {
         @Field("code") code: String,
         @Field("city") city: String,
         @Field("token") token: String,
-        @Field("notifications") isEnabled: Boolean,
-    ): Call<ApiResponse>
+        @Field("lng") lng: Double,
+        @Field("lat") lat: Double,
+        @Field("notifications") isEnabled: Int,
+
+        ): Call<ApiResponse>
+
+
     @FormUrlEncoded
     @POST("forgot_password")
-    fun forgotPassword(@Field("email") email: String,): Call<ApiResponse>
+    fun forgotPassword(@Field("email") email: String): Call<ApiResponse>
     @FormUrlEncoded
     @POST("verify_reset_code_password")
     fun verifyResetPassword(
@@ -116,5 +123,20 @@ public interface APIServies {
     fun getUserReports(@Path("user_id") userId: Int): Call<Map<String, Person>>
     @GET("/home_find")
     fun getFoundPeople(): Call<Map<String, Person>>
+
+    @GET("getuser/{id}")
+    fun getUser(@Path("id") id: Int): Call<User>
+
+    @POST("update_user")
+    @FormUrlEncoded
+    fun updateUser(
+        @Field("id") id: String,
+        @Field("username") username: String,
+        @Field("phone_number") phoneNumber: String,
+        @Field("lng") lng: Double,
+        @Field("lat") lat: Double,
+        @Field("city") city: String,
+        @Field("notifications") notifications: String
+    ): Call<Void> // Modify return type based on your response
 
 }

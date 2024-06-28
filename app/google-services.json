@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:249283416844:android:76001ab8efec8ba3832f29",
         "android_client_info": {
-          "package_name": "com.example.lostpeoplefinder"
+          "package_name": "com.example.testfirebase"
         }
       },
       "oauth_client": [],
@@ -47,7 +47,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:249283416844:android:a5fe81aa2d098175832f29",
         "android_client_info": {
-          "package_name": "com.example.lostpeoplefinder"
+          "package_name": "com.example.testnotification"
         }
       },
       "oauth_client": [],
