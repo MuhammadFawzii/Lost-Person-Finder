@@ -32,6 +32,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     SearchView mapSearchView;
     Button showInfoButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

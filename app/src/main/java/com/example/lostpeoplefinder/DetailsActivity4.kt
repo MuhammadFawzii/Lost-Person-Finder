@@ -3,6 +3,7 @@ package com.example.lostpeoplefinder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.EditText
@@ -12,20 +13,21 @@ class DetailsActivity4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details5)
-        val report_name = intent.getStringExtra("report")
-        val name=intent.getStringExtra("name")
-        val age=intent.getStringExtra("age")
-        val gender=intent.getStringExtra("gender")
-        val date=intent.getStringExtra("date")
-        val lang=intent.getStringExtra("lang")
-        val lat=intent.getStringExtra("lat")
-        val cityName=intent.getStringExtra("city")
+//        val report_name = intent.getStringExtra("report")
+//        val name=intent.getStringExtra("name")
+//        val age=intent.getStringExtra("age")
+//        val gender=intent.getStringExtra("gender")
+//        val date=intent.getStringExtra("date")
+//        val lang=intent.getStringExtra("lang")
+//        val lat=intent.getStringExtra("lat")
+//        val cityName=intent.getStringExtra("city")
+        Log.d("d4",ReportDataBuffer.toString())
         val btn_next5=findViewById<Button>(R.id.bt_next5)
         val btn_previous5=findViewById<Button>(R.id.bt_previous5)
         val eNumber=findViewById<EditText>(R.id.number)
         val eEmail=findViewById<EditText>(R.id.email)
-        Toast.makeText(this@DetailsActivity4, report_name.toString(), Toast.LENGTH_SHORT)
-            .show()
+//        Toast.makeText(this@DetailsActivity4, report_name.toString(), Toast.LENGTH_SHORT)
+//            .show()
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         val phoneNumberPattern = "\\d{11}"
         btn_next5.setOnClickListener {
@@ -41,30 +43,34 @@ class DetailsActivity4 : AppCompatActivity() {
             }
             if (isEmailValid && isPhoneNumberValid) {
                 val intent=Intent(this,DetailsActivity5::class.java)
-                intent.putExtra("name", name)
-                intent.putExtra("gender", gender)
-                intent.putExtra("age", age)
-                intent.putExtra("date",date)
-                intent.putExtra("number",number)
-                intent.putExtra("email",email)
-                intent.putExtra("lang", lang)
-                intent.putExtra("lat",lat)
-                intent.putExtra("report", report_name)
-                intent.putExtra("city",cityName)
+//                intent.putExtra("name", name)
+//                intent.putExtra("gender", gender)
+//                intent.putExtra("age", age)
+//                intent.putExtra("date",date)
+//                intent.putExtra("number",number)
+//                intent.putExtra("email",email)
+//                intent.putExtra("lang", lang)
+//                intent.putExtra("lat",lat)
+//                intent.putExtra("report", report_name)
+//                intent.putExtra("city",cityName)
+                ReportDataBuffer.updatePhoneNumber(number)
+                ReportDataBuffer.updateEmail(email)
+
+
                 startActivity(intent)
 
             }
         }
         btn_previous5.setOnClickListener {
             var intent=Intent(this,DetailsActivity3::class.java)
-            intent.putExtra("name", name)
-            intent.putExtra("gender", gender)
-            intent.putExtra("age", age)
-            intent.putExtra("date",date)
-            intent.putExtra("lang", lang)
-            intent.putExtra("lat",lat)
-            intent.putExtra("report", report_name)
-            intent.putExtra("city",cityName)
+//            intent.putExtra("name", name)
+//            intent.putExtra("gender", gender)
+//            intent.putExtra("age", age)
+//            intent.putExtra("date",date)
+//            intent.putExtra("lang", lang)
+//            intent.putExtra("lat",lat)
+//            intent.putExtra("report", report_name)
+//            intent.putExtra("city",cityName)cityName
             startActivity(intent)
 
         }

@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -44,20 +45,30 @@ class DetailsActivity1 : AppCompatActivity() {
             //Toast.makeText(this, selectedGender.toString(), Toast.LENGTH_SHORT).show()
             val age=age.text.toString()
             val x=if (selectedGender == "Male")
-                "1"
+                1
              else
-                "2"
+                2
 
             if(name.isNotEmpty()&&(selectedGender.equals("Male")||selectedGender.equals("Female"))&&age.isNotEmpty()){
                 if(Integer.parseInt(age)>100){
                     Toast.makeText(this, "age must be less than 100 year", Toast.LENGTH_SHORT).show()
                 }else{
-                val intent=Intent(this, DetailsActivity3::class.java)
-                intent.putExtra("name",name)
-                intent.putExtra("gender",x)
-                intent.putExtra("age",age)
-                intent.putExtra("report", report_name)
-                startActivity(intent)
+
+
+                    ReportDataBuffer.updateCheckLost(report_name)
+                    ReportDataBuffer.updatePersonName(name)
+                    ReportDataBuffer.updateAge(age)
+                    ReportDataBuffer.updateGender(x)
+                    Log.d("d1",ReportDataBuffer.toString())
+
+
+
+//                    val intent=Intent(this, DetailsActivity3::class.java)
+//                intent.putExtra("name",name)
+//                intent.putExtra("gender",x)
+//                intent.putExtra("age",age)
+//                intent.putExtra("report", report_name)
+                startActivity(Intent(this, DetailsActivity3::class.java))
               }
             }
             else {

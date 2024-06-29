@@ -52,6 +52,7 @@ class LoginPageActivity : AppCompatActivity() {
             }
             else {
                 val loginRequest = LoginData(email, password)
+                Log.d("++ms", email+" "+password);
 
                 // Make login request
                 val call = RetrofitClient.instance.loginUser(loginRequest)

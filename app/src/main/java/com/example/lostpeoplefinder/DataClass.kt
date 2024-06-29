@@ -64,7 +64,7 @@ data class LostPersonResponse(
 
 
 data class FindResponse(
-    val final_result: List<Person>? = null,
+    val final_result: List<ResponseReport>? = null,
     val message: String? = null,
     val error: String? = null
 )
@@ -87,12 +87,17 @@ data class ResponseReport(
 val person_name: String,
 val age: String,
 val date_of_lost: String,
+val check_lost: Int,
+val city: String,
+val notes: String?,
 val phone_number: String,
 val email: String,
 val lng: String,
 val lat: String,
 val gender: String,
-val image_url: String? // Optional, if you need to display the image
+val image_url: String?,
+var user_id:String,// Optional, if you need to display the image
+
 )
 
 data class ParentModel(var title:String, var list:ArrayList<OutputModel>)
@@ -108,3 +113,18 @@ data class User(
     val notification_enabled: Int,
     val token: String
 ):Serializable
+data class ReportData(
+    var person_name: String?,
+    var check_lost: String?,
+    var age: String?,
+    var date_of_lost: String?,
+    var phone_number: String?,
+    var email: String?,
+    var lng: String?,
+    var lat: String?,
+    var gender: Int?,
+    var image_url: String?, // Optional, if you need to display the image
+    var city: String?,
+    var notes: String?,
+
+) : Serializable

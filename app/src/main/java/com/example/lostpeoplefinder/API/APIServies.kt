@@ -83,18 +83,21 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
 
 
     @Multipart
-    @POST("/find")
+    @POST("/search")
     fun send_find(
+        @Part("check_lost") check_lost: RequestBody,
         @Part("person_name") person_name: RequestBody,
         @Part("age") age: RequestBody,
         @Part("date") date_of_lost: RequestBody,
         @Part("phone_number") phone_number: RequestBody,
         @Part("email") email: RequestBody,
         @Part image: MultipartBody.Part,
+        @Part("city") city: RequestBody,
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
         @Part("gender") gender: RequestBody,
-        @Part("id") id:RequestBody
+        @Part("notes") notes: RequestBody,
+        @Part("user_id") id:RequestBody
     ): Call<FindResponse>
 
     @GET("/home_lost")

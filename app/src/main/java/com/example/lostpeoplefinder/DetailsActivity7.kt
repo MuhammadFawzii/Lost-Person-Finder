@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.lostpeoplefinder.API.RetrofitClient
+import com.example.yourapp.RememberHandler
 import com.github.dhaval2404.imagepicker.ImagePicker
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -39,22 +40,51 @@ class DetailsActivity7 : AppCompatActivity() {
         setContentView(R.layout.activity_template)
         fileName=findViewById(R.id.filename)
         delete=findViewById(R.id.icon_delete)
-        val name=intent.getStringExtra("name").toString()
-        val age=intent.getStringExtra("age").toString()
-        val gender=intent.getStringExtra("gender").toString()
-        val date=intent.getStringExtra("date").toString()
-        val number=intent.getStringExtra("number").toString()
-        val email=intent.getStringExtra("email").toString()
-        val note=intent.getStringExtra("note").toString()
+//        val name=intent.getStringExtra("name").toString()
+//        val age=intent.getStringExtra("age").toString()
+//        val gender=intent.getStringExtra("gender").toString()
+//        val date=intent.getStringExtra("date").toString()
+//        val number=intent.getStringExtra("number").toString()
+//        val email=intent.getStringExtra("email").toString()
+//        val note=intent.getStringExtra("note").toString()
+//        val lang="5.0"//intent.getStringExtra("lang").toString()
+//        val lat="3.66"//intent.getStringExtra("lat").toString()
+//        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+//        val userId = sharedPreferences.getString("USER_ID", null)
+        Log.d("ray2",ReportDataBuffer.toString())
+
+        val name=ReportDataBuffer.getPersonName()
+        val age=ReportDataBuffer.getAge()
+        val gender=ReportDataBuffer.getGender().toString()
+        val date=ReportDataBuffer.getDateOfLost()
+        Toast.makeText(this, date.toString(), Toast.LENGTH_SHORT).show()
+        val city=ReportDataBuffer.getCity()
+        val number=ReportDataBuffer.getPhoneNumber()
+        val email=ReportDataBuffer.getEmail()
+        val note=ReportDataBuffer.getNotes()
         val lang="5.0"//intent.getStringExtra("lang").toString()
         val lat="3.66"//intent.getStringExtra("lat").toString()
-        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
-        val userId = sharedPreferences.getString("USER_ID", null)
-        Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
-            .show()
+        val report_name =ReportDataBuffer.getCheckLost()
+        val userId=RememberHandler.getInstance(this).getUserId()
 
-        Toast.makeText(this@DetailsActivity7, number+email+lang+lat, Toast.LENGTH_SHORT)
-            .show()
+
+//        val name="abdo"
+//        val age="20"
+//        val gender=1
+//        val date="2020/11/11"
+//        val city="cairo"
+//        val number="01013513652"
+//        val email="abdo@gmail.com"
+//        val note="test"
+//        val lng=5.0//intent.getStringExtra("lang").toString()
+//        val lat=3.66//intent.getStringExtra("lat").toString()
+//        val report_name ="2"
+//        val userId=20
+//        Toast.makeText(this@DetailsActivity7, name+age+gender+date, Toast.LENGTH_SHORT)
+//            .show()
+//
+//        Toast.makeText(this@DetailsActivity7, number+email+lang+lat, Toast.LENGTH_SHORT)
+//            .show()
 
 
 
@@ -68,7 +98,7 @@ class DetailsActivity7 : AppCompatActivity() {
         val lang="-50"
         val lat="533.54545"
         val report_name ="1"*/
-        val report_name =intent.getStringExtra("report").toString()
+//        val report_name =intent.getStringExtra("report").toString()
 
         val pickImageButton = findViewById<TextView>(R.id.tv_browsePhoto)
         constraintLayout7 = findViewById(R.id.constraintLayout7)
@@ -100,34 +130,44 @@ class DetailsActivity7 : AppCompatActivity() {
                 if (report_name == "2") {
                     Toast.makeText(this@DetailsActivity7, "first!!", Toast.LENGTH_SHORT)
                         .show()
-                    call = RetrofitClient.instance.sendPersonData(
-                        requestBody,
+                    Log.d("ray2",ReportDataBuffer.toString())
+
+                    call = RetrofitClient.instance.send_find(
+                        RequestBody.create(MediaType.parse("text/plain"),"2"),
+                        RequestBody.create(MediaType.parse("text/plain"), name),
                         RequestBody.create(MediaType.parse("text/plain"), age),
-                        RequestBody.create(MediaType.parse("text/plain"), date),
+                        RequestBody.create(MediaType.parse("text/plain"), date.toString()),
                         RequestBody.create(MediaType.parse("text/plain"), number),
                         RequestBody.create(MediaType.parse("text/plain"), email),
                         imagePart,
-                        RequestBody.create(MediaType.parse("text/plain"), lang),
-                        RequestBody.create(MediaType.parse("text/plain"), lat),
-                        RequestBody.create(MediaType.parse("text/plain"), gender),
-                        RequestBody.create(MediaType.parse("text/plain"), userId)
+                        RequestBody.create(MediaType.parse("text/plain"), city.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), lang.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), lat.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), gender.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), note),
+                        RequestBody.create(MediaType.parse("text/plain"), userId.toString())
                     )
 
 
                 } else {
                     Toast.makeText(this@DetailsActivity7, "else!!", Toast.LENGTH_SHORT)
                         .show()
+                    Log.d("ray2",ReportDataBuffer.toString())
+
                     call = RetrofitClient.instance.send_find(
-                        requestBody,
+                        RequestBody.create(MediaType.parse("text/plain"),"1"),
+                        RequestBody.create(MediaType.parse("text/plain"), name),
                         RequestBody.create(MediaType.parse("text/plain"), age),
-                        RequestBody.create(MediaType.parse("text/plain"), date),
+                        RequestBody.create(MediaType.parse("text/plain"), date.toString()),
                         RequestBody.create(MediaType.parse("text/plain"), number),
                         RequestBody.create(MediaType.parse("text/plain"), email),
                         imagePart,
-                        RequestBody.create(MediaType.parse("text/plain"), lang),
-                        RequestBody.create(MediaType.parse("text/plain"), lat),
-                        RequestBody.create(MediaType.parse("text/plain"), gender),
-                        RequestBody.create(MediaType.parse("text/plain"), userId)
+                        RequestBody.create(MediaType.parse("text/plain"), city),
+                        RequestBody.create(MediaType.parse("text/plain"), lang.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), lat.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), gender.toString()),
+                        RequestBody.create(MediaType.parse("text/plain"), note),
+                        RequestBody.create(MediaType.parse("text/plain"), userId.toString())
                     )
                 }
 
@@ -258,7 +298,7 @@ class DetailsActivity7 : AppCompatActivity() {
             constraintLayout7.visibility = View.GONE
         }
 
-        }
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -284,6 +324,7 @@ class DetailsActivity7 : AppCompatActivity() {
 //    val editor = sharedPreferences.edit()
 //    editor.remove("USER_ID")
 //    editor.apply()
+
 
 
 }

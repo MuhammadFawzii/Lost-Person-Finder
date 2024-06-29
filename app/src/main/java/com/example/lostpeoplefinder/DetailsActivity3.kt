@@ -5,6 +5,7 @@ import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.*
@@ -16,11 +17,13 @@ class DetailsActivity3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details4)
-        val report_name = intent.getStringExtra("report")
-        val name=intent.getStringExtra("name")
-        val age=intent.getStringExtra("age")
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
-        val gender=intent.getStringExtra("gender")
+        Log.d("d3",ReportDataBuffer.toString())
+        //Log.d("testPrev",ReportDataBuffer.getPersonName().toString()+ReportDataBuffer.getAge().toString()+ReportDataBuffer.getGender().toString())
+////        val report_name = intent.getStringExtra("report")
+////        val name=intent.getStringExtra("name")
+////        val age=intent.getStringExtra("age")
+////        Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
+//        val gender=intent.getStringExtra("gender")
         val btn_next4=findViewById<Button>(R.id.bt_next4)
         city=findViewById<EditText>(R.id.city)
         report=findViewById(R.id.textView6)
@@ -37,16 +40,26 @@ class DetailsActivity3 : AppCompatActivity() {
             val lat="120"
             val cityName=city.text.toString()
             if(date.isNotEmpty()&&cityName.isNotEmpty()) {
-                val intent = Intent(this, DetailsActivity4::class.java)
-                intent.putExtra("name", name)
-                intent.putExtra("gender", gender)
-                intent.putExtra("age", age)
-                intent.putExtra("date",date)
-                intent.putExtra("lang", lang)
-                intent.putExtra("lat",lat)
-                intent.putExtra("report", report_name)
-                intent.putExtra("city",cityName)
-                startActivity(intent)
+//                val intent = Intent(this, DetailsActivity4::class.java)
+//                intent.putExtra("name", name)
+//                intent.putExtra("gender", gender)
+//                intent.putExtra("age", age)
+//                intent.putExtra("date",date)
+//                intent.putExtra("lang", lang)
+//                intent.putExtra("lat",lat)
+//                intent.putExtra("report", report_name)
+//                intent.putExtra("city",cityName)
+
+                ReportDataBuffer.updateDateOfLost(date)
+                ReportDataBuffer.updateLng(lang)
+                ReportDataBuffer.updateLat(lat)
+                ReportDataBuffer.updateCity(cityName)
+
+
+
+
+
+                startActivity(Intent(this, DetailsActivity4::class.java))
             }
             else{
                 Toast.makeText(this, "Fill all data.", Toast.LENGTH_SHORT).show()
@@ -57,10 +70,10 @@ class DetailsActivity3 : AppCompatActivity() {
         }
         btn_previous4.setOnClickListener {
            val intent= Intent(this,DetailsActivity1::class.java)
-            intent.putExtra("name",name)
-            intent.putExtra("age",age)
-            intent.putExtra("gender",gender)
-            intent.putExtra("report",report_name)
+//            intent.putExtra("name",name)
+//            intent.putExtra("age",age)
+//            intent.putExtra("gender",gender)
+//            intent.putExtra("report",report_name)
             startActivity(intent)
         }
         calendarIcon.setOnClickListener {
@@ -83,8 +96,10 @@ class DetailsActivity3 : AppCompatActivity() {
             this,
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, dayOfMonth ->
                 val selectedDate = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
-                val date1 = convertDateFormat(selectedDate)
-                date.text=date1
+                val new="$selectedYear/${selectedMonth+1}/$dayOfMonth"
+                val date1 = convertDateFormat(new)
+                date.text=new
+                Toast.makeText(this, new, Toast.LENGTH_SHORT).show()
 
             },
             year,
