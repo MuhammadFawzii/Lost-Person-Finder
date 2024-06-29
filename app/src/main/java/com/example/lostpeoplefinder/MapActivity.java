@@ -1,5 +1,6 @@
 package com.example.lostpeoplefinder;
 
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -91,6 +92,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                             double longitude = selectedLocation.longitude;
                             String message = "City: " + cityName + "\nStreet: " + streetName + "\nLatitude: " + latitude + "\nLongitude: " + longitude;
                             Toast.makeText(MapActivity.this, message, Toast.LENGTH_SHORT).show();
+                            Intent resultIntent =new Intent(getApplicationContext(),DetailsActivity3.class);
+                            resultIntent.putExtra("cityName", cityName);
+                            resultIntent.putExtra("latitude", latitude);
+                            resultIntent.putExtra("longitude", longitude);
+                            setResult(RESULT_OK, resultIntent);
+                            finish();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

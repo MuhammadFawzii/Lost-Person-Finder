@@ -11,7 +11,7 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class CommonAdapter(private val listener: OnItemClickListener,var context: Context, var list: ArrayList<Person>) :
+class CommonAdapter(private val listener: OnItemClickListener,var context: Context, var list: ArrayList<Person>,var reportName:String) :
     RecyclerView.Adapter<CommonAdapter.ViewHolder>() {
 
 //    fun getLayoutFile(context: Context): Int {
@@ -31,7 +31,7 @@ class CommonAdapter(private val listener: OnItemClickListener,var context: Conte
         Glide.with(context)
             .load(list[position].image_url)
             .into(holder.img)
-        holder.headerText.text="Missing!!"
+        holder.headerText.text=reportName
         holder.nameText.text = list[position].person_name
         holder.dataText.text = list[position].email
     }

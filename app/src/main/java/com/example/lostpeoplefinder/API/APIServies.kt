@@ -15,9 +15,6 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
     @POST("login")
     fun loginUser(@Body loginData: LoginData): Call<LoginResponse>
 
-
-    @POST("logout")
-    fun logoutUser(): Call<ApiResponse>
     @FormUrlEncoded
     @POST("verify_code")
     fun verifyCode(
@@ -66,19 +63,38 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
     @Multipart
     @POST("/lost")
     fun sendPersonData(
+        @Part("check_lost") check_lost: RequestBody,
         @Part("person_name") person_name: RequestBody,
         @Part("age") age: RequestBody,
         @Part("date") date_of_lost: RequestBody,
         @Part("phone_number") phone_number: RequestBody,
         @Part("email") email: RequestBody,
         @Part image: MultipartBody.Part,
+        @Part("city") city: RequestBody,
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
         @Part("gender") gender: RequestBody,
-        @Part("id") id:RequestBody
+        @Part("user_id") id:RequestBody
     ): Call<FindResponse>
 
 
+
+
+
+//    @Multipart
+//    @POST("/find")
+//    fun send_find(
+//        @Part("person_name") person_name: RequestBody,
+//        @Part("age") age: RequestBody,
+//        @Part("date") date_of_lost: RequestBody,
+//        @Part("phone_number") phone_number: RequestBody,
+//        @Part("email") email: RequestBody,
+//        @Part image: MultipartBody.Part,
+//        @Part("lng") lng: RequestBody,
+//        @Part("lat") lat: RequestBody,
+//        @Part("gender") gender: RequestBody,
+//        @Part("id") id:RequestBody
+//    ): Call<FindResponse>
 
 
 
@@ -95,10 +111,12 @@ open fun registerUser(@Body registerRequest: RegisterRequest?): Call<ApiResponse
         @Part("city") city: RequestBody,
         @Part("lng") lng: RequestBody,
         @Part("lat") lat: RequestBody,
+        @Part("city") city: RequestBody,
         @Part("gender") gender: RequestBody,
         @Part("notes") notes: RequestBody,
         @Part("user_id") id:RequestBody
     ): Call<FindResponse>
+
 
     @GET("/home_lost")
     fun getLostPeople(): Call<Map<String, Person>>

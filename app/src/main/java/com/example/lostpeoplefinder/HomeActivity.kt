@@ -13,10 +13,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lostpeoplefinder.API.RetrofitClient
-import com.example.yourapp.RememberHandler
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.color.utilities.Cam16
-import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,7 +64,22 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 
 
 
-
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.w("bkr", "Fetching FCM registration token failed", task.exception)
+//                return@addOnCompleteListener
+//            }
+//
+//            // Get new FCM registration token
+//            val token = task.result
+//            if (token != null) {
+//                // Log and toast
+//                Log.d("bkr", token)
+//                Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+//            } else {
+//                Log.w("bkr", "FCM registration token is null")
+//            }
+//        }
 
 
         //filterBtn=findViewById(R.id.btn_filter)
@@ -86,7 +99,7 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
 //            }
 //        })
 
-      /*  val call = RetrofitClient.instance.getLostPeople()
+        val call = RetrofitClient.instance.getLostPeople()
         call.enqueue(object : Callback<Map<String, Person>> {
             @SuppressLint("SuspiciousIndentation")
             override fun onResponse(
@@ -99,8 +112,8 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
                      lostList = ArrayList(lostPeople?.values)
                             //Toast.makeText(this@HomeActivity, personList.toString(), Toast.LENGTH_SHORT).show()
                         // Handle the response here
-                        Log.d("ray2", "Lost people: $lostPeople")
-                        Log.d("ray2", "Lost: $lostList")
+                        Log.d("MainActivity", "Lost people: $lostPeople")
+                        Log.d("MainActivity", "Lost: $lostList")
                     adapter = CommonAdapter(this@HomeActivity,this@HomeActivity, lostList)
                     missingRv.adapter = adapter
                         //Toast.makeText(this@HomeActivity, lostPeople.toString(), Toast.LENGTH_SHORT).show()
@@ -225,15 +238,6 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         Toast.makeText(this, "Query: $query", Toast.LENGTH_SHORT).show()
     }
 
-   /* fun initList(header:String="MISSNG!!"): ArrayList<Person> {
-        val personList = ArrayList<Person>()
-
-        // Add items to the list
-        personList.add(Person(header, "Maria Doe","2020-12-20","508078878","Abdo@gmail.com","kk"))
-        personList.add(Person(header, "Jane Smith", "Age:42 | black Head | Green Eyes | Height: 187 |Weight: 170.6 lbs"))
-        personList.add(Person(header, "Alice Johnson", "Age:29 | brown Head | black Eyes | Height: 180 |Weight: 150.6 lbs"))
-        return personList
-    }*/
 
 //    override fun onResume() {
 //        super.onResume()
@@ -276,7 +280,6 @@ class HomeActivity : AppCompatActivity() ,OnItemClickListener{
         super.onResume()
         mShimmerViewContainer.startShimmer()
         mShimmerViewContainer2.startShimmer()
-
     }
 
     override fun onPause() {
